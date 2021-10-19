@@ -1,6 +1,6 @@
 # OSM to SHP Fastex Converter
 
-OSM2SHP Fastex Converter (convert .osm &amp; .pbf files to ESRI .shp files)     
+OSM2SHP Fastex Converter (convert .osm &amp; .pbf files to ESRI Shape .shp files and .dbf)     
 Программа-конвертер файлов данных OSM (*.osm) и (*.pbf) в ESRI Shapes (*.shp)
 
 <img src="window1.png"/>
