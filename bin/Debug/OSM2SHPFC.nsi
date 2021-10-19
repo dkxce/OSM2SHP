@@ -2,10 +2,10 @@
 ; OSM2SHP Installer
 ;
 
-Name "OSM2SHP 20.02.17.33"
+Name "OSM2SHP 21.10.19.36"
 
 ; The file to write
-OutFile "_INSTALLER\OSM2SHP Fastex Converter Setup 20.02.17.33.exe"
+OutFile "_INSTALLER\OSM2SHP Fastex Converter Setup 21.10.19.36.exe"
 Icon "installer.ico"
 
 ; The default installation directory
