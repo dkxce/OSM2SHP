@@ -1,0 +1,30 @@
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\KMZRebuilder+Viewer\[Sources]\Protobuf_OSM_ReadSample\bin\Debug\Ionic.Zlib.dll
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\KMZRebuilder+Viewer\[Sources]\Protobuf_OSM_ReadSample\bin\Debug\protobuf-net.dll
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\KMZRebuilder+Viewer\[Sources]\Protobuf_OSM_ReadSample\obj\Debug\ResolveAssemblyReference.cache
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\KMZRebuilder+Viewer\[Sources]\Protobuf_OSM_ReadSample\obj\Debug\WindowsApplication4.MForm.resources
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\KMZRebuilder+Viewer\[Sources]\Protobuf_OSM_ReadSample\obj\Debug\Protobuf_OSM_ReadSample.csproj.GenerateResource.Cache
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\KMZRebuilder+Viewer\[Sources]\Protobuf_OSM_ReadSample\bin\Debug\Protobuf_OSM_ReadSample.exe
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\KMZRebuilder+Viewer\[Sources]\Protobuf_OSM_ReadSample\bin\Debug\Protobuf_OSM_ReadSample.pdb
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\KMZRebuilder+Viewer\[Sources]\Protobuf_OSM_ReadSample\obj\Debug\Protobuf_OSM_ReadSample.Properties.Resources.resources
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\KMZRebuilder+Viewer\[Sources]\Protobuf_OSM_ReadSample\obj\Debug\Protobuf_OSM_ReadSample.exe
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\KMZRebuilder+Viewer\[Sources]\Protobuf_OSM_ReadSample\obj\Debug\Protobuf_OSM_ReadSample.pdb
+C:\Downloads\CD-REC\_osm2mp\protobufosm\obj\Debug\Protobuf_OSM_ReadSample.exe
+C:\Downloads\CD-REC\_osm2mp\protobufosm\obj\Debug\Protobuf_OSM_ReadSample.pdb
+C:\Downloads\CD-REC\_osm2mp\protobufosm\obj\Debug\ResolveAssemblyReference.cache
+C:\Downloads\CD-REC\_osm2mp\protobufosm\obj\Debug\WindowsApplication4.MForm.resources
+C:\Downloads\CD-REC\_osm2mp\protobufosm\obj\Debug\Protobuf_OSM_ReadSample.Properties.Resources.resources
+C:\Downloads\CD-REC\_osm2mp\protobufosm\obj\Debug\Protobuf_OSM_ReadSample.csproj.GenerateResource.Cache
+C:\Downloads\CD-REC\_osm2mp\protobufosm\bin\Debug\Protobuf_OSM_ReadSample.exe
+C:\Downloads\CD-REC\_osm2mp\protobufosm\bin\Debug\Protobuf_OSM_ReadSample.pdb
+C:\Downloads\CD-REC\_osm2mp\protobufosm\bin\Debug\Ionic.Zlib.dll
+C:\Downloads\CD-REC\_osm2mp\protobufosm\bin\Debug\protobuf-net.dll
+C:\Downloads\CD-REC\protobuf_osm\obj\Debug\Protobuf_OSM_ReadSample.exe
+C:\Downloads\CD-REC\protobuf_osm\obj\Debug\Protobuf_OSM_ReadSample.pdb
+C:\Downloads\CD-REC\protobuf_osm\bin\Debug\Protobuf_OSM_ReadSample.exe
+C:\Downloads\CD-REC\protobuf_osm\bin\Debug\Protobuf_OSM_ReadSample.pdb
+C:\Downloads\CD-REC\protobuf_osm\bin\Debug\Ionic.Zlib.dll
+C:\Downloads\CD-REC\protobuf_osm\bin\Debug\protobuf-net.dll
+C:\Downloads\CD-REC\protobuf_osm\obj\Debug\ResolveAssemblyReference.cache
+C:\Downloads\CD-REC\protobuf_osm\obj\Debug\WindowsApplication4.MForm.resources
+C:\Downloads\CD-REC\protobuf_osm\obj\Debug\Protobuf_OSM_ReadSample.Properties.Resources.resources
+C:\Downloads\CD-REC\protobuf_osm\obj\Debug\Protobuf_OSM_ReadSample.csproj.GenerateResource.Cache

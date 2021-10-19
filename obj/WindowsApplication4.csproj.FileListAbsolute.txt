@@ -1,0 +1,10 @@
+C:\Downloads\CD-REC\TEST\WindowsApplication4\WindowsApplication4\bin\Debug\WindowsApplication4.exe
+C:\Downloads\CD-REC\TEST\WindowsApplication4\WindowsApplication4\bin\Debug\WindowsApplication4.pdb
+C:\Downloads\CD-REC\TEST\WindowsApplication4\WindowsApplication4\obj\Debug\ResolveAssemblyReference.cache
+C:\Downloads\CD-REC\TEST\WindowsApplication4\WindowsApplication4\obj\Debug\WindowsApplication4.Properties.Resources.resources
+C:\Downloads\CD-REC\TEST\WindowsApplication4\WindowsApplication4\obj\Debug\WindowsApplication4.csproj.GenerateResource.Cache
+C:\Downloads\CD-REC\TEST\WindowsApplication4\WindowsApplication4\obj\Debug\WindowsApplication4.exe
+C:\Downloads\CD-REC\TEST\WindowsApplication4\WindowsApplication4\obj\Debug\WindowsApplication4.pdb
+C:\Downloads\CD-REC\TEST\WindowsApplication4\WindowsApplication4\obj\Debug\WindowsApplication4.Form1.resources
+C:\Downloads\CD-REC\TEST\WindowsApplication4\WindowsApplication4\bin\Debug\protobuf-net.dll
+C:\Downloads\CD-REC\TEST\WindowsApplication4\WindowsApplication4\bin\Debug\Ionic.Zlib.dll

@@ -1,0 +1,22 @@
+C:\Downloads\CD-REC\TEST\WindowsApplication4\TestPPBParse\obj\Debug\WindowsApplication4.exe
+C:\Downloads\CD-REC\TEST\WindowsApplication4\TestPPBParse\obj\Debug\WindowsApplication4.pdb
+C:\Downloads\CD-REC\TEST\WindowsApplication4\TestPPBParse\obj\Debug\ResolveAssemblyReference.cache
+C:\Downloads\CD-REC\TEST\WindowsApplication4\TestPPBParse\obj\Debug\WindowsApplication4.MForm.resources
+C:\Downloads\CD-REC\TEST\WindowsApplication4\TestPPBParse\obj\Debug\WindowsApplication4.Properties.Resources.resources
+C:\Downloads\CD-REC\TEST\WindowsApplication4\TestPPBParse\obj\Debug\TestBPFParse.csproj.GenerateResource.Cache
+C:\Downloads\CD-REC\TEST\WindowsApplication4\TestPPBParse\bin\Debug\WindowsApplication4.exe
+C:\Downloads\CD-REC\TEST\WindowsApplication4\TestPPBParse\bin\Debug\WindowsApplication4.pdb
+C:\Downloads\CD-REC\TEST\WindowsApplication4\TestPPBParse\bin\Debug\Ionic.Zlib.dll
+C:\Downloads\CD-REC\TEST\WindowsApplication4\TestPPBParse\bin\Debug\protobuf-net.dll
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\KMZRebuilder+Viewer\[Sources]\Protobuf_OSM_Reader\TestPPBParse\obj\Debug\WindowsApplication4.exe
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\KMZRebuilder+Viewer\[Sources]\Protobuf_OSM_Reader\TestPPBParse\obj\Debug\WindowsApplication4.pdb
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\KMZRebuilder+Viewer\[Sources]\Protobuf_OSM_Reader\TestPPBParse\bin\Debug\WindowsApplication4.exe
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\KMZRebuilder+Viewer\[Sources]\Protobuf_OSM_Reader\TestPPBParse\bin\Debug\WindowsApplication4.pdb
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\KMZRebuilder+Viewer\[Sources]\Protobuf_OSM_Reader\TestPPBParse\bin\Debug\Ionic.Zlib.dll
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\KMZRebuilder+Viewer\[Sources]\Protobuf_OSM_Reader\TestPPBParse\bin\Debug\protobuf-net.dll
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\KMZRebuilder+Viewer\[Sources]\Protobuf_OSM_Reader\TestPPBParse\obj\Debug\ResolveAssemblyReference.cache
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\KMZRebuilder+Viewer\[Sources]\Protobuf_OSM_Reader\TestPPBParse\obj\Debug\WindowsApplication4.MForm.resources
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\KMZRebuilder+Viewer\[Sources]\Protobuf_OSM_Reader\TestPPBParse\obj\Debug\WindowsApplication4.Properties.Resources.resources
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\KMZRebuilder+Viewer\[Sources]\Protobuf_OSM_Reader\TestPPBParse\obj\Debug\TestBPFParse.csproj.GenerateResource.Cache
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\KMZRebuilder+Viewer\[Sources]\Protobuf_OSM_ReadSample\TestPPBParse\obj\Debug\WindowsApplication4.exe
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\KMZRebuilder+Viewer\[Sources]\Protobuf_OSM_ReadSample\TestPPBParse\obj\Debug\WindowsApplication4.pdb

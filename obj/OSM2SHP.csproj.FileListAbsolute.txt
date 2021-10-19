@@ -1,0 +1,139 @@
+C:\Downloads\CD-REC\TEST\OSM2SHP\obj\Debug\ResolveAssemblyReference.cache
+C:\Downloads\CD-REC\TEST\OSM2SHP\obj\Debug\OSM2SHP.Properties.Resources.resources
+C:\Downloads\CD-REC\TEST\OSM2SHP\obj\Debug\OSM2SHP.csproj.GenerateResource.Cache
+C:\Downloads\CD-REC\TEST\OSM2SHP\bin\Debug\OSM2SHP.exe
+C:\Downloads\CD-REC\TEST\OSM2SHP\bin\Debug\OSM2SHP.pdb
+C:\Downloads\CD-REC\TEST\OSM2SHP\bin\Debug\Ionic.Zlib.dll
+C:\Downloads\CD-REC\TEST\OSM2SHP\bin\Debug\protobuf-net.dll
+C:\Downloads\CD-REC\TEST\OSM2SHP\obj\Debug\OSM2SHP.exe
+C:\Downloads\CD-REC\TEST\OSM2SHP\obj\Debug\OSM2SHP.pdb
+C:\Downloads\CD-REC\TEST\OSM2SHP\obj\Debug\OSM2SHP.MForm.resources
+C:\Downloads\CD-REC\TEST\OSM2SHP\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\KMZRebuilder+Viewer\_SOURCES\OSM2SHP_[Sources]_20191016H\obj\Debug\OSM2SHP.exe
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\KMZRebuilder+Viewer\_SOURCES\OSM2SHP_[Sources]_20191016H\obj\Debug\OSM2SHP.pdb
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\KMZRebuilder+Viewer\_SOURCES\OSM2SHP_[Sources]_20191016H\bin\Debug\OSM2SHP.exe
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\KMZRebuilder+Viewer\_SOURCES\OSM2SHP_[Sources]_20191016H\bin\Debug\OSM2SHP.pdb
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\KMZRebuilder+Viewer\_SOURCES\OSM2SHP_[Sources]_20191016H\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\KMZRebuilder+Viewer\_SOURCES\OSM2SHP_[Sources]_20191016H\bin\Debug\Ionic.Zlib.dll
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\KMZRebuilder+Viewer\_SOURCES\OSM2SHP_[Sources]_20191016H\bin\Debug\protobuf-net.dll
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\KMZRebuilder+Viewer\_SOURCES\OSM2SHP_[Sources]_20191016H\obj\Debug\ResolveAssemblyReference.cache
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\KMZRebuilder+Viewer\_SOURCES\OSM2SHP_[Sources]_20191016H\obj\Debug\OSM2SHP.MForm.resources
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\KMZRebuilder+Viewer\_SOURCES\OSM2SHP_[Sources]_20191016H\obj\Debug\OSM2SHP.Properties.Resources.resources
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\KMZRebuilder+Viewer\_SOURCES\OSM2SHP_[Sources]_20191016H\obj\Debug\OSM2SHP.csproj.GenerateResource.Cache
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191017W\obj\Debug\OSM2SHP.exe
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191017W\obj\Debug\OSM2SHP.pdb
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191017W\bin\Debug\OSM2SHP.exe
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191017W\bin\Debug\OSM2SHP.pdb
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191017W\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191017W\bin\Debug\Ionic.Zlib.dll
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191017W\bin\Debug\protobuf-net.dll
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191017W\obj\Debug\ResolveAssemblyReference.cache
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191017W\obj\Debug\OSM2SHP.MForm.resources
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191017W\obj\Debug\OSM2SHP.Properties.Resources.resources
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191017W\obj\Debug\OSM2SHP.csproj.GenerateResource.Cache
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191017W\bin\Debug\CSScriptLibrary.v1.1.dll
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191017W\obj\Debug\OSM2SHP.ScriptEditor.resources
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191018W\obj\Debug\OSM2SHP.exe
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191018W\obj\Debug\OSM2SHP.pdb
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191018W\obj\Debug\ResolveAssemblyReference.cache
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191018W\obj\Debug\OSM2SHP.MForm.resources
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191018W\obj\Debug\OSM2SHP.Properties.Resources.resources
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191018W\obj\Debug\OSM2SHP.ScriptEditor.resources
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191018W\obj\Debug\OSM2SHP.csproj.GenerateResource.Cache
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191018W\bin\Debug\OSM2SHP.exe
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191018W\bin\Debug\OSM2SHP.pdb
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191018W\bin\Debug\CSScriptLibrary.v1.1.dll
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191018W\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191018W\bin\Debug\Ionic.Zlib.dll
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191018W\bin\Debug\protobuf-net.dll
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20191021W\obj\Debug\OSM2SHP.exe
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20191021W\obj\Debug\OSM2SHP.pdb
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20191021W\bin\Debug\OSM2SHP.exe
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20191021W\bin\Debug\OSM2SHP.pdb
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20191021W\bin\Debug\CSScriptLibrary.v1.1.dll
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20191021W\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20191021W\bin\Debug\Ionic.Zlib.dll
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20191021W\bin\Debug\protobuf-net.dll
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20191021W\obj\Debug\ResolveAssemblyReference.cache
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20191021W\obj\Debug\OSM2SHP.MForm.resources
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20191021W\obj\Debug\OSM2SHP.Properties.Resources.resources
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20191021W\obj\Debug\OSM2SHP.ScriptEditor.resources
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20191021W\obj\Debug\OSM2SHP.csproj.GenerateResource.Cache
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191021H\obj\Debug\OSM2SHP.exe
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191021H\obj\Debug\OSM2SHP.pdb
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191021H\bin\Debug\OSM2SHP.exe
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191021H\bin\Debug\OSM2SHP.pdb
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191021H\bin\Debug\CSScriptLibrary.v1.1.dll
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191021H\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191021H\bin\Debug\Ionic.Zlib.dll
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191021H\bin\Debug\protobuf-net.dll
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191021H\obj\Debug\ResolveAssemblyReference.cache
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191021H\obj\Debug\OSM2SHP.MForm.resources
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191021H\obj\Debug\OSM2SHP.Properties.Resources.resources
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191021H\obj\Debug\OSM2SHP.ScriptEditor.resources
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191021H\obj\Debug\OSM2SHP.csproj.GenerateResource.Cache
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20191022W\obj\Debug\OSM2SHP.exe
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20191022W\obj\Debug\OSM2SHP.pdb
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20191022W\bin\Debug\OSM2SHP.exe
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20191022W\bin\Debug\OSM2SHP.pdb
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20191022W\bin\Debug\CSScriptLibrary.v1.1.dll
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20191022W\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20191022W\bin\Debug\Ionic.Zlib.dll
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20191022W\bin\Debug\protobuf-net.dll
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20191022W\obj\Debug\ResolveAssemblyReference.cache
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20191022W\obj\Debug\OSM2SHP.MForm.resources
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20191022W\obj\Debug\OSM2SHP.Properties.Resources.resources
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20191022W\obj\Debug\OSM2SHP.ScriptEditor.resources
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20191022W\obj\Debug\OSM2SHP.csproj.GenerateResource.Cache
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191111W\obj\Debug\OSM2SHP.exe
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191111W\obj\Debug\OSM2SHP.pdb
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191111W\bin\Debug\OSM2SHP.exe
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191111W\bin\Debug\OSM2SHP.pdb
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191111W\bin\Debug\CSScriptLibrary.v1.1.dll
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191111W\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191111W\bin\Debug\Ionic.Zlib.dll
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191111W\bin\Debug\protobuf-net.dll
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191111W\obj\Debug\ResolveAssemblyReference.cache
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191111W\obj\Debug\OSM2SHP.MForm.resources
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191111W\obj\Debug\OSM2SHP.Properties.Resources.resources
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191111W\obj\Debug\OSM2SHP.ScriptEditor.resources
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191111W\obj\Debug\OSM2SHP.csproj.GenerateResource.Cache
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191115H\bin\Debug\CSScriptLibrary.v1.1.dll
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191115H\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191115H\bin\Debug\Ionic.Zlib.dll
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191115H\bin\Debug\protobuf-net.dll
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191115H\obj\Debug\ResolveAssemblyReference.cache
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191115H\obj\Debug\OSM2SHP.MForm.resources
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191115H\obj\Debug\OSM2SHP.Properties.Resources.resources
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191115H\obj\Debug\OSM2SHP.ScriptEditor.resources
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191115H\obj\Debug\OSM2SHP.csproj.GenerateResource.Cache
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191115H\bin\Debug\OSM2SHPFC.exe
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191115H\bin\Debug\OSM2SHPFC.pdb
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191115H\obj\Debug\OSM2SHPFC.exe
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20191115H\obj\Debug\OSM2SHPFC.pdb
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20200116W\obj\Debug\OSM2SHPFC.exe
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20200116W\obj\Debug\OSM2SHPFC.pdb
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20200116W\bin\Debug\OSM2SHPFC.exe
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20200116W\bin\Debug\OSM2SHPFC.pdb
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20200116W\bin\Debug\CSScriptLibrary.v1.1.dll
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20200116W\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20200116W\bin\Debug\Ionic.Zlib.dll
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20200116W\bin\Debug\protobuf-net.dll
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20200116W\obj\Debug\ResolveAssemblyReference.cache
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20200116W\obj\Debug\OSM2SHP.MForm.resources
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20200116W\obj\Debug\OSM2SHP.Properties.Resources.resources
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20200116W\obj\Debug\OSM2SHP.ScriptEditor.resources
+C:\Downloads\CD-REC\OSM2SHP_[Sources]_20200116W\obj\Debug\OSM2SHP.csproj.GenerateResource.Cache
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20200717H\obj\Debug\OSM2SHPFC.exe
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20200717H\obj\Debug\OSM2SHPFC.pdb
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20200717H\bin\Debug\OSM2SHPFC.exe
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20200717H\bin\Debug\OSM2SHPFC.pdb
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20200717H\bin\Debug\CSScriptLibrary.v1.1.dll
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20200717H\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20200717H\bin\Debug\Ionic.Zlib.dll
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20200717H\bin\Debug\protobuf-net.dll
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20200717H\obj\Debug\ResolveAssemblyReference.cache
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20200717H\obj\Debug\OSM2SHP.MForm.resources
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20200717H\obj\Debug\OSM2SHP.Properties.Resources.resources
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20200717H\obj\Debug\OSM2SHP.ScriptEditor.resources
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20200717H\obj\Debug\OSM2SHP.csproj.GenerateResource.Cache
