@@ -1,0 +1,16 @@
+Function КолСимв(строка As String, символ As String) As Integer
+
+Application.Volatile True
+
+Dim TestPos As Integer
+
+КолСимв = 0
+TestPos = 1
+
+Do While InStr(TestPos, строка, символ) > 0
+  КолСимв = КолСимв + 1
+  TestPos = InStr(TestPos, строка, символ) + Len(символ)
+Loop
+
+End Function
+

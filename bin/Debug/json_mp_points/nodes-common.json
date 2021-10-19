@@ -1,0 +1,1272 @@
+﻿[
+  {
+    "condition": [
+      "only_node",
+      "barrier = *"
+    ],
+    "action": [
+      {
+        "action": "load_barrier"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "only_node",
+      "garmin:extnode = 1|yes"
+    ],
+    "action": [
+      {
+        "action": "force_external_node"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "only_node",
+      {
+        "or": [
+          "building = entrance",
+          "entrance = *"
+        ]
+      },
+      "ref = *"
+    ],
+    "action": [
+      {
+        "action": "load_building_entrance",
+        "name": "%entrance"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "only_node",
+      "entrance = main"
+    ],
+    "action": [
+      {
+        "action": "load_main_entrance"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "place = city",
+      "only_node",
+      "capital = yes"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": {
+          "1": 256,
+          "2": 256,
+          "3": 512,
+          "4": 512,
+          "selector": "tag",
+          "tag": "admin_level",
+          "_empty": 256,
+          "_default": 1024
+        },
+        "level_h": 4,
+        "city": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "place = city",
+      "only_node",
+      "capital != yes"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 1024,
+        "level_h": 3,
+        "city": "yes"
+      },
+      {
+        "action": "write_poi",
+        "type": 2048,
+        "level_l": 4,
+        "level_h": 4
+      }
+    ]
+  },
+  {
+    "condition": [
+      "place = town",
+      "only_node"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 2048,
+        "level_h": 3,
+        "city": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "place = village",
+      "only_node"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 2816,
+        "level_h": 2,
+        "city": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "place = hamlet",
+      "only_node"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 3072,
+        "level_h": 2,
+        "city": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "place = isolated_dwelling",
+      "only_node"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 3328,
+        "level_h": 2,
+        "city": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "type = boundary|multipolygon",
+      "boundary = administrative",
+      "admin_level = 4"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 5376,
+        "level_l": 4,
+        "level_h": 4
+      }
+    ]
+  },
+  {
+    "condition": [
+      "type = boundary|multipolygon",
+      "boundary = administrative",
+      "admin_level = 6"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 5376,
+        "level_l": 3,
+        "level_h": 3
+      }
+    ]
+  },
+  {
+    "condition": [
+      "place = suburb",
+      "only_node"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 7936,
+        "level_h": 1
+      }
+    ]
+  },
+  {
+    "condition": [
+      "place = locality",
+      "only_node"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 10240,
+        "level_h": 1
+      }
+    ]
+  },
+  {
+    "condition": [
+      {
+        "or": [
+          "amenity = restaurant",
+          {
+            "and": [
+              "amenity = cafe",
+              "cuisine = *"
+            ]
+          }
+        ]
+      }
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "contacts": "yes",
+        "type": {
+          "selector": "tag",
+          "tag": "cuisine",
+          "_default": 10752,
+          "american": 10753,
+          "asian": 10754,
+          "barbecue": 10755,
+          "chinese": 10756,
+          "cake": 10757,
+          "coffee_shop": 10757,
+          "pie": 10757,
+          "international": 10758,
+          "burger": 10759,
+          "kebab": 10759,
+          "sandwich": 10759,
+          "italian": 10760,
+          "pasta": 10760,
+          "mexican": 10761,
+          "spanish": 10761,
+          "pizza": 10762,
+          "seafood": 10763,
+          "steak_house": 10764,
+          "bagel": 10765,
+          "doughnut": 10765,
+          "french": 10767,
+          "german": 10768,
+          "british": 10769
+        }
+      }
+    ]
+  },
+  {
+    "condition": [
+      {
+        "or": [
+          "shop = bakery",
+          "amenity = ice_cream"
+        ]
+      }
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 10757,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "amenity = fast_food|food_court"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 10759,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "amenity = cafe",
+      "cuisine != *"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 10766,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "tourism = hotel|motel"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 11009,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "tourism = guest_house|hostel|chalet"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 11010,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "tourism = alpine_hut|camp_site|caravan_site"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 11011,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      {
+        "or": [
+          "tourism = resort",
+          "leisure = resort"
+        ]
+      }
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 11012,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      {
+        "or": [
+          "leisure = theme_park|water_park",
+          "tourism = theme_park"
+        ]
+      }
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 11265,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      {
+        "or": [
+          "historic = archaeological_site|battlefield|castle|museum|ruins",
+          "tourism = museum"
+        ]
+      }
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 11266,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "amenity = library"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 11267,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      {
+        "or": [
+          "historic = memorial|monument",
+          "tourism = attraction|viewpoint"
+        ]
+      }
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 11268,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "amenity = college|kindergarten|school|university"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 11269,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "leisure = garden|park",
+      "named"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 11270,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "tourism = zoo"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 11271,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      {
+        "or": [
+          "leisure = stadium",
+          {
+            "and": [
+              "leisure = pitch",
+              "sport != skating",
+              "named"
+            ]
+          }
+        ]
+      }
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 11272,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "id": "place_of_worship",
+    "condition": [
+      "amenity = place_of_worship"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 11275,
+        "contacts": "yes",
+        "name": {
+          "selector": "lang",
+          "en": "%label",
+          "ru": {
+            "selector": "tag",
+            "tag": "religion",
+            "_default": "%label",
+            "jewish": [
+              "%label (и)",
+              "Синагога"
+            ],
+            "muslim": [
+              "%label (м)",
+              "Мечеть"
+            ],
+            "christian": {
+              "selector": "tag",
+              "tag": "denomination",
+              "_default": [
+                "%label",
+                "Церковь"
+              ],
+              "orthodox": [
+                "%label",
+                "Православная церковь"
+              ],
+              "old_believers": [
+                "%label",
+                "Православная церковь"
+              ],
+              "russian_orthodox": [
+                "%label",
+                "Православная церковь"
+              ],
+              "greek_orthodox": [
+                "%label",
+                "Православная церковь"
+              ],
+              "catholic": [
+                "%label (к)",
+                "Католическая церковь"
+              ],
+              "roman_catholic": [
+                "%label (к)",
+                "Католическая церковь"
+              ]
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "condition": [
+      "amenity = theatre"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 11521,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "amenity = bar|biergarten|nightclub|pub"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 11522,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "amenity = cinema"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 11523,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "amenity = casino"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 11524,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "sport = golf"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "contacts": "yes",
+        "type": 11525
+      }
+    ]
+  },
+  {
+    "condition": [
+      "sport = skiing"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 11526,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "sport = bowls"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 11527,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      {
+        "or": [
+          "leisure = ice_rink",
+          "sport = skating|hockey"
+        ]
+      }
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 11528,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "sport = swimming"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 11529,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "leisure = sports_centre",
+      "sport != golf|skiing|bowls|skating|swimming"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 11530,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "sport = airport"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 11531,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      {
+        "or": [
+          "shop = department_store",
+          {
+            "and": [
+              "amenity = marketplace",
+              "named"
+            ]
+          }
+        ]
+      }
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 11777,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "shop = butcher|grocery|greengrocer"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 11778,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "shop = general|convenience|supermarket"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 11779,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "shop = mall|hypermarket"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 11780,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      {
+        "or": [
+          "amenity = pharmacy",
+          "shop = pharmacy|chemist"
+        ]
+      }
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 11781,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "shop = clothes|shoes"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 11783,
+        "contacts": "yes",
+        "name": {
+          "selector": "tag",
+          "tag": "shop",
+          "_default": {
+            "selector": "lang",
+            "ru": [
+              "%label",
+              "Шмотки"
+            ],
+            "en": [
+              "%label",
+              "Clothes"
+            ]
+          },
+          "shoes": {
+            "selector": "lang",
+            "ru": [
+              "%label (обувь)",
+              "Обувной"
+            ],
+            "en": [
+              "%label (shoes)",
+              "Shoes"
+            ]
+          }
+        }
+      }
+    ]
+  },
+  {
+    "condition": [
+      "shop = doityourself|garden_centre|hardware|electrogoods|electrotools"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 11784,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "shop = furniture"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 11785,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "shop = *",
+      "shop != car_wrecker|car_repair|tyres|car|car_parts|boat|beauty|hairdresser|bakery",
+      "shop != department_store|mall|hypermarket|pharmacy|chemist|clothes|shoes",
+      "shop != convenience|butcher|grocery|supermarket|general|greengrocer",
+      "shop != doityourself|garden_centre|hardware|electrogoods|electrotools|chemist|furniture|computer"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 11786,
+        "contacts": "yes",
+        "name": [
+          "%label (%shop)",
+          {
+            "selector": "lang",
+            "en": "Shop (%shop)",
+            "ru": "Магазин (%shop)"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "condition": [
+      "shop = computer"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 11787,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "amenity = fuel"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 12033,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "amenity = car_rental|car_sharing"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 12034,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      {
+        "or": [
+          "shop = car_repair|tyres",
+          {
+            "and": [
+              "shop = car",
+              "service = repair|tyres"
+            ]
+          }
+        ]
+      }
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 12035,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "aeroway = terminal"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 12036,
+        "level_h": 1,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "amenity = post_office"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 12037,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "amenity = bank",
+      "atm != yes|1|true",
+      "amenity != atm"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 12038,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "amenity = bank",
+      {
+        "or": [
+          "atm = yes|1|true",
+          "amenity = atm"
+        ]
+      }
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 12038,
+        "contacts": "yes",
+        "name": {
+          "selector": "lang",
+          "ru": "%label (+банкомат)",
+          "en": "%label (+atm)"
+        }
+      }
+    ]
+  },
+  {
+    "condition": [
+      "amenity = atm",
+      "amenity != bank"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 12038,
+        "contacts": "yes",
+        "name": {
+          "selector": "lang",
+          "ru": [
+            "%label (банкомат)",
+            "Банкомат"
+          ],
+          "en": [
+            "%label (ATM)",
+            "ATM"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "condition": [
+      "amenity = bureau_de_change"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 12038,
+        "contacts": "yes",
+        "name": {
+          "selector": "lang",
+          "ru": [
+            "%label (обменник)",
+            "Обмен валюты"
+          ],
+          "en": [
+            "%label (exch)",
+            "Currency exchange"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "condition": [
+      {
+        "or": [
+          "shop = car_parts",
+          {
+            "and": [
+              "shop = car",
+              {
+                "or": [
+                  "service = dealer|parts",
+                  "service != *"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 12039,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      {
+        "or": [
+          "amenity = bus_station|bus_stop",
+          "highway = bus_station|bus_stop",
+          "railway = tram_stop"
+        ]
+      }
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 12040,
+        "transport": "yes",
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "shop = boat"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 12041,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "shop = car_wrecker"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 12042,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "amenity = parking",
+      "access != private",
+      "parking != garages|garage_boxes",
+      "parking:condition != residents"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 12043,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "tourism = information"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 12044,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "amenity = car_club"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 12045,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "amenity = car_wash"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 12046,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "shop = beauty|hairdresser"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 12048,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "id": "railway_station",
+    "condition": [
+      "railway = halt|station",
+      "station != subway",
+      "transport != subway"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 12055,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "id": "subway_station",
+    "condition": [
+      "railway = subway_entrance"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 12055,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "amenity = police"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 12289,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      {
+        "or": [
+          "amenity = clinic|dentist|doctors|hospital",
+          "healthcare = *"
+        ]
+      }
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 12290,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "amenity = embassy|townhall"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 12291,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "amenity = courthouse"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 12292,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "amenity = community_centre|community_center"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 12293,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "barrier = border_control"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 12294,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      {
+        "or": [
+          "amenity = public_building|prison",
+          "office = government"
+        ]
+      }
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 12295,
+        "contacts": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "amenity = fire_station"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 12296,
+        "contacts": "yes"
+      }
+    ]
+  }
+]

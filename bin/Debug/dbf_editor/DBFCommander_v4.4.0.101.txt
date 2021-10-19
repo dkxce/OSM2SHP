@@ -1,0 +1,8 @@
+—брос TRIAL:
+
+del key HKCU\Software\Enigma Protector\3EC4384858086285-333D486DFA3C01DB
+del key HKLM\Software\Enigma Protector\3EC4384858086285-333D486DFA3C01DB
+
+delete  C:\WINDOWS\Prefetch\DBF*COMMANDER*
+delete  C:\WINDOWS\Prefetch\DBFCOMMANDER*
+delete  C:\Documents and Settings\artem_karimov\Local Settings\Temp\29AA7A44

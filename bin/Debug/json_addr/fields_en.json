@@ -1,0 +1,16 @@
+﻿[
+  "addr:flats:en[20]",
+  "addr:housenumber:en[20]",  
+  "addr:housename:en[50]",
+  "addr:street:en[50]",
+  "addr:place:en[50]",
+  "addr:suburb:en[50]",  
+  "addr:postcode:en[20]",
+  "addr:city:en[50]",
+  "addr:subdistrict:en[50]",
+  "addr:district:en[50]",
+  "addr:province:en[50]",
+  "addr:state:en[50]",  
+  "addr:country:en[3]",
+  "addr:full:en[250]"
+]

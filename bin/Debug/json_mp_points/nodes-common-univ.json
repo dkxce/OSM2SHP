@@ -1,0 +1,274 @@
+﻿[
+  {
+    "condition": [
+      {
+        "or": [
+          {
+            "and": [
+              "bridge = yes",
+              "highway != steps|\\w+_link"
+            ]
+          },
+          "railway = viaduct"
+        ]
+      }
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25601
+      }
+    ]
+  },
+  {
+    "condition": [
+      {
+        "or": [
+          "amenity = grave_yard",
+          "landuse = cemetery"
+        ]
+      }
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25603
+      }
+    ]
+  },
+  {
+    "condition": [
+      "railway = level_crossing"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25606
+      }
+    ]
+  },
+  {
+    "condition": [
+      "man_made = power_hydro"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25607
+      }
+    ]
+  },
+  {
+    "condition": [
+      "amenity = veterinary"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25608
+      }
+    ]
+  },
+  {
+    "condition": [
+      "military = bunker"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25611
+      }
+    ]
+  },
+  {
+    "condition": [
+      "landuse = quarry"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25612
+      }
+    ]
+  },
+  {
+    "condition": [
+      "man_made = survey_point|tower|water_tower"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25617
+      }
+    ]
+  },
+  {
+    "condition": [
+      "tunnel = yes",
+      "highway != service|footway|steps|residential",
+      "railway != subway|platform",
+      "station != subway"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25619
+      }
+    ]
+  },
+  {
+    "condition": [
+      "amenity = drinking_water"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25620
+      }
+    ]
+  },
+  {
+    "condition": [
+      "natural = bay"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25859
+      }
+    ]
+  },
+  {
+    "condition": [
+      "waterway = waterfall"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25864
+      }
+    ]
+  },
+  {
+    "condition": [
+      "natural = glacier"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25866
+      }
+    ]
+  },
+  {
+    "condition": [
+      "place = island",
+      "named"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25868
+      }
+    ]
+  },
+  {
+    "condition": [
+      "natural = water",
+      "waterway != riverbank",
+      "named"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25869
+      }
+    ]
+  },
+  {
+    "condition": [
+      "natural = spring"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25873
+      }
+    ]
+  },
+  {
+    "condition": [
+      "natural = arch|cave_entrance"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 26113
+      }
+    ]
+  },
+  {
+    "condition": [
+      "natural = beach"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 26116
+      }
+    ]
+  },
+  {
+    "condition": [
+      "natural = wood",
+      "named"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 26122
+      }
+    ]
+  },
+  {
+    "condition": [
+      "natural = plain"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 26128
+      }
+    ]
+  },
+  {
+    "condition": [
+      "natural = rock"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 26132
+      }
+    ]
+  },
+  {
+    "condition": [
+      "natural = peak"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 26134,
+        "level_h": 1,
+        "extra_fields": {
+          "Label": [
+            "%label~[0x1f]%ele",
+            "~[0x1f]%ele",
+            "%label"
+          ]
+        }
+      }
+    ]
+  }
+]

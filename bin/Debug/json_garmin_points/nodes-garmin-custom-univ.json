@@ -1,0 +1,733 @@
+﻿[
+  {
+    "condition": [
+      "building = *",
+      "building != no",
+      "addr:housenumber = *"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 13056,
+        "Label": "%house"
+      }
+    ]
+  },
+  {
+    "condition": [
+      {
+        "or": [
+          "entrance = staircase",
+          {
+            "and": [
+              "entrance = yes|main",
+              "addr:flats = *"
+            ]
+          }
+        ]
+      }
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 13058,
+        "Label": [
+          "%entrance (%flats)"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": [
+      "tourism = viewpoint"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 13313
+      }
+    ]
+  },
+  {
+    "condition": [
+      "historic = memorial",
+      "memorial != aircraft|cannon|ship|tank|tractor|vehicle",
+      "memorial:type != aircraft|cannon|ship|tank|tractor|vehicle"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 13314
+      }
+    ]
+  },
+  {
+    "condition": [
+      "historic = monument"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 13315
+      }
+    ]
+  },
+  {
+    "condition": [
+      "historic = aircraft"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 13316
+      }
+    ]
+  },
+  {
+    "condition": [
+      {
+        "or": [
+          "historic = cannon",
+          "memorial = cannon",
+          "memorial:type = cannon"
+        ]
+      }
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 13317
+      }
+    ]
+  },
+  {
+    "condition": [
+      {
+        "or": [
+          "historic = tank",
+          "memorial = tank",
+          "memorial:type = tank"
+        ]
+      }
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 13318
+      }
+    ]
+  },
+  {
+    "condition": [
+      {
+        "or": [
+          "historic = tractor",
+          "memorial = tractor",
+          "memorial:type = tractor"
+        ]
+      }
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 13319
+      }
+    ]
+  },
+  {
+    "condition": [
+      {
+        "or": [
+          "historic = vehicle",
+          "memorial = vehicle",
+          "memorial:type = vehicle"
+        ]
+      }
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 13320
+      }
+    ]
+  },
+  {
+    "condition": [
+      "tourism = attraction|artwork",
+      "historic != aircraft|archaeological_site|battlefield",
+      "historic != bastion|battery|boundary_stone|bunker|cannon|castle",
+      "historic != fort|fortification|memorial|monument",
+      "historic != museum|ship|tank|tractor|vehicle|wayside_cross",
+      "geological != palaeontological_site"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": {
+          "selector": "tag",
+          "tag": "tourism",
+          "attraction": 13322,
+          "artwork": 13323
+        }
+      }
+    ]
+  },
+  {
+    "condition": [
+      {
+        "or": [
+          "historic = boundary_stone|wayside_cross",
+          {
+            "and": [
+              "historic = building|tomb",
+              "named"
+            ]
+          }
+        ]
+      }
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 13328
+      }
+    ]
+  },
+  {
+    "condition": [
+      {
+        "or": [
+          "historic = museum",
+          "tourism = gallery|museum"
+        ]
+      }
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 13329
+      }
+    ]
+  },
+  {
+    "condition": [
+      "historic = archaeological_site"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 13330
+      }
+    ]
+  },
+  {
+    "condition": [
+      "historic = battlefield"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 13331,
+        "level_h": 1
+      }
+    ]
+  },
+  {
+    "condition": [
+      {
+        "or": [
+          "historic = ship",
+          "memorial = ship"
+        ]
+      }
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 13332
+      }
+    ]
+  },
+  {
+    "condition": [
+      "geological = palaeontological_site"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 13333
+      }
+    ]
+  },
+  {
+    "condition": [
+      "historic = bastion|battery|fortification"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 13334
+      }
+    ]
+  },
+  {
+    "condition": [
+      "historic = ruins"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 13336
+      }
+    ]
+  },
+  {
+    "condition": [
+      "natural = tree"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 26369
+      }
+    ]
+  },
+  {
+    "id": "toilets",
+    "condition": [
+      "amenity = toilets"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "contacts": "yes",
+        "type": 19968
+      }
+    ]
+  },
+  {
+    "condition": [
+      "amenity = shower"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "contacts": "yes",
+        "type": 20224
+      }
+    ]
+  },
+  {
+    "condition": [
+      {
+        "or": [
+          "amenity = sauna",
+          "leisure = sauna"
+        ]
+      }
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "contacts": "yes",
+        "type": 20225
+      }
+    ]
+  },
+  {
+    "condition": [
+      {
+        "or": [
+          "ford = *",
+          "highway = ford"
+        ]
+      }
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 26124
+      }
+    ]
+  },
+  {
+    "condition": [
+      "amenity = bench",
+      "~inside_city"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 13059
+      }
+    ]
+  },
+  {
+    "condition": [
+      "man_made = game_feeder"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 13060
+      }
+    ]
+  },
+  {
+    "condition": [
+      "man_made = salt_lick"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 13061
+      }
+    ]
+  },
+  {
+    "condition": [
+      "power = tower"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 13062
+      }
+    ]
+  },
+  {
+    "condition": [
+      "highway = crossing",
+      "crossing = traffic_signals"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 13071
+      }
+    ]
+  },
+  {
+    "condition": [
+      "traffic_calming = yes|bump|cushion|hump|table"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 13073
+      }
+    ]
+  },
+  {
+    "condition": [
+      "highway = crossing",
+      "crossing != traffic_signals"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 13074
+      }
+    ]
+  },
+  {
+    "condition": [
+      "barrier = bollard"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 13075
+      }
+    ]
+  },
+  {
+    "condition": [
+      "barrier = lift_gate|swing_gate|toll_booth"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 13076
+      }
+    ]
+  },
+  {
+    "condition": [
+      "barrier = gate"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 13077
+      }
+    ]
+  },
+  {
+    "condition": [
+      "barrier = block"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 13078
+      }
+    ]
+  },
+  {
+    "condition": [
+      "barrier = chain"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 13079
+      }
+    ]
+  },
+  {
+    "condition": [
+      "barrier = log"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 13080
+      }
+    ]
+  },
+  {
+    "condition": [
+      "amenity = fountain"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 13082
+      }
+    ]
+  },
+  {
+    "condition": [
+      "historic = fort"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 70922,
+        "level_h": 1
+      }
+    ]
+  },
+  {
+    "condition": [
+      "historic = castle",
+      "castle_type = fortress"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": {
+          "selector": "if",
+          "condition": "name = (?ix: .* форт .* )|(?ix: .* fort \\b .* )",
+          "then": 70922,
+          "else": 70923
+        },
+        "level_h": 1
+      }
+    ]
+  },
+  {
+    "condition": [
+      "historic = city_gate"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 70924,
+        "level_h": 1
+      }
+    ]
+  },
+  {
+    "condition": [
+      "historic = manor"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 70925,
+        "level_h": 1
+      }
+    ]
+  },
+  {
+    "condition": [
+      "historic = castle|monastery",
+      "castle_type != fortress"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 70926,
+        "level_h": 1
+      }
+    ]
+  },
+  {
+    "condition": [
+      "man_made = mast"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 70935
+      }
+    ]
+  },
+  {
+    "condition": [
+      "man_made = tower",
+      "tower:type = communication"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": {
+          "selector": "tag",
+          "tag": "tower:construction",
+          "_default": 70936,
+          "dish": 70940,
+          "dome": 70941
+        },
+        "level_h": 1
+      }
+    ]
+  },
+  {
+    "condition": [
+      "man_made = water_tower"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 70937
+      }
+    ]
+  },
+  {
+    "condition": [
+      "man_made = crane"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 70938
+      }
+    ]
+  },
+  {
+    "condition": [
+      "power = generator",
+      {
+        "or": [
+          "generator:source = wind",
+          "plant:source = wind",
+          "power_source = wind"
+        ]
+      }
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 70939
+      }
+    ]
+  },
+  {
+    "condition": [
+      "man_made = monitoring_station",
+      "monitoring_station = radar"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 70940
+      }
+    ]
+  },
+  {
+    "condition": [
+      "man_made = tower",
+      "tower:type = cooling"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 70942
+      }
+    ]
+  },
+  {
+    "condition": [
+      "man_made = chimney"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 70943
+      }
+    ]
+  },
+  {
+    "condition": [
+      "whitewater = put_in",
+      "whitewater != egress"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 71196,
+        "level_h": 1
+      }
+    ]
+  },
+  {
+    "condition": [
+      "whitewater = egress",
+      "whitewater != put_in"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 71197,
+        "level_h": 1
+      }
+    ]
+  },
+  {
+    "condition": [
+      "whitewater = put_in",
+      "whitewater = egress"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 71198,
+        "level_h": 1
+      }
+    ]
+  },
+  {
+    "condition": [
+      "whitewater = weir"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 71199,
+        "level_h": 1
+      }
+    ]
+  }
+]

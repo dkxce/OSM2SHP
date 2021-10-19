@@ -1,0 +1,31 @@
+Copyright (©) 2009-2011 Elphsoft
+All Rights Reserved
+
+END-USER LICENSE AGREEMENT FOR DBF COMMANDER PROFESSIONAL
+
+This End-User License Agreement ("EULA") is a legal agreement between Elphsoft ("AUTHOR") and an individual or a single entity who agrees and accepts the following terms and conditions by installing, copying, or otherwise using the software product identified above ("SOFTWARE PRODUCT").
+The SOFTWARE PRODUCT is protected by copyright laws and international copyright treaties. The SOFTWARE PRODUCT is licensed, not sold. This EULA does not give you any license to the copyrights or other intellectual property rights. All rights not expressly granted by this EULA are reserved to AUTHOR.
+
+TRIAL VERSION
+You are granted a non-exclusive license to use the SOFTWARE PRODUCT for evaluation purposes only for 30 days. Using the trial version of the SOFTWARE PRODUCT after the evaluation period violates copyright laws. You must either register this SOFTWARE PRODUCT or uninstall it from your computer. 
+You may distribute the trial version of the SOFTWARE PRODUCT in unmodified form (with original installation). You may not alter, delete or add any files in the distribution archive.
+Distributors may not charge any money for it. Anyone distributing the SOFTWARE PRODUCT for any kind of income must first contact AUTHOR.
+
+REGISTERED VERSION
+Use of the SOFTWARE PRODUCT is limited by the number of concurrent licenses. Only one user per concurrent license may use the SOFTWARE PRODUCT on a single workstation. In case multi-user license purchased you may use the SOFTWARE PRODUCT on mentioned amount of workstations and by mentioned amount of users inside your organization at a single location. The registered SOFTWARE PRODUCT may not be rented, leased or lend to any other person, nor transferred or sub-licensed.
+After you have purchased the SOFTWARE PRODUCT, the ACTIVATION CODE is being issued to you. This ACTIVATION CODE can only be used by the person purchased it and should not be shared with no one. Generally accessible publishing ACTIVATION CODE is forbidden also. Any distribution of the ACTIVATION CODE automatically immediately terminates the rights granted in this EULA. Distributed ACTIVATION CODES may be banned by the AUTHOR without any notices.
+
+LIMITATIONS
+You may not alter, reverse engineer, decompile, or disassemble the SOFTWARE PRODUCT in any way. 
+
+DISCLAIMER OF WARRANTY
+This SOFTWARE PRODUCT is provided "AS IS" without warranty of any kind, either express or implied, including, but not limited to, warranties of merchantability or fitness for a particular purpose. AUTHOR assumes no liability for damages, either direct or consequential, which may result from the use of the software product. AUTHOR takes no responsibility if one or more results (statistic) are missing or they are incorrect. In no event will AUTHOR be liable to you for any damages, including incidental or consequential damages, arising from the use of this SOFTWARE PRODUCT, even if advised of the possibility of such damages.
+
+TERMINATION
+Without prejudice to any other rights, AUTHOR may terminate this EULA if you fail to comply with the terms and conditions of this EULA. In such event, you must uninstall all copies of the SOFTWARE PRODUCT.
+
+
+Elphsoft Home Page:
+http://www.elphsoft.com
+support@elphsoft.com
+

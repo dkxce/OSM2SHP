@@ -1,0 +1,7 @@
+https://wiki.openstreetmap.org/wiki/Key:addr
+
+Fields:
+
+addr:flats[20],addr:housenumber[20],addr:housename[50],addr:street[50],addr:place[50],addr:suburb[50],addr:postcode[20],addr:city[50],addr:subdistrict[50],addr:district[50],addr:province[50],addr:state[50],addr:country[3],addr:full[250]
+
+addr:flats:ru[20],addr:housenumber:ru[20],addr:housename:ru[50],addr:street:ru[50],addr:place:ru[50],addr:suburb:ru[50],addr:postcode:ru[20],addr:city:ru[50],addr:subdistrict:ru[50],addr:district:ru[50],addr:province:ru[50],addr:state:ru[50],addr:country:ru[3],addr:full:ru[250]

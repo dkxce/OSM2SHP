@@ -1,0 +1,17 @@
+Для формирования собственный выборки по тегам
+необходимо составить таблицу соответствия:
+
+GARMIN_TYPE <--> ТЕГ:ЗНАЧЕНИЕ+ТЕГ:ЗНАЧЕНИЕ+ТЕГ:ЗНАЧЕНИЕ
+
+--- *** --- *** --- *** --- *** --- *** --- *** --- *** --- *** ---
+
+<?xml version="1.0" encoding="utf-8"?>
+<TYPE_MAP>
+  <regex><![CDATA[ (\{[\@\w:-_]+\}) ]]></regex>
+  <syntax>JSON</syntax>
+  <Elements>
+	<t id="0x0100" label="{name}"><![CDATA[ 
+		({place}=="city") && ({capital}=="yes") && (({admin_level}=="1") || ({admin_level}=="2") || ({admin_level}==null))
+	]]></t>	
+  </Elements>
+</TYPE_MAP>

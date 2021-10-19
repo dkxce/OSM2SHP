@@ -1,0 +1,16 @@
+﻿[
+  "addr:flats:ua[20]",
+  "addr:housenumber:ua[20]",  
+  "addr:housename:ua[50]",
+  "addr:street:ua[50]",
+  "addr:place:ua[50]",
+  "addr:suburb:ua[50]",  
+  "addr:postcode:ua[20]",
+  "addr:city:ua[50]",
+  "addr:subdistrict:ua[50]",
+  "addr:district:ua[50]",
+  "addr:province:ua[50]",
+  "addr:state:ua[50]",  
+  "addr:country:ua[3]",
+  "addr:full:ua[250]"
+]

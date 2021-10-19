@@ -1,0 +1,176 @@
+﻿[
+  {
+    "condition": [
+      "seamark = buoy"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 66048,
+        "marine_buoy": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "buoy = cardinal_north"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 66050,
+        "marine_buoy": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "buoy = cardinal_south"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 66051,
+        "marine_buoy": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "buoy = cardinal_east"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 66052,
+        "marine_buoy": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "buoy = cardinal_west"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 66053,
+        "marine_buoy": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "seamark = beacon"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 66054,
+        "marine_buoy": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "buoy = isolated_danger"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 66056,
+        "marine_buoy": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "buoy = lateral_port|lateral_preferred_channel_port"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 66057,
+        "marine_buoy": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "buoy = lateral_starboard|lateral_preferred_channel_starboard"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 66058,
+        "marine_buoy": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "buoy = special_purpose"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 66059,
+        "marine_buoy": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "buoy = safe_water"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 66060,
+        "marine_buoy": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "beacon = lateral_port_preferred"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 66067,
+        "marine_buoy": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      "beacon = lateral_starboad_preferred"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 66068,
+        "marine_buoy": "yes"
+      }
+    ]
+  },
+  {
+    "condition": [
+      {
+        "or": [
+          "man_made = lighthouse",
+          "seamark = lighthouse|landmark"
+        ]
+      }
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 65792,
+        "level_h": 1,
+        "marine_light": "yes"
+      }
+    ]
+  }
+]

@@ -1,0 +1,17 @@
+Open config and convert:
+
+  OSM2SHP.exe /convert
+  OSM2SHP.exe /convert <file.o2s> 
+  OSM2SHP.exe /convert <file.pbf> <file.dbf> 
+  OSM2SHP.exe /convert <file.osm> <file.dbf>
+  OSM2SHP.exe /convert <file.o2s> <file.pbf> <file.dbf> 
+  OSM2SHP.exe /convert <file.o2s> <file.osm> <file.dbf>
+
+Open config, convert & close:
+
+  OSM2SHP.exe /convert
+  OSM2SHP.exe /convert /close <file.o2s> 
+  OSM2SHP.exe /convert /close <file.pbf> <file.dbf> 
+  OSM2SHP.exe /convert /close <file.osm> <file.dbf>
+  OSM2SHP.exe /convert /close <file.o2s> <file.pbf> <file.dbf> 
+  OSM2SHP.exe /convert /close <file.o2s> <file.osm> <file.dbf>

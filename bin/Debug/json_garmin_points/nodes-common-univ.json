@@ -1,0 +1,677 @@
+﻿[
+  {
+    "condition": [
+      "hazard = *"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 7168
+      }
+    ]
+  },
+  {
+    "condition": [
+      "historic = wreck"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 16896,
+        "name": {
+          "selector": "lang",
+          "ru": [
+            "%label",
+            "обломки судна"
+          ],
+          "en": [
+            "%label",
+            "wreck"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "condition": [
+      "highway = milestone"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 23040
+      }
+    ]
+  },
+  {
+    "condition": [
+      {
+        "or": [
+          {
+            "and": [
+              "bridge = yes",
+              "highway != steps|\\w+_link"
+            ]
+          },
+          "railway = viaduct"
+        ]
+      }
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25601,
+        "name": "%label"
+      }
+    ]
+  },
+  {
+    "condition": [
+      {
+        "or": [
+          "amenity = grave_yard",
+          "landuse = cemetery"
+        ]
+      }
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25603
+      }
+    ]
+  },
+  {
+    "condition": [
+      "railway = level_crossing"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25606
+      }
+    ]
+  },
+  {
+    "condition": [
+      "man_made = power_hydro"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25607
+      }
+    ]
+  },
+  {
+    "condition": [
+      "amenity = veterinary"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25608
+      }
+    ]
+  },
+  {
+    "condition": [
+      "forestry_sign = *"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25610
+      }
+    ]
+  },
+  {
+    "condition": [
+      {
+        "or": [
+          "military = bunker",
+          "historic = bunker"
+        ]
+      }
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25611
+      }
+    ]
+  },
+  {
+    "condition": [
+      "landuse = quarry",
+      "only_node"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25612
+      }
+    ]
+  },
+  {
+    "condition": [
+      "man_made = survey_point|tower",
+      "tower:type != communication|cooling"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25617
+      }
+    ]
+  },
+  {
+    "condition": [
+      "tunnel = yes",
+      "highway != service|footway|steps|residential",
+      "railway != subway|platform",
+      "station != subway",
+      "tunnel != *"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25619
+      }
+    ]
+  },
+  {
+    "condition": [
+      "amenity = drinking_water"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25620
+      }
+    ]
+  },
+  {
+    "condition": [
+      "leisure = firepit"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25624
+      }
+    ]
+  },
+  {
+    "condition": [
+      "man_made = water_well",
+      "drinking_water = yes",
+      "amenity != drinking_water"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25625
+      }
+    ]
+  },
+  {
+    "condition": [
+      "man_made = water_well|well",
+      "drinking_water != yes",
+      "amenity != drinking_water"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25626
+      }
+    ]
+  },
+  {
+    "condition": [
+      "amenity = picnic_table"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25627
+      }
+    ]
+  },
+  {
+    "condition": [
+      "amenity = hunting_stand"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25628
+      }
+    ]
+  },
+  {
+    "condition": [
+      "signpost = forestry_compartment"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25630
+      }
+    ]
+  },
+  {
+    "condition": [
+      "signpost = forestry_allotment"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25631
+      }
+    ]
+  },
+  {
+    "condition": [
+      "natural = bay"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25859,
+        "level_h": 2
+      }
+    ]
+  },
+  {
+    "condition": [
+      "natural = strait"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25862,
+        "level_h": 2
+      }
+    ]
+  },
+  {
+    "condition": [
+      "waterway = waterfall"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25864
+      }
+    ]
+  },
+  {
+    "condition": [
+      "natural = glacier"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25866
+      }
+    ]
+  },
+  {
+    "condition": [
+      "place = island|islet",
+      "named"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25868,
+        "name": {
+          "selector": "lang",
+          "ru": {
+            "selector": "if",
+            "condition": "name = (?ix: .* \\b остров .* )",
+            "then": "%label",
+            "else": [
+              "о. %label"
+            ]
+          },
+          "en": [
+            "%label"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "condition": [
+      "natural = peninsula",
+      "named"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25868,
+        "level_h": 2,
+        "name": {
+          "selector": "lang",
+          "ru": {
+            "selector": "if",
+            "condition": "name = (?ix: .* полуостров .*) |(?ix: .* п-ов .* )",
+            "then": "%label",
+            "else": "п-ов %label"
+          },
+          "en": "%label"
+        }
+      }
+    ]
+  },
+  {
+    "condition": [
+      "natural = water",
+      {
+        "or": [
+          "water = lake",
+          "status = озеро"
+        ]
+      },
+      "named"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25869,
+        "name": {
+          "selector": "lang",
+          "ru": {
+            "selector": "if",
+            "condition": "name = (?ix: .* озеро .* )",
+            "then": "%label",
+            "else": "оз. %label"
+          },
+          "en": [
+            "%label"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "condition": [
+      "natural = water",
+      {
+        "or": [
+          "water = oxbow",
+          "status = старица"
+        ]
+      },
+      "named"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25869,
+        "name": {
+          "selector": "lang",
+          "ru": {
+            "selector": "if",
+            "condition": "name = (?ix: .* старица .* )",
+            "then": "%label",
+            "else": "старица %label"
+          },
+          "en": [
+            "%label"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "condition": [
+      "natural = water",
+      {
+        "or": [
+          "water = pond",
+          "status = пруд"
+        ]
+      },
+      "named"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25869,
+        "name": {
+          "selector": "lang",
+          "ru": {
+            "selector": "if",
+            "condition": "name = (?ix: .* пруд .* )",
+            "then": "%label",
+            "else": "%label пруд"
+          },
+          "en": [
+            "%label"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "condition": [
+      "natural = water",
+      {
+        "and": [
+          "water != sea|lake|oxbow|pond|river|canal|stream",
+          "status != озеро|старица|пруд"
+        ]
+      },
+      "named"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25869,
+        "name": [
+          "%label"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": [
+      "natural = spring"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25873
+      }
+    ]
+  },
+  {
+    "condition": [
+      "natural = wetland",
+      "only_node"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 25875
+      }
+    ]
+  },
+  {
+    "condition": [
+      "natural = arch|cave_entrance"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 26113
+      }
+    ]
+  },
+  {
+    "condition": [
+      "natural = beach",
+      "only_node"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 26116
+      }
+    ]
+  },
+  {
+    "condition": [
+      "natural = cape"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 26118,
+        "level_h": 2,
+        "name": {
+          "selector": "lang",
+          "ru": {
+            "selector": "if",
+            "condition": "name = (?ix: .* мыс .* )|(?ix: .* м. .* )",
+            "then": "%label",
+            "else": "м. %label"
+          },
+          "en": "%label"
+        }
+      }
+    ]
+  },
+  {
+    "condition": [
+      "natural = cliff",
+      "only_node"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 26119
+      }
+    ]
+  },
+  {
+    "condition": [
+      {
+        "or": [
+          "landuse = forest",
+          "natural = wood"
+        ]
+      },
+      "named"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 26122
+      }
+    ]
+  },
+  {
+    "condition": [
+      "mountain_pass = yes"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 26125,
+        "level_h": 1
+      }
+    ]
+  },
+  {
+    "condition": [
+      "natural = plain"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 26128
+      }
+    ]
+  },
+  {
+    "condition": [
+      "natural = rock"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 26132,
+        "level_h": 1
+      }
+    ]
+  },
+  {
+    "condition": [
+      "natural = peak|hill",
+      "ele = *"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 26134,
+        "level_h": {
+          "selector": "if",
+          "condition": "named",
+          "then": 2,
+          "else": 1
+        },
+        "name": [
+          "%label~[0x1f]%ele",
+          "~[0x1f]%ele"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": [
+      "natural = peak|hill",
+      "ele != *"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": {
+          "selector": "if",
+          "condition": "named",
+          "then": 26134,
+          "else": 26374
+        },
+        "level_h": 1
+      }
+    ]
+  },
+  {
+    "condition": [
+      "natural = stone"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 26137
+      }
+    ]
+  },
+  {
+    "condition": [
+      "natural = saddle",
+      "mountain_pass != yes"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 26138,
+        "level_h": 1
+      }
+    ]
+  }
+]

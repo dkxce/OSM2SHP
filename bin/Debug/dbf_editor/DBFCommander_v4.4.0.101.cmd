@@ -1,0 +1,1 @@
+call "TimeStopper.exe" 01\11\2019 00:00:00 "%CD%\DBFCommander_v4.4.0.101.exe"

@@ -1,0 +1,44 @@
+﻿[
+  {
+    "id": "railway_station",
+    "condition": [
+      "railway = halt|station",
+      "station != subway"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 12055,
+        "contacts": "yes"
+      },
+      {
+        "action": "write_poi",
+        "type": 71169,
+        "level_h": 1
+      }
+    ]
+  },
+  {
+    "id": "subway_station",
+    "condition": [
+      "railway = subway_entrance"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 71168
+      }
+    ]
+  },
+  {
+    "condition": [
+      "highway = traffic_signals"
+    ],
+    "action": [
+      {
+        "action": "write_poi",
+        "type": 13072
+      }
+    ]
+  }
+]

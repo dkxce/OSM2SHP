@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TYPE_MAP>
+  <desc>Образец для селектора 15 - GARMIN TYPE by XML SELECTOR</desc>
+  <regex><![CDATA[ (\{[\@\w:-_]+\}) ]]></regex>
+  <syntax>JSON</syntax>
+  <Elements>
+    <!-- ГОРОДА -->
+	<t id="0x0100" label="{name}"><![CDATA[ 
+		({place}=="city") && ({capital}=="yes") && (({admin_level}=="1") || ({admin_level}=="2") || ({admin_level}==null))
+	]]></t>	
+	<t id="0x0200" label="{name}"><![CDATA[ 
+		({place}=="city") && ({capital}=="yes") && (({admin_level}=="3") || ({admin_level}=="4"))
+	]]></t>
+	<t id="0x0400" label="{name}"><![CDATA[ 
+		({place}=="city") && ({capital}!="yes") || (({capital}=="yes") && (({admin_level}!=null) && ({admin_level}!="1") && ({admin_level}!="2") && ({admin_level}!="3") && ({admin_level}!="4")))
+	]]></t>	
+	<t id="0x0800" label="{name}"><![CDATA[ 
+		({place}=="town") && ({population} != "0") && ({abandoned} == null)
+	]]></t>	
+	<t id="0x0B00" label="{name}"><![CDATA[ 
+		({place}=="village") && ({population} != "0") && ({abandoned} == null)
+	]]></t>	
+	<t id="0x0C00" label="{name}"><![CDATA[ 
+		(({place}=="hamlet") || ({place}=="isolated_dwelling")) && ({population} != "0") && ({abandoned} == null)
+	]]></t>	
+	<t id="0x0C00" label="{name}"><![CDATA[ 
+		({place}=="allotments") && ({name} != null)
+	]]></t>	
+	<t id="0x0D00" label="{name} (нежил.)"><![CDATA[ 
+		(({place}=="town") || ({place}=="village") || ({place}=="hamlet") || ({place}=="isolated_dwelling")) && ({population} == "0") && ({abandoned} == null)
+	]]></t>	
+	<t id="0x0D00" label="{name} (заброш.)"><![CDATA[ 
+		(({place}!="town") || ({place}=="village") || ({place}=="hamlet") || ({place}=="isolated_dwelling")) && ({abandoned} != null)
+	]]></t>	
+	<!-- РЕСТОРАНЫ -->
+	<t id="0x2A00" label="{name} (ресторан)"><![CDATA[ 
+		({amenity}=="restaurant")
+	]]></t>	
+	<t id="0x2A01" label="{name} (ресторан)"><![CDATA[ 
+		({amenity}=="restaurant") && ({cuisine}=="american")
+	]]></t>	
+	<t id="0x2A02" label="{name} (ресторан)"><![CDATA[
+		({amenity}=="restaurant") && ({cuisine}=="asian")
+	]]></t>
+	<t id="0x2A03" label="{name} (ресторан)"><![CDATA[
+		({amenity}=="restaurant") && ({cuisine}=="barbecue")
+	]]></t>
+	<t id="0x2A04" label="{name} (ресторан)"><![CDATA[
+		({amenity}=="restaurant") && ({cuisine}=="chinese")
+	]]></t>
+	<t id="0x2A05" label="{name} (ресторан)"><![CDATA[
+		({amenity}=="restaurant") && ({cuisine}=="cake")
+	]]></t>
+	<t id="0x2A05" label="{name} (ресторан)"><![CDATA[
+		({amenity}=="restaurant") && ({cuisine}=="bakery")
+	]]></t>
+	<t id="0x2A05" label="{name} (ресторан)"><![CDATA[
+		({amenity}=="restaurant") && ({cuisine}=="coffee_shop")
+	]]></t>
+	<t id="0x2A05" label="{name} (ресторан)"><![CDATA[
+		({amenity}=="restaurant") && ({cuisine}=="ice_cream")
+	]]></t>
+	<t id="0x2A05" label="{name} (ресторан)"><![CDATA[
+		({amenity}=="restaurant") && ({cuisine}=="pie")
+	]]></t>
+	<t id="0x2A06" label="{name} (ресторан)"><![CDATA[
+		({amenity}=="restaurant") && ({cuisine}=="international")
+	]]></t>
+	<t id="0x2A07" label="{name} (ресторан)"><![CDATA[
+		({amenity}=="restaurant") && ({cuisine}=="burger")
+	]]></t>
+	<t id="0x2A07" label="{name} (ресторан)"><![CDATA[
+		({amenity}=="restaurant") && ({cuisine}=="kebab")
+	]]></t>
+	<t id="0x2A07" label="{name} (ресторан)"><![CDATA[
+		({amenity}=="restaurant") && ({cuisine}=="sandwich")
+	]]></t>
+	<t id="0x2A08" label="{name} (ресторан)"><![CDATA[
+		({amenity}=="restaurant") && ({cuisine}=="italian")
+	]]></t>
+	<t id="0x2A08" label="{name} (ресторан)"><![CDATA[
+		({amenity}=="restaurant") && ({cuisine}=="pasta")
+	]]></t>
+	<t id="0x2A09" label="{name} (ресторан)"><![CDATA[
+		({amenity}=="restaurant") && ({cuisine}=="mexican")
+	]]></t>
+	<t id="0x2A09" label="{name} (ресторан)"><![CDATA[
+		({amenity}=="restaurant") && ({cuisine}=="spanish")
+	]]></t>
+	<t id="0x2A0A" label="{name} (ресторан)"><![CDATA[
+		({amenity}=="restaurant") && ({cuisine}=="pizza")
+	]]></t>
+	<t id="0x2A0B" label="{name} (ресторан)"><![CDATA[
+		({amenity}=="restaurant") && ({cuisine}=="seafood")
+	]]></t>
+	<t id="0x2A0C" label="{name} (ресторан)"><![CDATA[
+		({amenity}=="restaurant") && ({cuisine}=="steak_house")
+	]]></t>
+	<t id="0x2A0D" label="{name} (ресторан)"><![CDATA[
+		({amenity}=="restaurant") && ({cuisine}=="bagel")
+	]]></t>
+	<t id="0x2A0D" label="{name} (ресторан)"><![CDATA[
+		({amenity}=="restaurant") && ({cuisine}=="doughnut")
+	]]></t>
+	<t id="0x2A0F" label="{name} (ресторан)"><![CDATA[
+		({amenity}=="restaurant") && ({cuisine}=="french")
+	]]></t>
+	<t id="0x2A10" label="{name} (ресторан)"><![CDATA[
+		({amenity}=="restaurant") && ({cuisine}=="german")
+	]]></t>
+	<t id="0x2A11" label="{name} (ресторан)"><![CDATA[
+		({amenity}=="restaurant") && ({cuisine}=="british")
+	]]></t>
+	<!-- КАФЕ -->
+	<t id="0x2A00" label="{name} (ресторан)"><![CDATA[ 
+		({amenity}=="cafe")
+	]]></t>	
+		<t id="0x2A01" label="{name} (кафе)"><![CDATA[
+		({amenity}=="cafe") && ({cuisine}=="american")
+	]]></t>
+	<t id="0x2A02" label="{name} (кафе)"><![CDATA[
+		({amenity}=="cafe") && ({cuisine}=="asian")
+	]]></t>
+	<t id="0x2A03" label="{name} (кафе)"><![CDATA[
+		({amenity}=="cafe") && ({cuisine}=="barbecue")
+	]]></t>
+	<t id="0x2A04" label="{name} (кафе)"><![CDATA[
+		({amenity}=="cafe") && ({cuisine}=="chinese")
+	]]></t>
+	<t id="0x2A05" label="{name} (кафе)"><![CDATA[
+		({amenity}=="cafe") && ({cuisine}=="cake")
+	]]></t>
+	<t id="0x2A05" label="{name} (кафе)"><![CDATA[
+		({amenity}=="cafe") && ({cuisine}=="bakery")
+	]]></t>
+	<t id="0x2A05" label="{name} (кафе)"><![CDATA[
+		({amenity}=="cafe") && ({cuisine}=="coffee_shop")
+	]]></t>
+	<t id="0x2A05" label="{name} (кафе)"><![CDATA[
+		({amenity}=="cafe") && ({cuisine}=="ice_cream")
+	]]></t>
+	<t id="0x2A05" label="{name} (кафе)"><![CDATA[
+		({amenity}=="cafe") && ({cuisine}=="pie")
+	]]></t>
+	<t id="0x2A06" label="{name} (кафе)"><![CDATA[
+		({amenity}=="cafe") && ({cuisine}=="international")
+	]]></t>
+	<t id="0x2A07" label="{name} (кафе)"><![CDATA[
+		({amenity}=="cafe") && ({cuisine}=="burger")
+	]]></t>
+	<t id="0x2A07" label="{name} (кафе)"><![CDATA[
+		({amenity}=="cafe") && ({cuisine}=="kebab")
+	]]></t>
+	<t id="0x2A07" label="{name} (кафе)"><![CDATA[
+		({amenity}=="cafe") && ({cuisine}=="sandwich")
+	]]></t>
+	<t id="0x2A08" label="{name} (кафе)"><![CDATA[
+		({amenity}=="cafe") && ({cuisine}=="italian")
+	]]></t>
+	<t id="0x2A08" label="{name} (кафе)"><![CDATA[
+		({amenity}=="cafe") && ({cuisine}=="pasta")
+	]]></t>
+	<t id="0x2A09" label="{name} (кафе)"><![CDATA[
+		({amenity}=="cafe") && ({cuisine}=="mexican")
+	]]></t>
+	<t id="0x2A09" label="{name} (кафе)"><![CDATA[
+		({amenity}=="cafe") && ({cuisine}=="spanish")
+	]]></t>
+	<t id="0x2A0A" label="{name} (кафе)"><![CDATA[
+		({amenity}=="cafe") && ({cuisine}=="pizza")
+	]]></t>
+	<t id="0x2A0B" label="{name} (кафе)"><![CDATA[
+		({amenity}=="cafe") && ({cuisine}=="seafood")
+	]]></t>
+	<t id="0x2A0C" label="{name} (кафе)"><![CDATA[
+		({amenity}=="cafe") && ({cuisine}=="steak_house")
+	]]></t>
+	<t id="0x2A0D" label="{name} (кафе)"><![CDATA[
+		({amenity}=="cafe") && ({cuisine}=="bagel")
+	]]></t>
+	<t id="0x2A0D" label="{name} (кафе)"><![CDATA[
+		({amenity}=="cafe") && ({cuisine}=="doughnut")
+	]]></t>
+	<t id="0x2A0F" label="{name} (кафе)"><![CDATA[
+		({amenity}=="cafe") && ({cuisine}=="french")
+	]]></t>
+	<t id="0x2A10" label="{name} (кафе)"><![CDATA[
+		({amenity}=="cafe") && ({cuisine}=="german")
+	]]></t>
+	<t id="0x2A11" label="{name} (кафе)"><![CDATA[
+		({amenity}=="cafe") && ({cuisine}=="british")
+	]]></t>
+	<!-- Кулинария -->
+	<t id="0x2A05" label="{name} (мороженое)"><![CDATA[
+		({shop}=="ice_cream") && (({amenity}==null) || ({amenity}=="ice_cream"))
+	]]></t>
+	<t id="0x2A05" label="{name} (кулинария)"><![CDATA[
+		({shop}=="ice_cream") && (({amenity}=="bakery") || ({amenity}=="ice_cream"))
+	]]></t>
+	<t id="0x2A05" label="{name} (кулинария)"><![CDATA[
+		({shop}=="bakery") || ({shop}=="confectionery") || ({shop}=="deli")
+	]]></t>
+	<!-- Еда -->
+	<t id="0x2A07" label="{name} (фаст фуд)"><![CDATA[
+		({amenity}=="fast_food") || ({amenity}=="food_court")
+	]]></t>
+	<t id="0x2A0E" label="{name} (кафе)"><![CDATA[
+		({amenity}=="cafe") && ({cuisine}==null) && (({name}==null) || (({name}!=null) && (!{name}.Contains("оловая"))))
+	]]></t>
+	<t id="0x2A0E" label="{name} (столовая)"><![CDATA[
+		(({amenity}=="cafe") || ({amenity}=="food_court") || ({amenity}=="fast_food")) && ({cuisine}==null) && (({name}!=null) && ({name}.Contains("оловая")))
+	]]></t>
+	<!-- Отели -->
+	<t id="0x2B01" label="{name} (отель)"><![CDATA[
+		({tourism}=="hotel")
+	]]></t>
+	<t id="0x2B01" label="{name} (мотель)"><![CDATA[
+		({tourism}=="motel")
+	]]></t>
+	<t id="0x2B02" label="{name} (хостел)"><![CDATA[
+		({tourism}=="guest_house") || ({tourism}=="hostel") || ({tourism}=="chalet")
+	]]></t>
+	<t id="0x2B03" label="{name} (ночевка)"><![CDATA[
+		({tourism}=="alpine_hut") || ({tourism}=="camp_site") || ({tourism}=="caravan_site")
+	]]></t>
+	<t id="0x2B04" label="{name} (курорт)"><![CDATA[
+		({tourism}=="resort") || ({leisure}=="resort") || ({leisure}=="summer_camp")
+	]]></t>
+	<t id="0x2C01" label="{name} (парк развлечений)"><![CDATA[
+		({leisure}=="theme_park") || ({leisure}=="water_park") || ({tourism}=="theme_park")
+	]]></t>
+</Elements>
+</TYPE_MAP>
