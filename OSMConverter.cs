@@ -1818,9 +1818,24 @@ namespace OSM2SHP
             }         
         }
 
+        private void CheckInfo(ref OSMPBFReader.Info info)
+        {
+            if (info != null) return;
+            info = new OSMPBFReader.Info();
+            info.version = 0;
+            info.timestamp = 0;
+            info.changeset = 0;
+            info.uid = 0;
+            info.user = "";
+            info.user_sid = 0;
+            info.visible = true;
+        }
+
 
         private void WriteLine(OSMPBFReader.Way way, NodesXYIndex.IdLatLon[] nodes, bool isRoad, bool isClosed)
         {
+            CheckInfo(ref way.info);
+
             Dictionary<string, object> rec = new Dictionary<string, object>();
             rec.Add("INDEX", lines_dbf.WritedRecords + 1);
             rec.Add("LINE_ID", way.id);
@@ -1919,6 +1934,8 @@ namespace OSM2SHP
 
         private void WriteArea(OSMPBFReader.Way area, NodesXYIndex.IdLatLon[] nodes)
         {
+            CheckInfo(ref area.info);
+
             Dictionary<string, object> rec = new Dictionary<string, object>();
             rec.Add("INDEX", areas_dbf.WritedRecords + 1);
             rec.Add("AREA_ID", area.id);
@@ -2016,6 +2033,8 @@ namespace OSM2SHP
         private void WriteRelation(OSMPBFReader.Relation rel)
         {
             {
+                CheckInfo(ref rel.info);
+
                 Dictionary<string, object> rec = new Dictionary<string, object>();
                 rec.Add("INDEX", relat_dbf.WritedRecords + 1);
                 rec.Add("REL_ID", rel.id);
@@ -2743,26 +2762,30 @@ namespace OSM2SHP
                 if (skip)
                     return false;
             };
-            if (_config.onlyMdfAfter != DateTime.MinValue) if (way.info.datetime < _config.onlyMdfAfter) return false;
-            if (_config.onlyMdfBefore != DateTime.MaxValue) if (way.info.datetime > _config.onlyMdfBefore) return false;
-            if (_config.onlyOfUser.Count > 0)
+            if (way.info != null)
             {
-                bool skip = true;
-                foreach (string user in _config.onlyOfUser)
-                    if (way.info.user == user)
-                        skip = false;
-                if (skip)
-                    return false;
+                if (_config.onlyMdfAfter != DateTime.MinValue) if (way.info.datetime < _config.onlyMdfAfter) return false;
+                if (_config.onlyMdfBefore != DateTime.MaxValue) if (way.info.datetime > _config.onlyMdfBefore) return false;
+                if (_config.onlyOfUser.Count > 0)
+                {
+                    bool skip = true;
+                    foreach (string user in _config.onlyOfUser)
+                        if (way.info.user == user)
+                            skip = false;
+                    if (skip)
+                        return false;
+                };
+                if (_config.onlyVersion.Count > 0)
+                {
+                    bool skip = true;
+                    foreach (int ver in _config.onlyVersion)
+                        if (way.info.version == ver)
+                            skip = false;
+                    if (skip)
+                        return false;
+                };
             };
-            if (_config.onlyVersion.Count > 0)
-            {
-                bool skip = true;
-                foreach (int ver in _config.onlyVersion)
-                    if (way.info.version == ver)
-                        skip = false;
-                if (skip)
-                    return false;
-            };
+            
             if ((_config.onlyInBox != null) && (_config.onlyInBox.Length == 4))
             {
                 int pCo = points.Length;
@@ -2842,26 +2865,29 @@ namespace OSM2SHP
                 if (skip)
                     return false;
             };
-            if (_config.onlyMdfAfter != DateTime.MinValue) if (rel.info.datetime < _config.onlyMdfAfter) return false;
-            if (_config.onlyMdfBefore != DateTime.MaxValue) if (rel.info.datetime > _config.onlyMdfBefore) return false;
-            if (_config.onlyOfUser.Count > 0)
+            if (rel.info != null)
             {
-                bool skip = true;
-                foreach (string user in _config.onlyOfUser)
-                    if (rel.info.user == user)
-                        skip = false;
-                if (skip)
-                    return false;
+                if (_config.onlyMdfAfter != DateTime.MinValue) if (rel.info.datetime < _config.onlyMdfAfter) return false;
+                if (_config.onlyMdfBefore != DateTime.MaxValue) if (rel.info.datetime > _config.onlyMdfBefore) return false;
+                if (_config.onlyOfUser.Count > 0)
+                {
+                    bool skip = true;
+                    foreach (string user in _config.onlyOfUser)
+                        if (rel.info.user == user)
+                            skip = false;
+                    if (skip)
+                        return false;
+                };
+                if (_config.onlyVersion.Count > 0)
+                {
+                    bool skip = true;
+                    foreach (int ver in _config.onlyVersion)
+                        if (rel.info.version == ver)
+                            skip = false;
+                    if (skip)
+                        return false;
+                };
             };
-            if (_config.onlyVersion.Count > 0)
-            {
-                bool skip = true;
-                foreach (int ver in _config.onlyVersion)
-                    if (rel.info.version == ver)
-                        skip = false;
-                if (skip)
-                    return false;
-            };            
             if (_config.onlyWithAddr)
             {
                 bool had = false;
