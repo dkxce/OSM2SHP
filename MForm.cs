@@ -1620,7 +1620,7 @@ namespace OSM2SHP
 
                                 System.Reflection.Assembly asm = CSScriptLibrary.CSScript.LoadCode(code, null);
                                 CSScriptLibrary.AsmHelper script = new CSScriptLibrary.AsmHelper(asm);
-                                ApplyFilterScript afs = (ApplyFilterScript)script.CreateObject("OSM2SHPFC.Script");
+                                ApplyFilterScript afs = (ApplyFilterScript)script.CreateObject("OSM2SHP.Script");
                                 props.Items[19].SubItems[1].Text = (config.scriptFilter = txt).Split(new string[] { "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries)[0];
                                 break;
                             }
