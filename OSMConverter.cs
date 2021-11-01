@@ -392,7 +392,7 @@ namespace OSM2SHP
 
                 System.Reflection.Assembly asm = CSScriptLibrary.CSScript.LoadCode(code, null);
                 CSScriptLibrary.AsmHelper script = new CSScriptLibrary.AsmHelper(asm);
-                apf = (ApplyFilterScript)script.CreateObject("OSM2SHPFC.Script");
+                apf = (ApplyFilterScript)script.CreateObject("OSM2SHP.Script");
                 apf.Converter = this;
                 apf.args = Program.exeargs;
             }
