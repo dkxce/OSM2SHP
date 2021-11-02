@@ -561,19 +561,15 @@ namespace OSM2SHP
 
         }
 
-        public class NodeInfo
+        /// <summary>
+        ///   Tags Utils
+        /// </summary>
+        public abstract class TagsInfo
         {
-            public long id = 0;
-            public double lat = 0;
-            public double lon = 0;
-            public int version = 0;
-            public long timestamp = 0;
-            public long changeset = 0;
-            public int uid = 0;
-            public string user = "";
-            public string icon = "noicon";
-            public Dictionary<string, string> tags = new Dictionary<string, string>();
+            public abstract int InfoType();
             
+            public Dictionary<string, string> tags = new Dictionary<string, string>();
+
             public bool HasTags
             {
                 get
@@ -678,8 +674,34 @@ namespace OSM2SHP
                     if (tags.ContainsKey("addr:housenumber")) addr += tags["addr:housenumber"];
                     return addr;
                 }
-            }            
-                                   
+            }
+
+            public string this[string tag]
+            {
+                get
+                {
+                    if (this.tags == null) return null;
+                    if (this.tags.Count == 0) return null;
+                    if (!this.tags.ContainsKey(tag)) return null;
+                    return this.tags[tag];
+                }
+            }
+        }
+
+        public class NodeInfo : TagsInfo
+        {
+            public long id = 0;
+            public double lat = 0;
+            public double lon = 0;
+            public int version = 0;
+            public long timestamp = 0;
+            public long changeset = 0;
+            public int uid = 0;
+            public string user = "";
+            public string icon = "noicon";
+
+            public override int InfoType() { return 1; }
+                                                          
             public PointF point
             {
                 get
@@ -698,22 +720,11 @@ namespace OSM2SHP
                 {
                     timestamp = (long)(value - new DateTime(1970, 1, 1)).TotalSeconds;
                 }
-            }
-
-            public string this[string tag]
-            {
-                get
-                {
-                    if (this.tags == null) return null;
-                    if (this.tags.Count == 0) return null;
-                    if (!this.tags.ContainsKey(tag)) return null;
-                    return this.tags[tag];
-                }
-            }
+            }            
         }
 
         [ProtoContract]
-        public class Way
+        public class Way : TagsInfo
         {
             [ProtoMember(1)]
             public long id;
@@ -726,7 +737,7 @@ namespace OSM2SHP
             [ProtoMember(8, IsPacked = true)]
             public List<long> refs; // DELTA coded
 
-            public Dictionary<string, string> tags = new Dictionary<string, string>();
+            public override int InfoType() { return 2; }
 
             public Dictionary<string, string> GetTags(PrimitiveBlock pb)
             {
@@ -776,7 +787,7 @@ namespace OSM2SHP
         }
 
         [ProtoContract]
-        public class Relation
+        public class Relation : TagsInfo
         {
             public enum MemberType
             {
@@ -800,7 +811,7 @@ namespace OSM2SHP
             [ProtoMember(10, IsPacked = true)]
             public List<MemberType> types;
 
-            public Dictionary<string, string> tags = new Dictionary<string, string>();            
+            public override int InfoType() { return 3; }
 
             public Dictionary<string, string> GetTags(PrimitiveBlock pb)
             {

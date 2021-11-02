@@ -60,16 +60,16 @@ namespace OSM2SHP
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(578, 135);
+            this.panel1.Size = new System.Drawing.Size(816, 219);
             this.panel1.TabIndex = 0;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.Green;
-            this.label4.Location = new System.Drawing.Point(29, 27);
+            this.label4.Location = new System.Drawing.Point(29, 34);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(458, 104);
+            this.label4.Size = new System.Drawing.Size(653, 169);
             this.label4.TabIndex = 1;
             this.label4.Text = resources.GetString("label4.Text");
             // 
@@ -80,9 +80,10 @@ namespace OSM2SHP
             this.label1.ForeColor = System.Drawing.Color.MediumBlue;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(174, 26);
+            this.label1.Size = new System.Drawing.Size(508, 26);
             this.label1.TabIndex = 0;
-            this.label1.Text = "bool ApplyFilters(NodeInfo ni)\r\n{";
+            this.label1.Text = "bool ApplyFilters(OSMPBFReader.NodeInfo ni, OSMPBFReader.TagsInfo ti, int infoTyp" +
+                "e)\r\n{";
             // 
             // panel2
             // 
@@ -91,9 +92,9 @@ namespace OSM2SHP
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 432);
+            this.panel2.Location = new System.Drawing.Point(0, 561);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(578, 45);
+            this.panel2.Size = new System.Drawing.Size(816, 45);
             this.panel2.TabIndex = 2;
             // 
             // label3
@@ -122,7 +123,7 @@ namespace OSM2SHP
             this.panel3.Controls.Add(this.button2);
             this.panel3.Controls.Add(this.button1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(400, 0);
+            this.panel3.Location = new System.Drawing.Point(638, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(178, 45);
             this.panel3.TabIndex = 0;
@@ -155,9 +156,9 @@ namespace OSM2SHP
             this.panel4.Controls.Add(this.panel6);
             this.panel4.Controls.Add(this.panel5);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 135);
+            this.panel4.Location = new System.Drawing.Point(0, 219);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(578, 297);
+            this.panel4.Size = new System.Drawing.Size(816, 342);
             this.panel4.TabIndex = 3;
             // 
             // textBox1
@@ -168,7 +169,7 @@ namespace OSM2SHP
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox1.Size = new System.Drawing.Size(510, 297);
+            this.textBox1.Size = new System.Drawing.Size(748, 342);
             this.textBox1.TabIndex = 0;
             // 
             // panel6
@@ -178,9 +179,9 @@ namespace OSM2SHP
             this.panel6.Controls.Add(this.button4);
             this.panel6.Controls.Add(this.button3);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel6.Location = new System.Drawing.Point(544, 0);
+            this.panel6.Location = new System.Drawing.Point(782, 0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(34, 297);
+            this.panel6.Size = new System.Drawing.Size(34, 342);
             this.panel6.TabIndex = 3;
             // 
             // button5
@@ -222,7 +223,7 @@ namespace OSM2SHP
             this.panel5.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(34, 297);
+            this.panel5.Size = new System.Drawing.Size(34, 342);
             this.panel5.TabIndex = 0;
             // 
             // ScriptEditor
@@ -230,7 +231,7 @@ namespace OSM2SHP
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.button1;
-            this.ClientSize = new System.Drawing.Size(578, 477);
+            this.ClientSize = new System.Drawing.Size(816, 606);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);

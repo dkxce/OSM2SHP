@@ -1612,12 +1612,7 @@ namespace OSM2SHP
                         {
                             try
                             {
-                                string code = "using System;\r\nusing System.Drawing;\r\nusing System.IO;\r\nusing System.Collections.Generic;\r\nusing System.Text;\r\nusing System.Text.RegularExpressions;using System.Windows;\r\nusing System.Windows.Forms;\r\n\r\n";
-                                code += "namespace OSM2SHP {\r\n";
-                                code += "public class Script: ApplyFilterScript {\r\n";
-                                code += "public override bool ApplyFilters(OSMPBFReader.NodeInfo ni) { " + txt;
-                                code += "\r\n}\r\n}}\r\n";
-
+                                string code = ApplyFilterScript.GetCode(txt);
                                 System.Reflection.Assembly asm = CSScriptLibrary.CSScript.LoadCode(code, null);
                                 CSScriptLibrary.AsmHelper script = new CSScriptLibrary.AsmHelper(asm);
                                 ApplyFilterScript afs = (ApplyFilterScript)script.CreateObject("OSM2SHP.Script");

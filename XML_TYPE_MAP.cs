@@ -75,12 +75,7 @@ namespace OSM2SHP
                     func_text += "\r\n  if (filter == " + el.ToString() + ") { return " + text + "; };  \r\n";
                 };
 
-                string code = "using System;\r\nusing System.Drawing;\r\nusing System.IO;\r\nusing System.Collections.Generic;\r\nusing System.Text;\r\nusing System.Text.RegularExpressions;using System.Windows;\r\nusing System.Windows.Forms;\r\n\r\n";
-                code += "namespace OSM2SHP {\r\n";
-                code += "public class Script: ApplyFilterScript {\r\n";
-                code += "public override bool ApplyFilters(OSMPBFReader.NodeInfo ni, int filter) {\r\n" + func_text;
-                code += "\r\n  return false;\r\n}\r\n}}\r\n";
-
+                string code = ApplyFilterScript.GetCode(func_text);
                 System.Reflection.Assembly asm = CSScriptLibrary.CSScript.LoadCode(code, null);
                 CSScriptLibrary.AsmHelper script = new CSScriptLibrary.AsmHelper(asm);
                 this.afs = (ApplyFilterScript)script.CreateObject("OSM2SHP.Script");
@@ -103,14 +98,8 @@ namespace OSM2SHP
                         text = text.Insert(mch.Index, mch.Value.Replace("{", "ni[\"").Replace("}", "\"]"));
                     };
                 string func_text = " return (" + text + "); ";
-                
-                string code = "using System;\r\nusing System.Drawing;\r\nusing System.IO;\r\nusing System.Collections.Generic;\r\nusing System.Text;\r\nusing System.Text.RegularExpressions;using System.Windows;\r\nusing System.Windows.Forms;\r\n\r\n";
-                code += "namespace OSM2SHP {\r\n";
-                code += "public class Script: ApplyFilterScript {\r\n";
-                code += "public override bool ApplyFilters(OSMPBFReader.NodeInfo ni) {\r\n";
-                code += func_text;
-                code += "}\r\n}}\r\n";
 
+                string code = ApplyFilterScript.GetCode(func_text);
                 System.Reflection.Assembly asm = CSScriptLibrary.CSScript.LoadCode(code, null);
                 CSScriptLibrary.AsmHelper script = new CSScriptLibrary.AsmHelper(asm);
                 ApplyFilterScript afs = (ApplyFilterScript)script.CreateObject("OSM2SHP.Script");
@@ -127,7 +116,7 @@ namespace OSM2SHP
 
             List<TYPE_MAP_Element> result = new List<TYPE_MAP_Element>();
             for (int i = 0; i < this.Count; i++)
-                if (afs.ApplyFilters(ni, i))
+                if (afs.ApplyFilters(ni,ni,0)) // if (afs.ApplyFilters(ni, i))
                     result.Add(this[i]);
 
             return result.ToArray();

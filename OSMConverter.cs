@@ -384,12 +384,7 @@ namespace OSM2SHP
             if(!String.IsNullOrEmpty(_config.scriptFilter))
             try
             {
-                string code = "using System;\r\nusing System.Drawing;\r\nusing System.IO;\r\nusing System.Collections.Generic;\r\nusing System.Text;\r\nusing System.Text.RegularExpressions;using System.Windows;\r\nusing System.Windows.Forms;\r\n\r\n";
-                code += "namespace OSM2SHP {\r\n";
-                code += "public class Script: ApplyFilterScript {\r\n";
-                code += "public override bool ApplyFilters(OSMPBFReader.NodeInfo ni) { " + _config.scriptFilter;
-                code += "\r\n}\r\n}}\r\n";
-
+                string code = ApplyFilterScript.GetCode(_config.scriptFilter);                
                 System.Reflection.Assembly asm = CSScriptLibrary.CSScript.LoadCode(code, null);
                 CSScriptLibrary.AsmHelper script = new CSScriptLibrary.AsmHelper(asm);
                 apf = (ApplyFilterScript)script.CreateObject("OSM2SHP.Script");
@@ -1533,7 +1528,7 @@ namespace OSM2SHP
 
                                 if (_config.processLineFilter)
                                 {
-                                    if (ApplyWayFilters(way, vector))
+                                    if (ApplyFilters(way, vector))
                                         WriteLine(way, vector, isRoad, isClosed);
                                     else
                                     {
@@ -1549,7 +1544,7 @@ namespace OSM2SHP
                                 ways_by_rels_ars++;
                                 if (_config.processAreaFilter)
                                 {
-                                    if (ApplyWayFilters(way, vector))
+                                    if (ApplyFilters(way, vector))
                                         WriteArea(way, vector);
                                     else
                                     {
@@ -1684,7 +1679,7 @@ namespace OSM2SHP
 
                     if (_config.processLineFilter)
                     {
-                        if (ApplyWayFilters(way, vector))
+                        if (ApplyFilters(way, vector))
                             WriteLine(way, vector, isRoad, isClosed);
                         else
                         {
@@ -1707,7 +1702,7 @@ namespace OSM2SHP
                 {
                     if (_config.processAreaFilter)
                     {
-                        if (ApplyWayFilters(way, vector))
+                        if (ApplyFilters(way, vector))
                             WriteArea(way, vector);
                         else
                         {
@@ -2733,7 +2728,7 @@ namespace OSM2SHP
             return true;
         }
 
-        private bool ApplyWayFilters(OSMPBFReader.Way way, NodesXYIndex.IdLatLon[] points)
+        private bool ApplyFilters(OSMPBFReader.Way way, NodesXYIndex.IdLatLon[] points)
         {
             if (_config.onlyHasName && (!way.tags.ContainsKey("name"))) return false;
             if (_config.onlyWithTags.Count > 0)
@@ -2833,6 +2828,9 @@ namespace OSM2SHP
                     return false;
             };
 
+            if (!ApplyScriptFilters(way))
+                return false;
+
             return true;
         }
 
@@ -2915,12 +2913,29 @@ namespace OSM2SHP
                     return false;
             };
 
+            if (!ApplyScriptFilters(rel))
+                return false;
+
             return true;
         }
 
         public bool ApplyScriptFilters(OSMPBFReader.NodeInfo ni)
         {
-            try { if (apf != null) if (!apf.ApplyFilters(ni)) return false; } catch { };
+            try { if (apf != null) if (!apf.ApplyFilters(ni,ni,1)) return false; } catch { };
+            return true;
+        }
+
+        public bool ApplyScriptFilters(OSMPBFReader.Way wi)
+        {
+            try { if (apf != null) if (!apf.ApplyFilters(null, wi, 2)) return false; }
+            catch { };
+            return true;
+        }
+
+        public bool ApplyScriptFilters(OSMPBFReader.Relation ri)
+        {
+            try { if (apf != null) if (!apf.ApplyFilters(null, ri, 3)) return false; }
+            catch { };
             return true;
         }
 
@@ -3507,6 +3522,18 @@ namespace OSM2SHP
 
     public abstract class ApplyFilterScript
     {
+        public static string GetCode(string scriptText)
+        {
+            string code = "using System;\r\nusing System.Drawing;\r\nusing System.IO;\r\nusing System.Collections.Generic;\r\nusing System.Text;\r\nusing System.Text.RegularExpressions;using System.Windows;\r\nusing System.Windows.Forms;\r\n\r\n";
+            code += "namespace OSM2SHP {\r\n";
+            code += "public class Script: ApplyFilterScript {\r\n";
+            code += "public override bool ApplyFilters(OSMPBFReader.NodeInfo ni, OSMPBFReader.TagsInfo ti, int infoType) { ";
+            code += "if(infoType == 1) this.nodesCounter++; else if (infoType == 2) this.waysCounter++; else if (infoType == 3) this.relsCounter++; \r\n { ";
+            code += scriptText;
+            code += "\r\n}\r\n return true; \r\n}\r\n}}\r\n";
+            return code;
+        }
+
         public OSMConverter Converter = null;
         public OSMConverter converter { get { return Converter; } }
         public OSMConverter Convertor { get { return Converter; } }
@@ -3523,9 +3550,14 @@ namespace OSM2SHP
         public object Userdata { get { return userdata; } set { userdata = value; } }
         public object userData { get { return userdata; } set { userdata = value; } }
 
+        public ulong nodesCounter = 0;
+        public ulong waysCounter = 0;
+        public ulong relsCounter = 0;
+
         public string[] args = new string[0];
 
-        public virtual bool ApplyFilters(OSMPBFReader.NodeInfo ni) { return true; }
-        public virtual bool ApplyFilters(OSMPBFReader.NodeInfo ni, int filter) { return true; }
+        public virtual bool ApplyFilters(OSMPBFReader.NodeInfo ni, OSMPBFReader.TagsInfo ti, int infoType) { return true; }
+        //public virtual bool ApplyFilters(OSMPBFReader.NodeInfo ni) { return true; }        
+        //public virtual bool ApplyFilters(OSMPBFReader.NodeInfo ni, int filter) { return true; }
     }
 }

@@ -119,13 +119,18 @@
   </resheader>
   <data name="label4.Text" xml:space="preserve">
     <value>// Параметры:
-// this.converter - конвертер, this.args - параметры командной строки,
-// this.userdata - можно хранить данные внутри скрипта
-// long id, double lat, double lon, int version, long timestamp, long changeset, int uid, string user,
-// PointF point, DateTime datetime
-// Dictionary&lt;string, string&gt; tags, bool HasTags, int TagsCount, string TagsAll
-// bool HasTag(string k), string GetTag(string k), 
-// bool HasName, string Name, int AddrTagsCount, string Addr,</value>
+//   OSMConverter this.converter - конвертер;  string[] this.args - параметры командной строки;
+//   object this.userdata - можно хранить данные внутри скрипта;
+//   ulong this.nodesCounter; ulong this.waysCounter; ulong this.relsCounter - счетчик передаваемых в функцию nodes/ways/relations;
+// ni: /* ---- null если infoType != 1 ---- */
+//   long id, double lat, double lon, int version, long timestamp, long changeset, int uid, string user,
+//   PointF point, DateTime datetime
+// ti:
+//   Dictionary&lt;string, string&gt; tags, bool HasTags, int TagsCount, string TagsAll
+//   bool HasTag(string k), string GetTag(string k), 
+//   bool HasName, string Name, int AddrTagsCount, string Addr,
+// infoType:
+//   1 - NodeInfo (ni+ti), 2 - WayInfo (ti); 3 - RelationInfo (ti)</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
