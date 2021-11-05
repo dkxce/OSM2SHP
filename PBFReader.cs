@@ -11,7 +11,7 @@ using System.Xml;
 using ProtoBuf;
 using Ionic.Zlib;
 
-namespace OSM2SHP
+namespace OSM2SHP 
 {
     public class OSMPBFReader : FileStream
     {
@@ -566,7 +566,12 @@ namespace OSM2SHP
         /// </summary>
         public abstract class TagsInfo
         {
-            public abstract int InfoType();
+            public int infoType { get { return GetInfoType(); } }
+            public abstract int GetInfoType();
+
+            public int PointsCount { get { return GetPointsCount(); } }
+            public abstract int GetPointsCount();
+            public abstract PointF GetPoint(int index);
             
             public Dictionary<string, string> tags = new Dictionary<string, string>();
 
@@ -700,7 +705,9 @@ namespace OSM2SHP
             public string user = "";
             public string icon = "noicon";
 
-            public override int InfoType() { return 1; }
+            public override int GetInfoType() { return 1; }
+            public override int GetPointsCount() { return 1; }
+            public override PointF GetPoint(int index) { return point; }
                                                           
             public PointF point
             {
@@ -737,7 +744,12 @@ namespace OSM2SHP
             [ProtoMember(8, IsPacked = true)]
             public List<long> refs; // DELTA coded
 
-            public override int InfoType() { return 2; }
+            [ProtoIgnore]
+            public NodesXYIndex.IdLatLon[] _points = new NodesXYIndex.IdLatLon[0];
+
+            public override int GetInfoType() { return 2; }
+            public override int GetPointsCount() { return _points.Length; }
+            public override PointF GetPoint(int index) { return new PointF((float)_points[index].lon, (float)_points[index].lat); }
 
             public Dictionary<string, string> GetTags(PrimitiveBlock pb)
             {
@@ -811,7 +823,12 @@ namespace OSM2SHP
             [ProtoMember(10, IsPacked = true)]
             public List<MemberType> types;
 
-            public override int InfoType() { return 3; }
+            [ProtoIgnore]
+            public NodesXYIndex.IdLatLon[] _points = new NodesXYIndex.IdLatLon[0];
+
+            public override int GetInfoType() { return 3; }
+            public override int GetPointsCount() { return _points.Length; }
+            public override PointF GetPoint(int index) { return new PointF((float)_points[index].lon, (float)_points[index].lat); }
 
             public Dictionary<string, string> GetTags(PrimitiveBlock pb)
             {

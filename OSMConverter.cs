@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Runtime.InteropServices;
 
-namespace OSM2SHP
+namespace OSM2SHP 
 {
     public class OSMConverter
     {
@@ -1508,7 +1508,8 @@ namespace OSM2SHP
                         NodesXYIndex.IdLatLon[] vector = null;
                         try { vector = nodes_ndi.GetNodes(nodes.ToArray(), false); } catch { };
                         if (vector != null)
-                        {   
+                        {
+                            rel._points = vector;
                             OSMPBFReader.Way way = new OSMPBFReader.Way();
                             way.id = rel.id;
                             way.info = rel.info;
@@ -2828,7 +2829,8 @@ namespace OSM2SHP
                     return false;
             };
 
-            if (!ApplyScriptFilters(way))
+            if (points != null) way._points = points;
+            if (!ApplyScriptFilters(way,points))
                 return false;
 
             return true;
@@ -2920,22 +2922,54 @@ namespace OSM2SHP
         }
 
         public bool ApplyScriptFilters(OSMPBFReader.NodeInfo ni)
-        {
-            try { if (apf != null) if (!apf.ApplyFilters(ni,ni,1)) return false; } catch { };
+        {            
+            try {
+                if (apf != null)
+                {
+                    if (!apf.ApplyFilters(ni, ni, 1))
+                    {
+                        if (apf.aborted) { if (apf.ex == null) throw new Exception("Aborted"); else throw apf.ex; };
+                        return false;
+                    };
+                };
+            } catch { };
+            if ((apf != null) && apf.aborted) { if (apf.ex == null) throw new Exception("Aborted"); else throw apf.ex; };
             return true;
         }
 
-        public bool ApplyScriptFilters(OSMPBFReader.Way wi)
+        public bool ApplyScriptFilters(OSMPBFReader.Way wi, NodesXYIndex.IdLatLon[] points)
         {
-            try { if (apf != null) if (!apf.ApplyFilters(null, wi, 2)) return false; }
+            try
+            {
+                if (apf != null)
+                {
+                    if (!apf.ApplyFilters(null, wi, 2))
+                    {
+                        if (apf.aborted) { if (apf.ex == null) throw new Exception("Aborted"); else throw apf.ex; };
+                        return false;
+                    };
+                };
+            }
             catch { };
+            if ((apf != null) && apf.aborted) { if (apf.ex == null) throw new Exception("Aborted"); else throw apf.ex; };
             return true;
         }
 
         public bool ApplyScriptFilters(OSMPBFReader.Relation ri)
         {
-            try { if (apf != null) if (!apf.ApplyFilters(null, ri, 3)) return false; }
+            try
+            {
+                if (apf != null)
+                {
+                    if (!apf.ApplyFilters(null, ri, 3))
+                    {
+                        if (apf.aborted) { if (apf.ex == null) throw new Exception("Aborted"); else throw apf.ex; };
+                        return false;
+                    };
+                };
+            }
             catch { };
+            if ((apf != null) && apf.aborted) { if (apf.ex == null) throw new Exception("Aborted"); else throw apf.ex; };
             return true;
         }
 
@@ -3533,6 +3567,15 @@ namespace OSM2SHP
             code += "\r\n}\r\n return true; \r\n}\r\n}}\r\n";
             return code;
         }
+
+        public Exception ex = null;
+        public bool aborted = false;
+        public void Abort() { aborted = true; throw new Exception("Abort"); }
+        public void Abort(Exception ex) { aborted = true; this.ex = ex; throw new Exception("Abort"); }
+        public void Abort(string message) { aborted = true; this.ex = new Exception(message); throw new Exception("Abort"); }
+        public void AbortAfterReturn() { aborted = true; }
+        public void AbortAfterReturn(Exception ex) { aborted = true; this.ex = ex;}
+        public void AbortAfterReturn(string message) { aborted = true; this.ex = new Exception(message); }
 
         public OSMConverter Converter = null;
         public OSMConverter converter { get { return Converter; } }

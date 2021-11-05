@@ -2485,6 +2485,7 @@ namespace OSM2SHP
         private void osmchelpToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ScriptEditor se = new ScriptEditor();
+            se.textBox1.Language = FastColoredTextBoxNS.Language.JSON;
             se.FullView = false;
             se.Text = "Справка по osmconvert.exe";
             se.MainText = "Справка по osmconvert.exe";
@@ -2498,6 +2499,7 @@ namespace OSM2SHP
         private void fDToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ScriptEditor se = new ScriptEditor();
+            se.textBox1.Language = FastColoredTextBoxNS.Language.JSON;
             se.Width = 700;
             se.FullView = false;
             se.Text = "Описание полей DBF файла";
@@ -2723,6 +2725,7 @@ namespace OSM2SHP
         private void cMDToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ScriptEditor se = new ScriptEditor();
+            se.textBox1.Language = FastColoredTextBoxNS.Language.JSON;
             se.FullView = false;
             se.Text = "Параметры командной строки";
             se.MainText = "Параметры командной строки";
@@ -2759,6 +2762,7 @@ namespace OSM2SHP
         private void tTGToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ScriptEditor se = new ScriptEditor();
+            se.textBox1.Language = FastColoredTextBoxNS.Language.XML;
             se.FullView = false;
             se.Text = "Информация для собственного селектора";
             se.MainText = "Информация для собственного селектора";

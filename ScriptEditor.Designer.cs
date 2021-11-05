@@ -28,6 +28,7 @@ namespace OSM2SHP
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScriptEditor));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
@@ -39,7 +40,7 @@ namespace OSM2SHP
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new FastColoredTextBoxNS.FastColoredTextBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -49,6 +50,7 @@ namespace OSM2SHP
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textBox1)).BeginInit();
             this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,7 +62,7 @@ namespace OSM2SHP
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(816, 219);
+            this.panel1.Size = new System.Drawing.Size(916, 251);
             this.panel1.TabIndex = 0;
             // 
             // label4
@@ -69,7 +71,7 @@ namespace OSM2SHP
             this.label4.ForeColor = System.Drawing.Color.Green;
             this.label4.Location = new System.Drawing.Point(29, 34);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(653, 169);
+            this.label4.Size = new System.Drawing.Size(653, 208);
             this.label4.TabIndex = 1;
             this.label4.Text = resources.GetString("label4.Text");
             // 
@@ -92,9 +94,9 @@ namespace OSM2SHP
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 561);
+            this.panel2.Location = new System.Drawing.Point(0, 622);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(816, 45);
+            this.panel2.Size = new System.Drawing.Size(916, 45);
             this.panel2.TabIndex = 2;
             // 
             // label3
@@ -123,7 +125,7 @@ namespace OSM2SHP
             this.panel3.Controls.Add(this.button2);
             this.panel3.Controls.Add(this.button1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(638, 0);
+            this.panel3.Location = new System.Drawing.Point(738, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(178, 45);
             this.panel3.TabIndex = 0;
@@ -131,13 +133,13 @@ namespace OSM2SHP
             // button2
             // 
             this.button2.BackColor = System.Drawing.SystemColors.Control;
-            this.button2.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.button2.Location = new System.Drawing.Point(9, 10);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 1;
             this.button2.Text = "OK";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -149,6 +151,7 @@ namespace OSM2SHP
             this.button1.TabIndex = 2;
             this.button1.Text = "Отмена";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel4
             // 
@@ -156,21 +159,43 @@ namespace OSM2SHP
             this.panel4.Controls.Add(this.panel6);
             this.panel4.Controls.Add(this.panel5);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 219);
+            this.panel4.Location = new System.Drawing.Point(0, 251);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(816, 342);
+            this.panel4.Size = new System.Drawing.Size(916, 371);
             this.panel4.TabIndex = 3;
             // 
             // textBox1
             // 
+            this.textBox1.AutoCompleteBracketsList = new char[] {
+        '(',
+        ')',
+        '{',
+        '}',
+        '[',
+        ']',
+        '\"',
+        '\"',
+        '\'',
+        '\''};
+            this.textBox1.AutoIndentCharsPatterns = "^\\s*[\\w\\.]+(\\s\\w+)?\\s*(?<range>=)\\s*(?<range>[^;=]+);\r\n^\\s*(case|default)\\s*[^:]*" +
+                "(?<range>:)\\s*(?<range>[^;]+);";
+            this.textBox1.AutoScrollMinSize = new System.Drawing.Size(27, 14);
+            this.textBox1.BackBrush = null;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.CharHeight = 14;
+            this.textBox1.CharWidth = 8;
+            this.textBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBox1.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox1.IsReplaceMode = false;
             this.textBox1.Location = new System.Drawing.Point(34, 0);
-            this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox1.Size = new System.Drawing.Size(748, 342);
+            this.textBox1.Paddings = new System.Windows.Forms.Padding(0);
+            this.textBox1.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
+            this.textBox1.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("textBox1.ServiceColors")));
+            this.textBox1.Size = new System.Drawing.Size(848, 371);
             this.textBox1.TabIndex = 0;
+            this.textBox1.Zoom = 100;
             // 
             // panel6
             // 
@@ -179,9 +204,9 @@ namespace OSM2SHP
             this.panel6.Controls.Add(this.button4);
             this.panel6.Controls.Add(this.button3);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel6.Location = new System.Drawing.Point(782, 0);
+            this.panel6.Location = new System.Drawing.Point(882, 0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(34, 342);
+            this.panel6.Size = new System.Drawing.Size(34, 371);
             this.panel6.TabIndex = 3;
             // 
             // button5
@@ -223,7 +248,7 @@ namespace OSM2SHP
             this.panel5.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(34, 342);
+            this.panel5.Size = new System.Drawing.Size(34, 371);
             this.panel5.TabIndex = 0;
             // 
             // ScriptEditor
@@ -231,7 +256,7 @@ namespace OSM2SHP
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.button1;
-            this.ClientSize = new System.Drawing.Size(816, 606);
+            this.ClientSize = new System.Drawing.Size(916, 667);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
@@ -247,7 +272,7 @@ namespace OSM2SHP
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textBox1)).EndInit();
             this.panel6.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -265,7 +290,7 @@ namespace OSM2SHP
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TextBox textBox1;
+        public FastColoredTextBoxNS.FastColoredTextBox textBox1;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button button4;
