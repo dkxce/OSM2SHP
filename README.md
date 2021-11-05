@@ -1,6 +1,6 @@
 # OSM to SHP Fastex Converter
 
-OSM2SHP Fastex Converter (convert .osm &amp; .pbf files to ESRI Shape .shp files and .dbf) with Web Progress     
+Flexible OSM2SHP Fastex Converter (convert .osm &amp; .pbf files to ESRI Shape .shp files and .dbf) with Web Progress     
 Программа-конвертер файлов данных OSM (*.osm) и (*.pbf) в ESRI Shapes (*.shp) c web-визуализацией
 
 ### Get OpenStreetMap DATA - Данные OpenStreetMap
