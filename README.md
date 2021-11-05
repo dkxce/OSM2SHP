@@ -23,6 +23,7 @@ OSM2SHP Fastex Converter (convert .osm &amp; .pbf files to ESRI Shape .shp files
 <img src="window9.png"/>
 <img src="windowA.png"/>
 <img src="windowB.png"/>
+<img src="windowC.png"/>
 
 <img src="wind2_01.png"/>
 <img src="wind2_02.png"/>
