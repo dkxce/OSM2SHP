@@ -181,7 +181,7 @@ namespace OSM2SHP
             System.Windows.Forms.ListViewItem listViewItem38 = new System.Windows.Forms.ListViewItem(new string[] {
             "Опции: Сохранять узлы линий",
             "",
-            "Сохранять срединные узлы линий в Shape-файл"}, -1, System.Drawing.Color.Empty, System.Drawing.Color.MediumSeaGreen, null);
+            "Сохранять срединные узлы линий в Shape-файл и разбивку линий в dbf-файл"}, -1, System.Drawing.Color.Empty, System.Drawing.Color.MediumSeaGreen, null);
             System.Windows.Forms.ListViewItem listViewItem39 = new System.Windows.Forms.ListViewItem(new string[] {
             "Опции: Сортировать агрег. теги",
             "",

@@ -473,9 +473,15 @@ namespace OSM2SHP
                     files.Add(String.Format("{0}{1}[NODES].dbf", dir, prf));
                     files.Add(String.Format("{0}{1}[NODES].shx", dir, prf));
                     files.Add(String.Format("{0}{1}[NODES].prj", dir, prf));
-                    files.Add(String.Format("{0}{1}[NODES].txt", dir, prf));
+                    files.Add(String.Format("{0}{1}[NODES].txt", dir, prf));                    
                     files.Add("");
                 };
+                if (osmc.LinesToSplitWrited > 0)
+                {
+                    files.Add(String.Format("{0}{1}[L_SPL].dbf", dir, prf));
+                    files.Add(String.Format("{0}{1}[L_SPL].txt", dir, prf));
+                    files.Add("");
+                }
                 if (osmc.FilesRelationsWrited > 0)
                     for (int i = 1; i <= osmc.FilesRelationsWrited; i++)
                     {
@@ -512,6 +518,7 @@ namespace OSM2SHP
                     if (file.IndexOf("[M0") > 0) ftype = " объекты связей";
                     if (file.IndexOf("[J0") > 0) ftype = " запреты поворотов";
                     if (file.IndexOf("[NO") > 0) ftype = " узлы линий";
+                    if (file.IndexOf("[L_") > 0) ftype = " разбивка линий";
                     if (file.IndexOf("[_LOG_]") > 0)
                         ftype = " протокол лога";
                     else
@@ -695,13 +702,23 @@ namespace OSM2SHP
                 };
                 if (osmc.NodesWrited > 0)
                 {
-                    status_text += String.Format(System.Globalization.CultureInfo.InvariantCulture, "    Узлы линий (полей - 3, размер заголовка 128 байт, записи 34 байт) - обработано {0:P}:\r\n", osmc.NodesPercentage);
+                    if (osmc.NodesFieldsWrited == 4)
+                        status_text += String.Format(System.Globalization.CultureInfo.InvariantCulture, "    Узлы линий (полей - 4, размер заголовка 160 байт, записи 35 байт) - обработано {0:P}:\r\n", osmc.NodesPercentage);
+                    else
+                        status_text += String.Format(System.Globalization.CultureInfo.InvariantCulture, "    Узлы линий (полей - 5, размер заголовка 192 байт, записи 285 байт) - обработано {0:P}:\r\n", osmc.NodesPercentage);                        
                     status_text += String.Format(System.Globalization.CultureInfo.InvariantCulture, "        - {0}.dbf + {0}.shp + {0}.shx + {0}.prj - {1} узлов, {2}\r\n", osmc.NodesFName, osmc.NodesWrited, GetFileSize(osmc.NodesFSize));
                     ttl_size += osmc.NodesFSize;
-                };
+                };                
 
                 status_text += String.Format(System.Globalization.CultureInfo.InvariantCulture, "    Общий размер шейпов: {0}\r\n", GetFileSize(ttl_size));
 
+                if (osmc.LinesToSplitWrited > 0)
+                {
+                    status_text += String.Format(System.Globalization.CultureInfo.InvariantCulture, "Разбивка линий (полей - 4, размер заголовка 160 байт, записи 285 байт) - обработано {0:P}:\r\n", osmc.LinesToSplitPercentage);
+                    status_text += String.Format(System.Globalization.CultureInfo.InvariantCulture, "        - {0}.dbf - {1} линий, {2}\r\n", osmc.LinesToSplitFName, osmc.LinesToSplitWrited, GetFileSize(osmc.LinesToSplitFSize));
+                    ttl_size += osmc.LinesToSplitFSize;
+                };                
+                
                 if (osmc.ProcRelsSure)// && (osmc.FilesRelationsWrited > 0) && (osmc.FilesRelationsWritedRelsCounts[0] > 0))
                 {
                     long rel_size = 0;
@@ -713,7 +730,8 @@ namespace OSM2SHP
                     };
                     status_text += String.Format("        R-файл - таблица связей с атрибутами и тегами (relations) - Всего записей: {0}\r\n", osmc.RelationsWrited);
                     status_text += String.Format("        M-файл - таблица объектов (members) внутри связей (relations) - Всего записей: {0}\r\n", osmc.RelationsMemsWrited);
-                    status_text += String.Format("    Размер R и M таблиц: {0}\r\n", GetFileSize(rel_size));                    
+                    status_text += String.Format("    Размер R и M таблиц: {0}\r\n", GetFileSize(rel_size));
+                    ttl_size += rel_size;
                 };
                 if (osmc.ProcJoins) // && (osmc.FilesJoinsWrited > 0) && (osmc.FilesJoinsWritedLines[0] > 0))
                 {
@@ -726,6 +744,7 @@ namespace OSM2SHP
                     };
                     //status_text += String.Format("    Всего: {1} ({6} уникальных + {5} задвоений) запретов ({3} валидных, {4} нет; сохранено как {2}) в {0} линиях\r\n", osmc.JoinsRestrictionsLNS, osmc.JoinsRestrictionsTV + osmc.JoinsRestrictionsCOPY, osmc.JoinsRestrictionsFL, osmc.JoinsRestrictionsVLD, osmc.JoinsRestrictionsERR, osmc.JoinsRestrictionsCOPY, osmc.JoinsRestrictionsTV);
                     status_text += String.Format("    Размер таблиц: {0}\r\n", GetFileSize(join_size));
+                    ttl_size += join_size;
                 };                
                 
                 long fCo = 
@@ -733,6 +752,7 @@ namespace OSM2SHP
                     osmc.FilesLinesWrited * 5 + 
                     osmc.FilesAreasWrited * 5 +
                     (osmc.NodesWrited > 0 ? 5 : 0) + 
+                    (osmc.LinesToSplitWrited > 0 ? 2 : 0) +
                     (processing ? 0 : 1) + 
                     (osmc._config.useNotInMemoryIndexFile && osmc.ProcWaysSure ? 1 : 0) + 
                     (osmc.ProcRelsSure ? osmc.FilesRelationsWrited * 4 : 0) + 
@@ -740,6 +760,7 @@ namespace OSM2SHP
                 
                 status_text += "\r\n";
                 status_text += String.Format("Всего файлов: {0}, включая шейпы, описание и протокол лога {1}\r\n", fCo, Path.GetFileNameWithoutExtension(config.outputFileName) + "[_LOG_].txt");
+                status_text += String.Format("Общий размер файлов: {0}\r\n", GetFileSize(ttl_size));
                 status_text += String.Format("Использовано оперативной памяти: {0}\r\n", GetFileSize(System.Diagnostics.Process.GetCurrentProcess().PrivateMemorySize64));     
 
                 status.Text = text + status_text;

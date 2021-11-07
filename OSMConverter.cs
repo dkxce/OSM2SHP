@@ -95,6 +95,17 @@ namespace OSM2SHP
         public string NodesFName { get { return nodes_fname; } }
         private float nodes_percent = 0;
         public float NodesPercentage { get { return nodes_percent; } }
+        private float nodes_fieldswr = 0;
+        public float NodesFieldsWrited { get { return nodes_percent; } }
+
+        private long lines_tosplit_writed = 0;
+        public long LinesToSplitWrited { get { return lines_tosplit_writed; } }
+        private long lines_tosplit_fsize = 0;
+        public long LinesToSplitFSize { get { return lines_tosplit_fsize; } }
+        private string lines_tosplit_fname = "";
+        public string LinesToSplitFName { get { return lines_tosplit_fname; } }
+        private float lines_tosplit_percent = 0;
+        public float LinesToSplitPercentage { get { return lines_tosplit_percent; } }
 
         private long files_points_wrtd = 0;        
         private List<string> files_points_wrts = new List<string>();
@@ -465,6 +476,8 @@ namespace OSM2SHP
             
             string _ndsi = Path.GetDirectoryName(this._dbfFile) + @"\" + Path.GetFileNameWithoutExtension(this._dbfFile) + "[nodes].idx";
             string _ndss = Path.GetDirectoryName(this._dbfFile) + @"\" + Path.GetFileNameWithoutExtension(this._dbfFile) + "[NODES]";
+
+            string _ndsp = Path.GetDirectoryName(this._dbfFile) + @"\" + Path.GetFileNameWithoutExtension(this._dbfFile) + "[L_SPL]";
             
             string _dbfp = Path.GetDirectoryName(this._dbfFile) + @"\" + Path.GetFileNameWithoutExtension(this._dbfFile) + String.Format("[P{0:0000}]", files_points_wrtd) + ".dbf";
             string _shpp = Path.GetDirectoryName(this._dbfFile) + @"\" + Path.GetFileNameWithoutExtension(this._dbfFile) + String.Format("[P{0:0000}]", files_points_wrtd) + ".shp";
@@ -660,12 +673,19 @@ namespace OSM2SHP
 
             if (this.ProcWaysSure)
             {
-                if(_config.saveLineNodesShape)
+                if (_config.saveLineNodesShape)
+                {
                     try
                     {
                         WriteNodesShape(_ndss);
                     }
                     catch { };
+                    try
+                    {
+                        WriteLinesToSplitDbf(_ndsp);
+                    }
+                    catch { };
+                };
                 nodes_ndi.Close();
             };
             linesFLID.Clear();
@@ -723,6 +743,13 @@ namespace OSM2SHP
             fields.Add("INDEX",   012, 'N');
             fields.Add("NODE_ID", 018, 'N');
             fields.Add("L_COUNT", 002, 'N');
+            fields.Add("ML_COUNT", 002, 'N');
+            nodes_fieldswr = 4;
+            if (nodes_ndi.InMemory)
+            {
+                fields.Add("MLINES", 250, 'C');
+                nodes_fieldswr++;
+            };
             nodes_dbf.WriteHeader(fields);
 
             long nodes_listed = 0;
@@ -750,13 +777,16 @@ namespace OSM2SHP
                     if ((md > 0x10) || ((md == 0x10) && (se > 0x00)))
                     {
                         byte lco = (byte)(se + (md >> 4));
+                        byte mlco = (byte)(md >> 4);
 
                         Dictionary<string, object> rec = new Dictionary<string, object>();
                         rec.Add("INDEX", nodes_writed);
                         rec.Add("NODE_ID", el.Key);
                         rec.Add("L_COUNT", lco);
+                        rec.Add("ML_COUNT", mlco);
+                        rec.Add("MLINES", el.Value.GetLines());
 
-                        nodes_dbf.WriteRecord(rec, 0, 0, 0, 0);
+                        nodes_dbf.WriteRecord(rec);
                         nodes_shx.WritePointIndex((int)nodes_shp.Position);
                         nodes_shp.WritePoint(el.Value.lon, el.Value.lat);
 
@@ -785,6 +815,7 @@ namespace OSM2SHP
                     if ((md > 0x10) || ((md == 0x10) && (se > 0x00)))
                     {
                         byte lco = (byte)(se + (md >> 4));
+                        byte mlco = (byte)(md >> 4);
 
                         NodesXYIndex.IdLatLon res = new NodesXYIndex.IdLatLon(BitConverter.ToInt64(buff, 0), BitConverter.ToDouble(buff, 8), BitConverter.ToDouble(buff, 16), buff[24]);
 
@@ -792,6 +823,7 @@ namespace OSM2SHP
                         rec.Add("INDEX", nodes_writed);
                         rec.Add("NODE_ID", res.id);
                         rec.Add("L_COUNT", lco);
+                        rec.Add("ML_COUNT", mlco);
 
                         nodes_dbf.WriteRecord(rec, 0, 0, 0, 0);
                         nodes_shx.WritePointIndex((int)nodes_shp.Position);
@@ -808,6 +840,56 @@ namespace OSM2SHP
             nodes_dbf.Close();
             nodes_shp.Close();
             nodes_shx.Close();
+        }
+
+        private void WriteLinesToSplitDbf(string fileName)
+        {
+            if (nodes_ndi.Length == 0) return;
+            Dictionary<long, int[]> dal2s = nodes_ndi.DictAsLinesToSplit();
+            if (dal2s == null) return;
+            if (dal2s.Count == 0) return;
+
+            DBFWriter l2spl_dbf = new DBFWriter(fileName + ".dbf", FileMode.Create, _config.dbfCodePage);
+            
+            FieldInfos fields = new FieldInfos();
+            fields.Add("INDEX",   012, 'N');
+            fields.Add("LINE_ID", 018, 'N');
+            fields.Add("SPLITCO", 004, 'N');
+            fields.Add("PNT_NUM", 250, 'C');
+            l2spl_dbf.WriteHeader(fields);
+
+            lines_tosplit_writed = 0;
+            lines_tosplit_fsize = 0;
+            lines_tosplit_percent = 0;
+            lines_tosplit_fname = Path.GetFileNameWithoutExtension(fileName + ".dbf");
+
+            long lines_tosplit_listed = 0;
+            float lines_tosplit_ttl = (float)dal2s.Count;
+
+            foreach (KeyValuePair<long, int[]> el in dal2s)
+            {
+                lines_tosplit_listed++;
+                lines_tosplit_percent = ((float)lines_tosplit_listed) / lines_tosplit_ttl;
+
+                string nums = "";
+                foreach(int num in el.Value)
+                    nums += (nums.Length > 0 ? ";" : "") + num.ToString();
+
+                Dictionary<string, object> rec = new Dictionary<string, object>();
+                rec.Add("INDEX", lines_tosplit_writed);
+                rec.Add("LINE_ID", el.Key);
+                rec.Add("SPLITCO", el.Value.Length);
+                rec.Add("PNT_NUM", nums);
+
+                l2spl_dbf.WriteRecord(rec);
+
+                lines_tosplit_writed++;
+                lines_tosplit_fsize = l2spl_dbf.Length + 204;
+
+                Progress(0.99f, true);
+            };            
+
+            l2spl_dbf.Close();
         }
 
         private void CheckFilesFull()
@@ -1506,7 +1588,7 @@ namespace OSM2SHP
                     if ((((proc & 1) == 0x01) && (nodes.Count > 1)) || (((proc & 2) == 0x02) && (nodes.Count > 2)))
                     {
                         NodesXYIndex.IdLatLon[] vector = null;
-                        try { vector = nodes_ndi.GetNodes(nodes.ToArray(), false); } catch { };
+                        try { vector = nodes_ndi.GetNodes(nodes.ToArray(), false, 0); } catch { };
                         if (vector != null)
                         {
                             rel._points = vector;
@@ -1668,7 +1750,7 @@ namespace OSM2SHP
             {
                 if (vector == null)
                 {
-                    try { vector = nodes_ndi.GetNodes(way.NodeDefs, true); }
+                    try { vector = nodes_ndi.GetNodes(way.NodeDefs, true, way.id); }
                     catch { };
                 };
 
@@ -1696,7 +1778,7 @@ namespace OSM2SHP
             {
                 if (vector == null)
                 {
-                    try { vector = nodes_ndi.GetNodes(way.NodeDefs, false); } catch { };
+                    try { vector = nodes_ndi.GetNodes(way.NodeDefs, false, 0); } catch { };
                 };
 
                 if (vector != null)
@@ -1723,7 +1805,7 @@ namespace OSM2SHP
                 try
                 {
                     if(vector == null)
-                        vector = nodes_ndi.GetNodes(way.NodeDefs, false);
+                        vector = nodes_ndi.GetNodes(way.NodeDefs, false, 0);
                     for (int i = 0; i < vector.Length; i++)
                         points.Add(new PointF((float)vector[i].lon, (float)vector[i].lat));
                 }
@@ -3080,6 +3162,17 @@ namespace OSM2SHP
         
         public struct LatLonLCo
         {
+            public struct InLine
+            {
+                public long line;
+                public int number;
+                public InLine(long line, int number)
+                {
+                    this.line = line;
+                    this.number = number;
+                }
+            }
+
             public double lat;
             public double lon;
             public byte lco;
@@ -3088,12 +3181,34 @@ namespace OSM2SHP
                 this.lat = lat;
                 this.lon = lon;
                 this.lco = 0;
+                this.inline = null;
             }
             public LatLonLCo(double lat, double lon, byte lco)
             {
                 this.lat = lat;
                 this.lon = lon;
                 this.lco = lco;
+                this.inline = null;
+            }
+
+            public InLine[] inline;
+            public void AddInline(long line, int number)
+            {
+                List<InLine> tmp = new List<InLine>();
+                if (this.inline != null) tmp.AddRange(this.inline);
+                tmp.Add(new InLine(line, number));
+                inline = tmp.ToArray();
+            }
+            public string GetLines()
+            {
+                if (this.inline == null) return "";
+                string res = "";
+                foreach (InLine inl in this.inline)
+                    res += (res.Length > 0 ? ";" : "") + String.Format("{0}[{1}]", inl.line, inl.number);
+                if (res.Length <= 250)
+                    return res;
+                else
+                    return res.Substring(0, 250);
             }
         }
 
@@ -3126,7 +3241,7 @@ namespace OSM2SHP
             }
         }
 
-        public IdLatLon[] GetNodes(long[] nodes, bool update_lco)
+        public IdLatLon[] GetNodes(long[] nodes, bool update_lco, long update_id)
         {
             if (inMemory)
             {
@@ -3147,7 +3262,8 @@ namespace OSM2SHP
                             else // middle
                             {
                                 if (md < 0xF0) lll.lco += 0x10;
-                            };
+                                if (update_id >= 0) lll.AddInline(update_id, i);
+                            };                            
                             dict[nodes[i]] = lll;
                         };
                         res[i] = new IdLatLon(nodes[i], lll);
@@ -3214,6 +3330,39 @@ namespace OSM2SHP
                 str.Close();
                 str = null;
             };
+        }
+
+        public Dictionary<long, int[]> DictAsLinesToSplit()
+        {
+            Dictionary<long, int[]> res = new Dictionary<long, int[]>();
+            if (dict == null) return res;
+            if (dict.Count == 0) return res;
+            foreach (KeyValuePair<long, LatLonLCo> d in dict)
+            {
+                if (d.Value.inline == null) continue;
+                if (d.Value.inline.Length == 0) continue;
+
+                byte se = (byte)(d.Value.lco & 0x0F);
+                byte md = (byte)(d.Value.lco & 0xF0);
+                // если число проходящих точек через линию в середине > 1
+                // или если одна линия проходит через середину, а другие нет
+                if ((md > 0x10) || ((md == 0x10) && (se > 0x00)))
+                {
+                    foreach (LatLonLCo.InLine inl in d.Value.inline)
+                    {
+                        if (!res.ContainsKey(inl.line))
+                            res.Add(inl.line, new int[1] { inl.number });
+                        else
+                        {
+                            List<int> inta = new List<int>(res[inl.line]);
+                            inta.Add(inl.number);
+                            inta.Sort();
+                            res[inl.line] = inta.ToArray();
+                        };
+                    };
+                };
+            };
+            return res;
         }
     }
 

@@ -294,6 +294,11 @@ namespace OSM2SHP
             this.Position = hdr_size;
         }
 
+        public long WriteRecord(Dictionary<string, object> record)
+        {
+            return WriteRecord(record, 0, 0, 0, 0);
+        }
+
         public long WriteRecord(Dictionary<string,object> record, sbyte TAGS_fields_used, int MAX_TAGS, int AGGR_TAGS, int str_len)
         {
             long ret_pos = (int)this.Position;
