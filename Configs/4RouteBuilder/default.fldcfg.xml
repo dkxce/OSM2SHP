@@ -34,6 +34,7 @@
   <!--MaxLength>LL</MaxLength-->
   <!--MinDistance>DL</MinDistance-->  
   
+  <OSM.ADDIT.SERVICE desc="service tag">SERVICE</OSM.ADDIT.SERVICE>
   <OSM.ADDIT.JUNCTION desc="junction tag">JUNCTION</OSM.ADDIT.JUNCTION>
   <OSM.ADDIT.LANES desc="lanes tag">LANES</OSM.ADDIT.LANES>
   <OSM.ADDIT.MAXACTUAL desc="maxspeed:practical tag">MAXSPEED_P</OSM.ADDIT.MAXACTUAL>
