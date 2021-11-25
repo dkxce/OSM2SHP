@@ -122,6 +122,7 @@ namespace OSM2SHP
         private CodePageSet _cp = CodePageSet.Default;
         private FieldInfos _FieldInfos = new FieldInfos();
         public CodePageList CodePages = new CodePageList();
+        private bool _tenHeaderMode = true;
 
         private OSMPBFReader.MyBitConverter bc = new OSMPBFReader.MyBitConverter(true);
 
@@ -154,6 +155,8 @@ namespace OSM2SHP
             SetCodePage(dbfCodePage);
             WriteHeader();
         }
+
+        public bool ShortenFieldNameMode { get { return _tenHeaderMode; } set { _tenHeaderMode = value; } }
 
         public byte FieldsCount
         {
@@ -250,7 +253,8 @@ namespace OSM2SHP
                 //
                 buff = fields[i].BName(_cp.Encoding);
                 if (fields[i].GName.Length > 11)
-                    buff[10] = (byte)(0x41 + (mhl++));                
+                    buff[10] = (byte)(0x41 + (mhl++));
+                if(_tenHeaderMode) buff[10] = 0;
                 this.Write(buff, 0, buff.Length);        // 0 - Field Name
                 {
                     for (int b = 0; b < buff.Length; b++)
@@ -545,6 +549,10 @@ namespace OSM2SHP
                     buff = System.Text.Encoding.GetEncoding(1251).GetBytes("R_COUNT > R_SAVED - Вероятнее всего запрет поворота указан не из начала/конца\r\n");
                     fs.Write(buff, 0, buff.Length);
                     buff = System.Text.Encoding.GetEncoding(1251).GetBytes("R_COUNT < R_SAVED - Вероятнее всего линия не была экспортирована (найдена)\r\n");
+                    fs.Write(buff, 0, buff.Length);
+                    buff = System.Text.Encoding.GetEncoding(1251).GetBytes("F.../L... - Из начала (F) или конца (L) в линию WAY_ID\r\n");
+                    fs.Write(buff, 0, buff.Length);
+                    buff = System.Text.Encoding.GetEncoding(1251).GetBytes("T...V... - В (T) линию WAY_ID через (V) точку NODE_ID\r\n");
                     fs.Write(buff, 0, buff.Length);
                     //R_COUNT <> R_SAVED
                 }

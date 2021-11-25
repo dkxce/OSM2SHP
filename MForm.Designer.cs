@@ -187,6 +187,10 @@ namespace OSM2SHP
             "",
             "Сортировать или нет (быстрее) агрегированные теги и в каком порядке приоритета (м" +
                 "едленее)"}, -1, System.Drawing.Color.Empty, System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192))))), null);
+            System.Windows.Forms.ListViewItem listViewItem40 = new System.Windows.Forms.ListViewItem(new string[] {
+            "DBF: Режим совместимости",
+            "Да",
+            "Режим повышенной совместимости DBF файлов (короткие имена полей)"}, -1, System.Drawing.Color.Empty, System.Drawing.Color.LavenderBlush, null);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MForm));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.chvToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -772,7 +776,8 @@ namespace OSM2SHP
             listViewItem36,
             listViewItem37,
             listViewItem38,
-            listViewItem39});
+            listViewItem39,
+            listViewItem40});
             this.props.Location = new System.Drawing.Point(0, 0);
             this.props.MultiSelect = false;
             this.props.Name = "props";

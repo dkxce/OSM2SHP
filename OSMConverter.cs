@@ -10,6 +10,8 @@ namespace OSM2SHP
 {
     public class OSMConverter
     {
+        public const int MAX_FIELD_LENGTH = 250;
+
         public string _osmFile = null;
         public string _dbfFile = null;
         public Config _config = null;
@@ -546,6 +548,7 @@ namespace OSM2SHP
                 linesFLID.Clear();
 
                 points_dbf = new DBFWriter(_dbfp, FileMode.Create, _config.dbfCodePage);
+                points_dbf.ShortenFieldNameMode = _config.dbfMoreCompatible == 1;
                 points_shp = SHPWriter.CreatePointsFile(_shpp);
                 points_shx = SHXWriter.CreatePointsIndex(_shxp);
                 PRJWriter.CreateProjFile(_prjp);
@@ -553,6 +556,7 @@ namespace OSM2SHP
                 if (this.ProcLineSure)
                 {
                     lines_dbf = new DBFWriter(_dbfl, FileMode.Create, _config.dbfCodePage);
+                    lines_dbf.ShortenFieldNameMode = _config.dbfMoreCompatible == 1;
                     lines_shp = SHPWriter.CreateLinesFile(_shpl);
                     lines_shx = SHXWriter.CreateLinesIndex(_shxl);
                     PRJWriter.CreateProjFile(_prjl);
@@ -562,6 +566,7 @@ namespace OSM2SHP
                 if (this.ProcAreaSure)
                 {
                     areas_dbf = new DBFWriter(_dbfa, FileMode.Create, _config.dbfCodePage);
+                    areas_dbf.ShortenFieldNameMode = _config.dbfMoreCompatible == 1;
                     areas_shp = SHPWriter.CreateAreasFile(_shpa);
                     areas_shx = SHXWriter.CreateAreasIndex(_shxa);
                     PRJWriter.CreateProjFile(_prja);
@@ -570,11 +575,14 @@ namespace OSM2SHP
                 if (this.ProcRelsSure)
                 {
                     relat_dbf = new DBFWriter(_relat, FileMode.Create, _config.dbfCodePage);
+                    relat_dbf.ShortenFieldNameMode = _config.dbfMoreCompatible == 1;
                     relam_dbf = new DBFWriter(_relam, FileMode.Create, _config.dbfCodePage);
+                    relam_dbf.ShortenFieldNameMode = _config.dbfMoreCompatible == 1;
                 };
                 if(this.ProcJoins)
                 {
                     relaj_dbf = new DBFWriter(_relaj, FileMode.Create, _config.dbfCodePage);
+                    relaj_dbf.ShortenFieldNameMode = _config.dbfMoreCompatible == 1;
                 };
             }
             catch (Exception ex)
@@ -735,6 +743,7 @@ namespace OSM2SHP
             if (nodes_ndi.Length == 0) return;
 
             DBFWriter nodes_dbf = new DBFWriter(fileName + ".dbf", FileMode.Create, _config.dbfCodePage);
+            nodes_dbf.ShortenFieldNameMode = _config.dbfMoreCompatible == 1;
             SHPWriter nodes_shp = SHPWriter.CreatePointsFile(fileName + ".shp");
             SHXWriter nodes_shx = SHXWriter.CreatePointsIndex(fileName + ".shx");
             PRJWriter.CreateProjFile(fileName + ".prj");
@@ -747,7 +756,7 @@ namespace OSM2SHP
             nodes_fieldswr = 4;
             if (nodes_ndi.InMemory)
             {
-                fields.Add("MLINES", 250, 'C');
+                fields.Add("MLINES", MAX_FIELD_LENGTH, 'C');
                 nodes_fieldswr++;
             };
             nodes_dbf.WriteHeader(fields);
@@ -774,7 +783,8 @@ namespace OSM2SHP
                     byte md = (byte)(el.Value.lco & 0xF0);
                     // если число проходящих точек через линию в середине > 1
                     // или если одна линия проходит через середину, а другие нет
-                    if ((md > 0x10) || ((md == 0x10) && (se > 0x00)))
+                    //if ((md > 0x10) || ((md == 0x10) && (se > 0x00)))
+                    if (md > 0x00) // если только одна линия через середину - возможен запрет разворота
                     {
                         byte lco = (byte)(se + (md >> 4));
                         byte mlco = (byte)(md >> 4);
@@ -812,7 +822,8 @@ namespace OSM2SHP
                     // 11110000 - если точка не является началом или концом линии (до 15 линий)
                     byte se = (byte)(buff[24] & 0x0F);
                     byte md = (byte)(buff[24] & 0xF0);
-                    if ((md > 0x10) || ((md == 0x10) && (se > 0x00)))
+                    //if ((md > 0x10) || ((md == 0x10) && (se > 0x00)))
+                    if (md > 0x00) // если только одна линия через середину - возможен запрет разворота
                     {
                         byte lco = (byte)(se + (md >> 4));
                         byte mlco = (byte)(md >> 4);
@@ -850,12 +861,13 @@ namespace OSM2SHP
             if (dal2s.Count == 0) return;
 
             DBFWriter l2spl_dbf = new DBFWriter(fileName + ".dbf", FileMode.Create, _config.dbfCodePage);
+            l2spl_dbf.ShortenFieldNameMode = _config.dbfMoreCompatible == 1;
             
             FieldInfos fields = new FieldInfos();
             fields.Add("INDEX",   012, 'N');
             fields.Add("LINE_ID", 018, 'N');
             fields.Add("SPLITCO", 004, 'N');
-            fields.Add("PNT_NUM", 250, 'C');
+            fields.Add("PNT_NUM", MAX_FIELD_LENGTH, 'C');
             l2spl_dbf.WriteHeader(fields);
 
             lines_tosplit_writed = 0;
@@ -911,6 +923,7 @@ namespace OSM2SHP
                 files_points_wrtc.Add(0);
                 files_points_sizes.Add(0);
                 points_dbf = new DBFWriter(_dbff, FileMode.Create, _config.dbfCodePage);
+                points_dbf.ShortenFieldNameMode = _config.dbfMoreCompatible == 1;
                 points_shp = SHPWriter.CreatePointsFile(_shpf);
                 points_shx = SHXWriter.CreatePointsIndex(_shxf);
                 PRJWriter.CreateProjFile(_prjf);
@@ -935,6 +948,7 @@ namespace OSM2SHP
                     files_lines_wrtc.Add(0);
                     files_lines_sizes.Add(0);
                     lines_dbf = new DBFWriter(_dbfl, FileMode.Create, _config.dbfCodePage);
+                    lines_dbf.ShortenFieldNameMode = _config.dbfMoreCompatible == 1;
                     lines_shp = SHPWriter.CreateLinesFile(_shpl);
                     lines_shx = SHXWriter.CreateLinesIndex(_shxl);
                     PRJWriter.CreateProjFile(_prjl);
@@ -959,6 +973,7 @@ namespace OSM2SHP
                     files_areas_wrtc.Add(0);
                     files_areas_sizes.Add(0);
                     areas_dbf = new DBFWriter(_dbfa, FileMode.Create, _config.dbfCodePage);
+                    areas_dbf.ShortenFieldNameMode = _config.dbfMoreCompatible == 1;
                     areas_shp = SHPWriter.CreateAreasFile(_shpa);
                     areas_shx = SHXWriter.CreateAreasIndex(_shxa);
                     PRJWriter.CreateProjFile(_prja);
@@ -982,7 +997,9 @@ namespace OSM2SHP
                     files_relations_wrt_mc.Add(0);
                     files_relations_sizes.Add(0);
                     relat_dbf = new DBFWriter(_relat, FileMode.Create, _config.dbfCodePage);
+                    relat_dbf.ShortenFieldNameMode = _config.dbfMoreCompatible == 1;
                     relam_dbf = new DBFWriter(_relam, FileMode.Create, _config.dbfCodePage);
+                    relam_dbf.ShortenFieldNameMode = _config.dbfMoreCompatible == 1;
                     WriteRelationsHeaders(_config.dbfDopFields.ToArray());
                     WriteRelMemsHeaders(_config.dbfDopFields.ToArray());
                     files_relations_sizes[files_relations_wrt_rc.Count - 1] = relat_dbf.Length + relam_dbf.Length;
@@ -1005,6 +1022,7 @@ namespace OSM2SHP
                     files_joins_wrtER.Add(0);
                     files_joins_sizes.Add(0);
                     relaj_dbf = new DBFWriter(_relaj, FileMode.Create, _config.dbfCodePage);
+                    relaj_dbf.ShortenFieldNameMode = _config.dbfMoreCompatible == 1;
                     WriteJoinsHeaders();
                     files_joins_sizes[files_joins_wrtl.Count - 1] = relaj_dbf.Length;
                 };
@@ -1091,7 +1109,7 @@ namespace OSM2SHP
             if ((_config.selector == 9) || (_config.selector == 10) || (_config.selector == 11) || (_config.selector == 12) || (_config.selector == 13))
             {
                 for (int i = 1; i <= _config.maxAggTags; i++)
-                    fields.Add("TAGS_" + i.ToString(), 250, 'C');
+                    fields.Add("TAGS_" + i.ToString(), MAX_FIELD_LENGTH, 'C');
             };
             
             if((dop_fields != null) && (dop_fields.Length > 0))
@@ -1104,7 +1122,7 @@ namespace OSM2SHP
                         fields.Add(fn, byte.Parse(ln), 'C');
                     }
                     else
-                        fields.Add(str, 250, 'C');
+                        fields.Add(str, MAX_FIELD_LENGTH, 'C');
                 };
 
             // Write Header Info
@@ -1195,7 +1213,7 @@ namespace OSM2SHP
             if ((_config.selector == 9) || (_config.selector == 10) || (_config.selector == 11) || (_config.selector == 12) || (_config.selector == 13))
             {
                 for (int i = 1; i <= _config.maxAggTags; i++)
-                    fields.Add("TAGS_" + i.ToString(), 250, 'C');
+                    fields.Add("TAGS_" + i.ToString(), MAX_FIELD_LENGTH, 'C');
             };
 
             if ((dop_fields != null) && (dop_fields.Length > 0))
@@ -1208,7 +1226,7 @@ namespace OSM2SHP
                         fields.Add(fn, byte.Parse(ln), 'C');
                     }
                     else
-                        fields.Add(str, 250, 'C');
+                        fields.Add(str, MAX_FIELD_LENGTH, 'C');
                 };
 
             // Write Header Info
@@ -1292,7 +1310,7 @@ namespace OSM2SHP
             if ((_config.selector == 9) || (_config.selector == 10) || (_config.selector == 11) || (_config.selector == 12) || (_config.selector == 13))
             {
                 for (int i = 1; i <= _config.maxAggTags; i++)
-                    fields.Add("TAGS_" + i.ToString(), 250, 'C');
+                    fields.Add("TAGS_" + i.ToString(), MAX_FIELD_LENGTH, 'C');
             };
 
             if ((dop_fields != null) && (dop_fields.Length > 0))
@@ -1305,7 +1323,7 @@ namespace OSM2SHP
                         fields.Add(fn, byte.Parse(ln), 'C');
                     }
                     else
-                        fields.Add(str, 250, 'C');
+                        fields.Add(str, MAX_FIELD_LENGTH, 'C');
                 };
 
             // Write Header Info
@@ -1389,7 +1407,7 @@ namespace OSM2SHP
             if ((_config.selector == 9) || (_config.selector == 10) || (_config.selector == 11) || (_config.selector == 12) || (_config.selector == 13))
             {
                 for (int i = 1; i <= _config.maxAggTags; i++)
-                    fields.Add("TAGS_" + i.ToString(), 250, 'C');
+                    fields.Add("TAGS_" + i.ToString(), MAX_FIELD_LENGTH, 'C');
             };
 
             if ((dop_fields != null) && (dop_fields.Length > 0))
@@ -1402,7 +1420,7 @@ namespace OSM2SHP
                         fields.Add(fn, byte.Parse(ln), 'C');
                     }
                     else
-                        fields.Add(str, 250, 'C');
+                        fields.Add(str, MAX_FIELD_LENGTH, 'C');
                 };
 
             // Write Header Info
@@ -1433,8 +1451,8 @@ namespace OSM2SHP
             fields.Add("R_SAVED", 002, 'N'); // 2
             if (_config.addFisrtAndLastNodesLns2Memory)
                 fields.Add("R_VALID", 001, 'L'); // 1
-            fields.Add("FL", 250, 'C');
-            fields.Add("TV", 250, 'C'); // 535 bytes // 4 012 000 records
+            fields.Add("FL", MAX_FIELD_LENGTH, 'C');
+            fields.Add("TV", MAX_FIELD_LENGTH, 'C'); // 535 bytes // 4 012 000 records
 
             relaj_dbf.WriteHeader(fields);
         }        
@@ -1973,7 +1991,7 @@ namespace OSM2SHP
 
                 if (tag_i > _config.maxAggTags) continue;
 
-                if ((tags[tag_i].Length + tnv.Length) > 250)
+                if ((tags[tag_i].Length + tnv.Length) > MAX_FIELD_LENGTH)
                 {
                     tag_i++;
                     if (tag_i > _config.maxAggTags)
@@ -2070,7 +2088,7 @@ namespace OSM2SHP
 
                 if (tag_i > _config.maxAggTags) continue;
 
-                if ((tags[tag_i].Length + tnv.Length) > 250)
+                if ((tags[tag_i].Length + tnv.Length) > MAX_FIELD_LENGTH)
                 {
                     tag_i++;
                     if (tag_i > _config.maxAggTags)
@@ -2166,7 +2184,7 @@ namespace OSM2SHP
 
                     if (tag_i > _config.maxAggTags) continue;
 
-                    if ((tags[tag_i].Length + tnv.Length) > 250)
+                    if ((tags[tag_i].Length + tnv.Length) > MAX_FIELD_LENGTH)
                     {
                         tag_i++;
                         if (tag_i > _config.maxAggTags)
@@ -2258,22 +2276,40 @@ namespace OSM2SHP
             int toFLAdd = 0;
             if (_config.addFisrtAndLastNodesLns2Memory && linesFLID.ContainsKey(fline))
             {
+                string fl = "";
                 if (linesFLID[fline].f == via)
                 {
-                    rec.Add("FL", "F" + tline.ToString());
-                    toFLAdd = 1;
+                    fl += (fl.Length > 0 ? ";" : "") + "F" + tline.ToString();
+                    toFLAdd++;
                     valid = true;
                 };
                 if (linesFLID[fline].l == via)
                 {
-                    rec.Add("FL", "L" + tline.ToString());
-                    toFLAdd = 1;
+                    fl += (fl.Length > 0 ? ";" : "") + "L" + tline.ToString();
+                    toFLAdd++;
                     valid = true;
                 };
-                if (toFLAdd == 0)
+                if (toFLAdd == 0) // check middle //
                 {
-                    valid = false;
+                    NodesXYIndex.LatLonLCo llco;
+                    if ((nodes_ndi.Dict.Count > 0) && nodes_ndi.Dict.ContainsKey(via) && ((llco = nodes_ndi.Dict[via]).inline != null))
+                    {
+                        foreach (NodesXYIndex.LatLonLCo.InLine inl in llco.inline)
+                        {
+                            if (inl.line == fline)
+                            {
+                                // M....[..] == Middle WAY_ID [PointNum]; where PointNumber is zero-indexed
+                                fl += (fl.Length > 0 ? ";" : "") + "M" + tline.ToString() + "[" + inl.number.ToString() + "]";
+                                toFLAdd++;
+                                valid = true;
+                            };
+                        };
+                    };                    
                 };
+                if (toFLAdd == 0)
+                    valid = false;
+                else
+                    rec.Add("FL", fl);
             }
             else
             {
@@ -2558,7 +2594,7 @@ namespace OSM2SHP
 
                 if (tag_i > _config.maxAggTags) continue;
 
-                if ((tags[tag_i].Length + tnv.Length) > 250)
+                if ((tags[tag_i].Length + tnv.Length) > MAX_FIELD_LENGTH)
                 {
                     tag_i++;
                     if (tag_i > _config.maxAggTags)
@@ -3199,16 +3235,17 @@ namespace OSM2SHP
                 tmp.Add(new InLine(line, number));
                 inline = tmp.ToArray();
             }
+
             public string GetLines()
             {
                 if (this.inline == null) return "";
                 string res = "";
                 foreach (InLine inl in this.inline)
                     res += (res.Length > 0 ? ";" : "") + String.Format("{0}[{1}]", inl.line, inl.number);
-                if (res.Length <= 250)
+                if (res.Length <= OSMConverter.MAX_FIELD_LENGTH)
                     return res;
                 else
-                    return res.Substring(0, 250);
+                    return res.Substring(0, OSMConverter.MAX_FIELD_LENGTH);
             }
         }
 
@@ -3346,7 +3383,8 @@ namespace OSM2SHP
                 byte md = (byte)(d.Value.lco & 0xF0);
                 // если число проходящих точек через линию в середине > 1
                 // или если одна линия проходит через середину, а другие нет
-                if ((md > 0x10) || ((md == 0x10) && (se > 0x00)))
+                //if ((md > 0x10) || ((md == 0x10) && (se > 0x00)))
+                if (md > 0x00) // если только одна линия через середину - возможен запрет разворота
                 {
                     foreach (LatLonLCo.InLine inl in d.Value.inline)
                     {

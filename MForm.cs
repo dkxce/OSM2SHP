@@ -258,6 +258,7 @@ namespace OSM2SHP
             props.Items[36].SubItems[1].Text = config.addFisrtAndLastNodesLns2Memory ? "Да" : "";
             props.Items[37].SubItems[1].Text = config.saveLineNodesShape ? "Да" : "";
             props.Items[38].SubItems[1].Text = String.IsNullOrEmpty(config.sortAggTagsPriority) ? "" : config.sortAggTagsPriority;
+            props.Items[39].SubItems[1].Text = config.dbfMoreCompatible != 2 ? "Да" : "Нет";
             
             if (!String.IsNullOrEmpty(config.scriptFilter))
                 props.Items[19].SubItems[1].Text = config.scriptFilter.Split(new string[] { "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries)[0];
@@ -2268,6 +2269,34 @@ namespace OSM2SHP
                         config.sortAggTagsPriority = "";
                 };
                 props.Items[38].SubItems[1].Text = config.sortAggTagsPriority;                
+            };
+            ////
+            if (index == 39)
+            {
+                string[] options = new string[] { "Да", "Нет" };
+                if (mode == 2)
+                {
+                    config.dbfMoreCompatible = 1;
+                }
+                else if (mode == 0)
+                {
+                    System.Windows.Forms.InputBox.defWidth = 182;
+                    int val = config.dbfMoreCompatible == 2 ? 1 : 0;
+                    if (InputBox.Show("DBF:", "Режим повышенной совместимости DBF файлов (короткие имена полей):", options, ref val) == DialogResult.OK)
+                    {
+                        config.dbfMoreCompatible = (byte) (1 + val);
+                        props.Items[39].SubItems[1].Text = config.dbfMoreCompatible != 2 ? "Да" : "Нет";
+                    };
+                    System.Windows.Forms.InputBox.defWidth = 310;
+                }
+                else
+                {
+                    if (config.dbfMoreCompatible == 2)
+                        config.dbfMoreCompatible = 1;
+                    else
+                        config.dbfMoreCompatible = 2;
+                };
+                props.Items[39].SubItems[1].Text = config.dbfMoreCompatible != 2 ? "Да" : "Нет";                
             };
             //////////////////////////////
             //////////////////////////////
