@@ -1,0 +1,120 @@
+[POI]
+
+SELECTOR       = 5
+ONLY_W/NAME    = True
+MAIN_FIELDS    = CHANGESET,TIMESTAMP,TAGS_COUNT,TAGS_ADDRC,LABEL
+ELSE_FIELDS    = X[15],Y[15],name:ru,amenity[100],building[50],highway[50],historic[50],leisure[100],place[100],power[100],railway[100],ruins[100],shop[100],tourism,website
+SCRIPT         =
+if(infoType == 1)
+{
+  ni.tags.Add("X", ni.lon.ToString(System.Globalization.CultureInfo.InvariantCulture)); 
+  ni.tags.Add("Y", ni.lat.ToString(System.Globalization.CultureInfo.InvariantCulture)); 
+};
+return true;
+
+[POINTS] -- ADDRESSES
+
+SELECTOR       = 11 or 12
+ONLY_W/ADDR    = ? True ?
+MAIN_FIELDS    = CHANGESET,TIMESTAMP,TAGS_COUNT,TAGS_ADDRC,LABEL
+ELSE_FIELDS    = X[15],Y[15],name:ru,abandoned[100],amenity[100],building[50],building:levels[10],highway[50],landuse[100],leisure[100],man_made[100],military[100],place[100],power[100],railway[100],ruins[100],shop[100],tourism,website
+TAGS_X Format  = {k}={v}; 
+TAGS_X Count   = 4
+CODEPAGE       = Windows-1251
+AGGR           = (.*(?<!addr:[\w-]+:\w{2,3}|addr:[\w-]+:\w{2,3}-[\w-]+|name:\w{2,3}|name:\w{2,3}-[\w-]+)$)|((:ru|:ru-[\w-]+|:en|:en-[\w-]+|:ge|:ge-[\w-]+)$)
+TYPES_AS_LINE  = route,waterway,network,pipeline,power
+TYPES_AS_AREA  = area
+SORT           = area,building,highway,amenity,nature,place,addr,addr:ru,name,name:ru,addr:*,name:*
+AGGREGATE      = (^(?!name|abandoned:{0}$|amenity:{0}$|building:{0}$|highway:{0}$|landuse:{0}$|leisure:{0}$|man_made:{0}$|military:{0}$|place:{0}$|power:{0}$|railway:{0}$|ruins:{0}$|shop:{0}$|tourism:{0}$|wiki|wreck|source|website).*(?<!addr:[\w-]+:\w{2,3}|addr:[\w-]+:\w{2,3}-[\w-]+|name:\w{2,3}|name:\w{2,3}-[\w-]+)$)|((:ru|:ru-[\w-]+|:en|:en-[\w-]+|:ge|:ge-[\w-]+)$)
+
+[LINES]
+
+SELECTOR       = 11 or 12
+ONLY_W/TAGS    = bridge,foot,highway,maxspeed,oneway,railway,tunnel
+MAIN_FIELDS    = CHANGESET,TIMESTAMP,TAGS_COUNT,TAGS_ADDRC,LABEL
+ELSE_FIELDS    = name:ru,access[100],barrier[100],bicycle[50],bridge[50],embankment[50],foot[50],footway[50],highway[50],horse[50],man_made[100],maxspeed[30],natural[100],oneway[30],power[100],railway[100],surface[100],tunnel[30],waterway[50]
+TAGS_X Count   = 4
+CODEPAGE       = Windows-1251
+AGGR           = (.*(?<!addr:[\w-]+:\w{2,3}|addr:[\w-]+:\w{2,3}-[\w-]+|name:\w{2,3}|name:\w{2,3}-[\w-]+)$)|((:ru|:ru-[\w-]+|:en|:en-[\w-]+|:ge|:ge-[\w-]+)$)
+TYPES_AS_LINE  = route,waterway,network,pipeline,power
+TYPES_AS_AREA  = area
+SORT           = area,building,highway,amenity,nature,place,addr,addr:ru,name,name:ru,addr:*,name:*
+AGGREGATE      = (^(?!name|access:{0}$|barrier:{0}$|bicycle:{0}$|bridge:{0}$|embankment:{0}$|foot:{0}$|footway:{0}$|highway:{0}$|horse:{0}$|man_made:{0}$|maxspeed:{0}$|natural:{0}$|oneway:{0}$|power:{0}$|railway:{0}$|surface:{0}$|tunnel:{0}$|waterway:{0}$|wiki|wreck|source|website).*(?<!addr:[\w-]+:\w{2,3}|addr:[\w-]+:\w{2,3}-[\w-]+|name:\w{2,3}|name:\w{2,3}-[\w-]+)$)|((:ru|:ru-[\w-]+|:en|:en-[\w-]+|:ge|:ge-[\w-]+)$)
+
+[AREAS] -- BUILDINGS
+
+SELECTOR       = 10
+ONLY_W/TAGS    = amenity,building,landuse,leisure,natural,place,shop,surface,tourism
+MAIN_FIELDS    = CHANGESET,TIMESTAMP,TAGS_COUNT,TAGS_ADDRC,LABEL
+ELSE_FIELDS    = name:ru,abandoned[100],amenity[100],building[50],building:levels[10],highway[50],historic[50],landuse[100],leisure[100],man_made[100],military[100],natural[100],place[100],power[100],ruins[100],shop[100],sport[100],surface[100],tourism,water[50],waterway[50]
+TAGS_X Count   = 4
+CODEPAGE       = Windows-1251
+AGGR           = (.*(?<!addr:[\w-]+:\w{2,3}|addr:[\w-]+:\w{2,3}-[\w-]+|name:\w{2,3}|name:\w{2,3}-[\w-]+)$)|((:ru|:ru-[\w-]+|:en|:en-[\w-]+|:ge|:ge-[\w-]+)$)
+TYPES_AS_LINE  = route,waterway,network,pipeline,power
+TYPES_AS_AREA  = area
+SORT           = area,building,highway,amenity,nature,place,addr,addr:ru,name,name:ru,addr:*,name:*
+AGGREGATE      = (^(?!name|abandoned:{0}$|amenity:{0}$|building:{0}$|historic:{0}$|highway:{0}$|landuse:{0}$|leisure:{0}$|man_made:{0}$|military:{0}$|natural:{0}$|place:{0}$|power:{0}$|ruins:{0}$|shop:{0}$|sport:{0}$|surface:{0}$|tourism:{0}$|water:{0}$|waterway:{0}$|wiki|wreck|source|website).*(?<!addr:[\w-]+:\w{2,3}|addr:[\w-]+:\w{2,3}-[\w-]+|name:\w{2,3}|name:\w{2,3}-[\w-]+)$)|((:ru|:ru-[\w-]+|:en|:en-[\w-]+|:ge|:ge-[\w-]+)$)
+
+[***CONDITIONS***]
+if (infoType == 1) return false; // Del if Nodes
+if (infoType == 1)
+{
+	ni.tags.Add("X", ni.lon.ToString(System.Globalization.CultureInfo.InvariantCulture)); 
+    ni.tags.Add("Y", ni.lat.ToString(System.Globalization.CultureInfo.InvariantCulture)); 
+};
+if ((infoType == 1) && (ti.TagsCount == 1))
+{
+	if (ti["source"] == "PGS") return false;
+	if (ti["source"] == "GPS") return false;
+	if (ti["natural"] == "tree") return false;
+	if (ti["FIXME"] == "continue?") return false;
+	if (ti["railway"] == "level_crossing") return false;
+	if (ti["railway"] == "crossing") return false;
+	if (ti["railway"] == "switch") return false;
+	if (ti["railway"] == "buffer_stop") return false;
+	if (ti["power"] == "pole") return false;
+	if (ti["power"] == "tower") return false;
+	if (ti["power"] == "portal") return false;
+	if (ti["power"] == "transformer") return false;
+	if (ti["natural"] == "rock") return false;
+	if (ti["highway"] == "crossing") return false;
+	if (ti["traffic_calming"] == "bump") return false;
+	if (ti["created_by"] == "OSM") return false;
+	if (ti["created_by"] == "JOSM") return false;
+};
+if (infoType == 2) return false; // Del if Ways
+if ((infoType == 2) && (ti.TagsCount == 0)) return false;
+if ((infoType == 2) && (ti.TagsCount > 0) && (ti["visible"] == "no")) return false;
+if ((infoType == 2) && (ti.PointsCount < 2)) return false;
+if ((infoType == 2) && (ti.TagsCount == 1))
+{
+	if ((ti["barrier"] != null) && (ti.PointsCount < 3)) return false;
+	if (ti["barrier"] == "block") return false;	
+	if (ti["barrier"] == "chain") return false;	
+	if (ti["barrier"] == "wall") return false;	
+	if (ti["barrier"] == "fence") return false;	
+	if (ti["barrier"] == "wire_fence") return false;	
+	if (ti["barrier"] == "curb") return false;	
+	if (ti["barrier"] == "kerb") return false;	
+	if (ti["barrier"] == "city_wall") return false;	
+	if (ti["barrier"] == "retaining_wall") return false;	
+	if (ti["barrier"] == "ditch") return false;	
+	if (ti["barrier"] == "hedge") return false;	
+	if (ti["barrier"] == "bollard") return false;	
+	if (ti["barrier"] == "handrail") return false;	
+	if (ti["barrier"] == "jersey_barrier") return false;	
+	if (ti["barrier"] == "hand_rail") return false;	
+	if ((ti["military"] != null) && (ti.PointsCount < 3)) return false;
+	if (ti["military"] == "trench") return false;	
+	if ((ti["historic"] != null) && (ti.PointsCount < 3)) return false;
+	if (ti["historic"] == "panzer_moat") return false;	
+	if (ti["historic"] == "earthworks") return false;	
+	if (ti["historic"] == "trench") return false;	
+	if (ti["covered"] == "yes") return false;	
+	if (ti["indefinite"] == "yes") return false;
+	if ((ti["climbing"] != null) && (ti.PointsCount == 2)) return false;
+	if (ti["climbing"] == "route") return false;	
+	if (ti["fixme"] != null) return false;	
+};
+if (infoType == 3) return false; // Del if Relations
+return true;

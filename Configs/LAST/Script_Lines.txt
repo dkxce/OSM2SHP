@@ -1,0 +1,35 @@
+if (infoType == 1) return false;
+if ((infoType == 2) && (ti.TagsCount == 0)) return false;
+if ((infoType == 2) && (ti.TagsCount > 0) && (ti["visible"] == "no")) return false;
+if ((infoType == 2) && (ti.PointsCount < 2)) return false;
+if ((infoType == 2) && (ti.TagsCount == 1))
+{
+    if ((ti["barrier"] != null) && (ti.PointsCount < 3)) return false;
+    if (ti["barrier"] == "block") return false; 
+    if (ti["barrier"] == "chain") return false; 
+    if (ti["barrier"] == "wall") return false;  
+    if (ti["barrier"] == "fence") return false; 
+    if (ti["barrier"] == "wire_fence") return false;    
+    if (ti["barrier"] == "curb") return false;  
+    if (ti["barrier"] == "kerb") return false;  
+    if (ti["barrier"] == "city_wall") return false; 
+    if (ti["barrier"] == "retaining_wall") return false;    
+    if (ti["barrier"] == "ditch") return false; 
+    if (ti["barrier"] == "hedge") return false; 
+    if (ti["barrier"] == "bollard") return false;   
+    if (ti["barrier"] == "handrail") return false;  
+    if (ti["barrier"] == "jersey_barrier") return false;    
+    if (ti["barrier"] == "hand_rail") return false; 
+    if ((ti["military"] != null) && (ti.PointsCount < 3)) return false;
+    if (ti["military"] == "trench") return false;   
+    if ((ti["historic"] != null) && (ti.PointsCount < 3)) return false;
+    if (ti["historic"] == "panzer_moat") return false;  
+    if (ti["historic"] == "earthworks") return false;    
+    if (ti["historic"] == "trench") return false;   
+    if (ti["covered"] == "yes") return false;   
+    if (ti["indefinite"] == "yes") return false;
+    if ((ti["climbing"] != null) && (ti.PointsCount == 2)) return false;
+    if (ti["climbing"] == "route") return false;    
+    if (ti["fixme"] != null) return false;  
+};
+return true;

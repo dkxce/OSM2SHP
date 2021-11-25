@@ -1,0 +1,6 @@
+if(infoType == 1)
+{
+  ni.tags.Add("X", ni.lon.ToString(System.Globalization.CultureInfo.InvariantCulture)); 
+  ni.tags.Add("Y", ni.lat.ToString(System.Globalization.CultureInfo.InvariantCulture)); 
+};
+return true;

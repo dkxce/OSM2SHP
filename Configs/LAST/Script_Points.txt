@@ -1,0 +1,26 @@
+if (infoType == 1)
+{
+    ni.tags.Add("X", ni.lon.ToString(System.Globalization.CultureInfo.InvariantCulture)); 
+    ni.tags.Add("Y", ni.lat.ToString(System.Globalization.CultureInfo.InvariantCulture)); 
+};
+if ((infoType == 1) && (ti.TagsCount == 1))
+{
+    if (ti["source"] == "PGS") return false;
+    if (ti["source"] == "GPS") return false;
+    if (ti["natural"] == "tree") return false;
+    if (ti["FIXME"] == "continue?") return false;
+    if (ti["railway"] == "level_crossing") return false;
+    if (ti["railway"] == "crossing") return false;
+    if (ti["railway"] == "switch") return false;
+    if (ti["railway"] == "buffer_stop") return false;
+    if (ti["power"] == "pole") return false;
+    if (ti["power"] == "tower") return false;
+    if (ti["power"] == "portal") return false;
+    if (ti["power"] == "transformer") return false;
+    if (ti["natural"] == "rock") return false;
+    if (ti["highway"] == "crossing") return false;
+    if (ti["traffic_calming"] == "bump") return false;
+    if (ti["created_by"] == "OSM") return false;
+    if (ti["created_by"] == "JOSM") return false;
+};
+return true;
