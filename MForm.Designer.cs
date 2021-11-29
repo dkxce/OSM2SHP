@@ -191,6 +191,10 @@ namespace OSM2SHP
             "DBF: Режим совместимости",
             "Да",
             "Режим повышенной совместимости DBF файлов (короткие имена полей)"}, -1, System.Drawing.Color.Empty, System.Drawing.Color.LavenderBlush, null);
+            System.Windows.Forms.ListViewItem listViewItem41 = new System.Windows.Forms.ListViewItem(new string[] {
+            "ToDo: AfterScript",
+            "",
+            "Выполнение командного файла (скрипта) после завершения конвертации"}, -1, System.Drawing.Color.Empty, System.Drawing.Color.YellowGreen, null);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MForm));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.chvToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -202,6 +206,7 @@ namespace OSM2SHP
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nEWToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.StdConfigItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newFromTemplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem14 = new System.Windows.Forms.ToolStripSeparator();
             this.recentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem15 = new System.Windows.Forms.ToolStripSeparator();
@@ -332,6 +337,7 @@ namespace OSM2SHP
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.nEWToolStripMenuItem,
             this.StdConfigItem,
+            this.newFromTemplateToolStripMenuItem,
             this.toolStripMenuItem14,
             this.recentToolStripMenuItem,
             this.toolStripMenuItem15,
@@ -362,6 +368,12 @@ namespace OSM2SHP
             this.StdConfigItem.Size = new System.Drawing.Size(372, 22);
             this.StdConfigItem.Text = "Новая адресно-маршрутная конфигурация";
             this.StdConfigItem.Click += new System.EventHandler(this.StdConfigItem_Click);
+            // 
+            // newFromTemplateToolStripMenuItem
+            // 
+            this.newFromTemplateToolStripMenuItem.Name = "newFromTemplateToolStripMenuItem";
+            this.newFromTemplateToolStripMenuItem.Size = new System.Drawing.Size(372, 22);
+            this.newFromTemplateToolStripMenuItem.Text = "Новая конфигурация из шаблона ...";
             // 
             // toolStripMenuItem14
             // 
@@ -777,7 +789,8 @@ namespace OSM2SHP
             listViewItem37,
             listViewItem38,
             listViewItem39,
-            listViewItem40});
+            listViewItem40,
+            listViewItem41});
             this.props.Location = new System.Drawing.Point(0, 0);
             this.props.MultiSelect = false;
             this.props.Name = "props";
@@ -915,6 +928,7 @@ namespace OSM2SHP
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem14;
         private System.Windows.Forms.ToolStripMenuItem recentToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem15;
+        private System.Windows.Forms.ToolStripMenuItem newFromTemplateToolStripMenuItem;
     }
 }
 

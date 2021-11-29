@@ -259,6 +259,7 @@ namespace OSM2SHP
             props.Items[37].SubItems[1].Text = config.saveLineNodesShape ? "Да" : "";
             props.Items[38].SubItems[1].Text = String.IsNullOrEmpty(config.sortAggTagsPriority) ? "" : config.sortAggTagsPriority;
             props.Items[39].SubItems[1].Text = config.dbfMoreCompatible != 2 ? "Да" : "Нет";
+            props.Items[40].SubItems[1].Text = config.afterScript;
             
             if (!String.IsNullOrEmpty(config.scriptFilter))
                 props.Items[19].SubItems[1].Text = config.scriptFilter.Split(new string[] { "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries)[0];
@@ -570,7 +571,7 @@ namespace OSM2SHP
         }
 
         public void osmc_onDone(object sender, EventArgs e)
-        {
+        {            
             Text = MandatoryText;            
          
             string text = "\r\n---\r\n";
@@ -585,13 +586,42 @@ namespace OSM2SHP
 
             try { SetThreadExecutionState(ES_CONTINUOUS); } catch { };
 
-            SaveAfterLog(sender as OSMConverter);
+            RunAfterScript();
+
+            SaveAfterLog(sender as OSMConverter);            
 
             if(!cmd_silent)
                 MessageBox.Show(String.Format(System.Globalization.CultureInfo.InvariantCulture, "Конвертация успешно завершена\r\nза {0:dd HH:mm:ss}\r\n", DateTime.Now.Subtract(started)) + "\r\nПротокол лога: " + Path.GetFileNameWithoutExtension(config.outputFileName) + "[_LOG_].txt", this.MandatoryText, MessageBoxButtons.OK, MessageBoxIcon.Information);
             //NullProgress();
             cOL1ToolStripMenuItem.Checked = splitContainer1.Panel1Collapsed = false;
             cOL2ToolStripMenuItem.Checked = splitContainer1.Panel2Collapsed = false;
+        }
+
+        private void RunAfterScript()
+        {
+            if (!String.IsNullOrEmpty(config.afterScript))
+            {
+                string rFile = config.afterScript;
+                if (!File.Exists(rFile)) rFile = Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory + @"\" + rFile);
+                if (File.Exists(rFile))
+                {
+                    System.Diagnostics.ProcessStartInfo psi = new System.Diagnostics.ProcessStartInfo(rFile);                    
+                    psi.WorkingDirectory = Path.GetDirectoryName(rFile);
+                    psi.EnvironmentVariables["CNV_PATH"] = AppDomain.CurrentDomain.BaseDirectory + @"\";
+                    psi.EnvironmentVariables["DST_PATH"] = Path.GetDirectoryName(config.outputFileName) + @"\";
+                    psi.EnvironmentVariables["DST_FILE"] = config.outputFileName;                    
+                    psi.EnvironmentVariables["DST_PROJ"] = Path.GetFileNameWithoutExtension(config.outputFileName);
+                    psi.EnvironmentVariables["SRC_FILE"] = config.inputFileName;
+                    psi.UseShellExecute = false;
+                    try
+                    {
+                        System.Diagnostics.Process.Start(psi);
+                        status.Text += String.Format("\r\n\r\nAfterScript: {0}\r\n", rFile);
+                    }
+                    catch (Exception ex) 
+                    { };
+                };
+            };
         }
 
         private DateTime updated = DateTime.UtcNow;
@@ -2299,6 +2329,26 @@ namespace OSM2SHP
                 props.Items[39].SubItems[1].Text = config.dbfMoreCompatible != 2 ? "Да" : "Нет";                
             };
             //////////////////////////////
+            if (index == 40)
+            {
+                if (mode == 2)
+                {
+                    config.afterScript = "";
+                    props.Items[40].SubItems[1].Text = config.afterScript;
+                }
+                else if (mode == 0)
+                {
+                    string txt = config.afterScript;
+                    InputBox.defWidth = 500;
+                    if (InputBox.QueryFileBox("AfterScript", "Select after script file:", ref txt, "Command Files (*.cmd;*.bat;*.exe)|*.cmd;*.bat;*.exe") == DialogResult.OK)
+                    {
+                        config.afterScript = txt == "" ? null : txt;
+                        props.Items[40].SubItems[1].Text = config.afterScript;
+                    };
+                    InputBox.defWidth = 300;
+                };
+            };
+            //////////////////////////////
             //////////////////////////////
             //////////////////////////////
         }
@@ -2483,9 +2533,32 @@ namespace OSM2SHP
             mrul = new MruList(AppDomain.CurrentDomain.BaseDirectory+@"\OSM2SHPFC.mru", recentToolStripMenuItem, 10);
             mrul.FileSelected += new MruList.FileSelectedEventHandler(OpenFile);
             recentToolStripMenuItem.Enabled = mrul.Count > 0;
+
+            LoadTemplates();
+        }
+
+        private void LoadTemplates()
+        {
+            templates = new MruList(null, newFromTemplateToolStripMenuItem, 50);
+            templates.DisplayFormat = 3;
+            templates.FileSelected += new MruList.FileSelectedEventHandler(LoadTemplateFile);
+            string[] files = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + @"\TEMPLATES\", "*.o2s");
+            Array.Sort(files);
+            Array.Reverse(files);
+            foreach (string file in files) templates.AddFile(file);
+        }
+
+        private void LoadTemplateFile(string file_name)
+        {
+            config = Config.Load(file_name, true);
+            config.inputFileName = null;
+            config.outputFileName = null;
+            config.onReloadProperties += new EventHandler(config_onReloadProperties);
+            config.ReloadProperties();
         }        
 
         private MruList mrul;
+        private MruList templates;
 
         private void dBFEditorToolStripMenuItem_Click(object sender, EventArgs e)
         {

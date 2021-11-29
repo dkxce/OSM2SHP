@@ -113,6 +113,8 @@ namespace OSM2SHP
         public string sortAggTagsPriority = null;
         [ProtoMember(35)]
         public byte dbfMoreCompatible = 0; // 0,1 - yes, 2 - no
+        [ProtoMember(36)]
+        public string afterScript = null;
 
         public PointF[] _in_polygon = null;
         public OSMDictionary osmDict = new OSMDictionary();

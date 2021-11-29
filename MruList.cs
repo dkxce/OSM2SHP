@@ -9,6 +9,8 @@ namespace OSM2SHP
 {
     public class MruList
     {
+        public byte DisplayFormat = 0;
+
         private string MRUListSavedFileName;
         private int MRUFilesCount;
         private List<FileInfo> MRUFilesInfos;
@@ -137,6 +139,12 @@ namespace OSM2SHP
                 string name = "`"+MRUFilesInfos[i].Name + "` at .. " + MRUFilesInfos[i].FullName.Remove(MRUFilesInfos[i].FullName.Length-MRUFilesInfos[i].Name.Length);
                 while (name.Length > 90) name = name.Remove(name.IndexOf("` at .. ") + 8, 1);
                 MenuItems[i].Text = string.Format("&{0} {1}", i + 1, name);
+                if (DisplayFormat > 0)
+                {
+                    if (DisplayFormat == 1) MenuItems[i].Text = MRUFilesInfos[i].Name;
+                    if (DisplayFormat == 2) MenuItems[i].Text = Path.GetFileNameWithoutExtension(MRUFilesInfos[i].Name);
+                    if (DisplayFormat == 3) MenuItems[i].Text = Path.GetFileNameWithoutExtension(MRUFilesInfos[i].Name).Replace("_", " ").Replace("-", " ").Replace(".", " ");
+                };
                 MenuItems[i].Visible = true;
                 MenuItems[i].Tag = MRUFilesInfos[i];
                 MenuItems[i].Click -= File_Click;
@@ -162,6 +170,11 @@ namespace OSM2SHP
                 // Raise the event.
                 FileSelected(file_info.FullName);
             }
+        }
+
+        public void Clear()
+        {
+            MRUFilesInfos.Clear();
         }
     }
 }
