@@ -3129,6 +3129,65 @@ namespace OSM2SHP
             config.onReloadProperties += new EventHandler(config_onReloadProperties);
             config.ReloadProperties(); 
         }
+        
+        private void boundsShapeBuilderMapPolygonCreatorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"\BoundsShapeBuilder\BoundsShapeBuilder.exe");
+            }
+            catch { }; 
+        }
+
+        private void sDBFToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"\dbf_editor\Sdbf.exe");
+            }
+            catch { };
+        }
+
+        private void cDBFWToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"\dbf_editor\CDBFW\cdbfw.exe");
+            }
+            catch { };
+        }
+
+        private void dBFShowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"\dbf_editor\dbfshow\DBFShow.exe");
+            }
+            catch { };            
+        }
+
+        private void winDBFviewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"\dbf_editor\winDBFview\wDBFview.exe");
+            }
+            catch { };             
+        }
+
+        private void mapPolygonCreatorResetConfigToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                File.Delete(AppDomain.CurrentDomain.BaseDirectory + @"\BoundsShapeBuilder\BoundsShapeBuilder.stt");
+            }
+            catch { }; 
+            try
+            {
+                System.Diagnostics.Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"\BoundsShapeBuilder\BoundsShapeBuilder.exe");
+            }
+            catch { }; 
+        }
     }
 
     public class DictComparer : IComparer<KeyValuePair<string, uint>>

@@ -231,12 +231,16 @@ namespace OSM2SHP
             this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripSeparator();
             this.xmlcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ïðîãðàììûToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.boundsShapeBuilderMapPolygonCreatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.akelPadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripSeparator();
-            this.dBFEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cDBFWToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dBFCommanderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dBFNavigatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dBFEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dBFExplorerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dBFNavigatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dBFShowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sDBFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
             this.shapeViewerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
@@ -259,6 +263,8 @@ namespace OSM2SHP
             this.columnHeader12 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader13 = new System.Windows.Forms.ColumnHeader();
             this.status = new System.Windows.Forms.TextBox();
+            this.winDBFviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mapPolygonCreatorResetConfigToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -549,11 +555,17 @@ namespace OSM2SHP
             this.ïðîãðàììûToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.akelPadToolStripMenuItem,
             this.toolStripMenuItem12,
-            this.dBFEditorToolStripMenuItem,
+            this.cDBFWToolStripMenuItem,
             this.dBFCommanderToolStripMenuItem,
-            this.dBFNavigatorToolStripMenuItem,
+            this.dBFEditorToolStripMenuItem,
             this.dBFExplorerToolStripMenuItem,
+            this.dBFNavigatorToolStripMenuItem,
+            this.dBFShowToolStripMenuItem,
+            this.sDBFToolStripMenuItem,
+            this.winDBFviewToolStripMenuItem,
             this.toolStripMenuItem5,
+            this.boundsShapeBuilderMapPolygonCreatorToolStripMenuItem,
+            this.mapPolygonCreatorResetConfigToolStripMenuItem,
             this.shapeViewerToolStripMenuItem,
             this.toolStripMenuItem6,
             this.osmconvertexeToolStripMenuItem,
@@ -565,84 +577,112 @@ namespace OSM2SHP
             this.ïðîãðàììûToolStripMenuItem.Text = "Ïðîãðàììû";
             this.ïðîãðàììûToolStripMenuItem.DropDownOpening += new System.EventHandler(this.MenuToolStripMenuItem_DropDownOpening);
             // 
+            // boundsShapeBuilderMapPolygonCreatorToolStripMenuItem
+            // 
+            this.boundsShapeBuilderMapPolygonCreatorToolStripMenuItem.Name = "boundsShapeBuilderMapPolygonCreatorToolStripMenuItem";
+            this.boundsShapeBuilderMapPolygonCreatorToolStripMenuItem.Size = new System.Drawing.Size(315, 22);
+            this.boundsShapeBuilderMapPolygonCreatorToolStripMenuItem.Text = "Map Polygon Creator (Bounds Shape Builder) ...";
+            this.boundsShapeBuilderMapPolygonCreatorToolStripMenuItem.Click += new System.EventHandler(this.boundsShapeBuilderMapPolygonCreatorToolStripMenuItem_Click);
+            // 
             // akelPadToolStripMenuItem
             // 
             this.akelPadToolStripMenuItem.Name = "akelPadToolStripMenuItem";
-            this.akelPadToolStripMenuItem.Size = new System.Drawing.Size(292, 22);
+            this.akelPadToolStripMenuItem.Size = new System.Drawing.Size(315, 22);
             this.akelPadToolStripMenuItem.Text = "Akel Pad ...";
             this.akelPadToolStripMenuItem.Click += new System.EventHandler(this.akelPadToolStripMenuItem_Click);
             // 
             // toolStripMenuItem12
             // 
             this.toolStripMenuItem12.Name = "toolStripMenuItem12";
-            this.toolStripMenuItem12.Size = new System.Drawing.Size(289, 6);
+            this.toolStripMenuItem12.Size = new System.Drawing.Size(312, 6);
             // 
-            // dBFEditorToolStripMenuItem
+            // cDBFWToolStripMenuItem
             // 
-            this.dBFEditorToolStripMenuItem.Name = "dBFEditorToolStripMenuItem";
-            this.dBFEditorToolStripMenuItem.Size = new System.Drawing.Size(292, 22);
-            this.dBFEditorToolStripMenuItem.Text = "DBF Editor ...";
-            this.dBFEditorToolStripMenuItem.Click += new System.EventHandler(this.dBFEditorToolStripMenuItem_Click);
+            this.cDBFWToolStripMenuItem.Name = "cDBFWToolStripMenuItem";
+            this.cDBFWToolStripMenuItem.Size = new System.Drawing.Size(315, 22);
+            this.cDBFWToolStripMenuItem.Text = "CDBFW ...";
+            this.cDBFWToolStripMenuItem.Click += new System.EventHandler(this.cDBFWToolStripMenuItem_Click);
             // 
             // dBFCommanderToolStripMenuItem
             // 
             this.dBFCommanderToolStripMenuItem.Name = "dBFCommanderToolStripMenuItem";
-            this.dBFCommanderToolStripMenuItem.Size = new System.Drawing.Size(292, 22);
-            this.dBFCommanderToolStripMenuItem.Text = "DBFCommander (Íóæíû ïðàâà àäìèíà)...";
+            this.dBFCommanderToolStripMenuItem.Size = new System.Drawing.Size(315, 22);
+            this.dBFCommanderToolStripMenuItem.Text = "DBF Commander (Íóæíû ïðàâà àäìèíà)...";
             this.dBFCommanderToolStripMenuItem.Click += new System.EventHandler(this.dBFCommanderToolStripMenuItem_Click);
             // 
-            // dBFNavigatorToolStripMenuItem
+            // dBFEditorToolStripMenuItem
             // 
-            this.dBFNavigatorToolStripMenuItem.Name = "dBFNavigatorToolStripMenuItem";
-            this.dBFNavigatorToolStripMenuItem.Size = new System.Drawing.Size(292, 22);
-            this.dBFNavigatorToolStripMenuItem.Text = "DBF Navigator ...";
-            this.dBFNavigatorToolStripMenuItem.Click += new System.EventHandler(this.dBFNavigatorToolStripMenuItem_Click);
+            this.dBFEditorToolStripMenuItem.Name = "dBFEditorToolStripMenuItem";
+            this.dBFEditorToolStripMenuItem.Size = new System.Drawing.Size(315, 22);
+            this.dBFEditorToolStripMenuItem.Text = "DBF Editor ...";
+            this.dBFEditorToolStripMenuItem.Click += new System.EventHandler(this.dBFEditorToolStripMenuItem_Click);
             // 
             // dBFExplorerToolStripMenuItem
             // 
             this.dBFExplorerToolStripMenuItem.Name = "dBFExplorerToolStripMenuItem";
-            this.dBFExplorerToolStripMenuItem.Size = new System.Drawing.Size(292, 22);
+            this.dBFExplorerToolStripMenuItem.Size = new System.Drawing.Size(315, 22);
             this.dBFExplorerToolStripMenuItem.Text = "DBF Explorer ...";
             this.dBFExplorerToolStripMenuItem.Click += new System.EventHandler(this.dBFExplorerToolStripMenuItem_Click);
+            // 
+            // dBFNavigatorToolStripMenuItem
+            // 
+            this.dBFNavigatorToolStripMenuItem.Name = "dBFNavigatorToolStripMenuItem";
+            this.dBFNavigatorToolStripMenuItem.Size = new System.Drawing.Size(315, 22);
+            this.dBFNavigatorToolStripMenuItem.Text = "DBF Navigator ...";
+            this.dBFNavigatorToolStripMenuItem.Click += new System.EventHandler(this.dBFNavigatorToolStripMenuItem_Click);
+            // 
+            // dBFShowToolStripMenuItem
+            // 
+            this.dBFShowToolStripMenuItem.Name = "dBFShowToolStripMenuItem";
+            this.dBFShowToolStripMenuItem.Size = new System.Drawing.Size(315, 22);
+            this.dBFShowToolStripMenuItem.Text = "DBF Show ...";
+            this.dBFShowToolStripMenuItem.Click += new System.EventHandler(this.dBFShowToolStripMenuItem_Click);
+            // 
+            // sDBFToolStripMenuItem
+            // 
+            this.sDBFToolStripMenuItem.Name = "sDBFToolStripMenuItem";
+            this.sDBFToolStripMenuItem.Size = new System.Drawing.Size(315, 22);
+            this.sDBFToolStripMenuItem.Text = "SDBF ...";
+            this.sDBFToolStripMenuItem.Click += new System.EventHandler(this.sDBFToolStripMenuItem_Click);
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(289, 6);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(312, 6);
             // 
             // shapeViewerToolStripMenuItem
             // 
             this.shapeViewerToolStripMenuItem.Name = "shapeViewerToolStripMenuItem";
-            this.shapeViewerToolStripMenuItem.Size = new System.Drawing.Size(292, 22);
+            this.shapeViewerToolStripMenuItem.Size = new System.Drawing.Size(315, 22);
             this.shapeViewerToolStripMenuItem.Text = "Shape Viewer ...";
             this.shapeViewerToolStripMenuItem.Click += new System.EventHandler(this.shapeViewerToolStripMenuItem_Click);
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(289, 6);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(312, 6);
             // 
             // osmconvertexeToolStripMenuItem
             // 
             this.osmconvertexeToolStripMenuItem.Name = "osmconvertexeToolStripMenuItem";
-            this.osmconvertexeToolStripMenuItem.Size = new System.Drawing.Size(292, 22);
+            this.osmconvertexeToolStripMenuItem.Size = new System.Drawing.Size(315, 22);
             this.osmconvertexeToolStripMenuItem.Text = "osmconvert.exe ...";
             this.osmconvertexeToolStripMenuItem.Click += new System.EventHandler(this.osmconvertexeToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(289, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(312, 6);
             // 
             // toolStripMenuItem9
             // 
             this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-            this.toolStripMenuItem9.Size = new System.Drawing.Size(289, 6);
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(312, 6);
             // 
             // dsToolStripMenuItem
             // 
             this.dsToolStripMenuItem.Name = "dsToolStripMenuItem";
-            this.dsToolStripMenuItem.Size = new System.Drawing.Size(292, 22);
+            this.dsToolStripMenuItem.Size = new System.Drawing.Size(315, 22);
             this.dsToolStripMenuItem.Text = "Delayed Start ...";
             this.dsToolStripMenuItem.Click += new System.EventHandler(this.dsToolStripMenuItem_Click);
             // 
@@ -833,6 +873,20 @@ namespace OSM2SHP
             this.status.TabIndex = 8;
             this.status.Text = "Áåçäåéñòâèå";
             // 
+            // winDBFviewToolStripMenuItem
+            // 
+            this.winDBFviewToolStripMenuItem.Name = "winDBFviewToolStripMenuItem";
+            this.winDBFviewToolStripMenuItem.Size = new System.Drawing.Size(315, 22);
+            this.winDBFviewToolStripMenuItem.Text = "winDBFview ...";
+            this.winDBFviewToolStripMenuItem.Click += new System.EventHandler(this.winDBFviewToolStripMenuItem_Click);
+            // 
+            // mapPolygonCreatorResetConfigToolStripMenuItem
+            // 
+            this.mapPolygonCreatorResetConfigToolStripMenuItem.Name = "mapPolygonCreatorResetConfigToolStripMenuItem";
+            this.mapPolygonCreatorResetConfigToolStripMenuItem.Size = new System.Drawing.Size(315, 22);
+            this.mapPolygonCreatorResetConfigToolStripMenuItem.Text = "Map Polygon Creator (Reset Config) ...";
+            this.mapPolygonCreatorResetConfigToolStripMenuItem.Click += new System.EventHandler(this.mapPolygonCreatorResetConfigToolStripMenuItem_Click);
+            // 
             // MForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -929,6 +983,12 @@ namespace OSM2SHP
         private System.Windows.Forms.ToolStripMenuItem recentToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem15;
         private System.Windows.Forms.ToolStripMenuItem newFromTemplateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem boundsShapeBuilderMapPolygonCreatorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sDBFToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cDBFWToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dBFShowToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem winDBFviewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mapPolygonCreatorResetConfigToolStripMenuItem;
     }
 }
 

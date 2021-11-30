@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfMapStore>
+  <MapStore>
+    <Name>OSM: Mapnik</Name>
+    <Url>http://tile.openstreetmap.org/{z}/{x}/{y}.png</Url>
+    <CacheDir>OSMMapnik</CacheDir>
+    <Service>Custom_UserDefined</Service>
+    <Source>tiles</Source>
+    <Projection>EPSG3857</Projection>
+  </MapStore>  
+  <MapStore>
+    <Name>OSM: Toner</Name>
+    <Url>http://tile.stamen.com/toner/{z}/{x}/{y}.png</Url>
+    <CacheDir>OSMToner</CacheDir>
+    <Service>Custom_UserDefined</Service>
+    <Source>tiles</Source>
+    <Projection>EPSG3857</Projection>
+  </MapStore>
+  <MapStore>
+    <Name>OSM: Toner Retina</Name>
+    <Url>http://a.tile.stamen.com/toner/{z}/{x}/{y}@2x.png</Url>
+    <CacheDir>OSMToner</CacheDir>
+    <Service>Custom_UserDefined</Service>
+    <Source>tiles</Source>
+    <Projection>EPSG3857</Projection>
+  </MapStore>
+  <MapStore>
+    <Name>OSM: Stamen Terrain</Name>
+    <Url>http://tile.stamen.com/terrain/{z}/{x}/{y}.jpg</Url>
+    <CacheDir>OSMStamenTerrain</CacheDir>
+    <Service>Custom_UserDefined</Service>
+    <Source>tiles</Source>
+    <Projection>EPSG3857</Projection>
+  </MapStore>
+  <MapStore>
+    <Name>OSM: OpenVkarte</Name>
+    <Url>http://tile.memomaps.de/tilegen/{z}/{x}/{y}.png</Url>
+    <CacheDir>OSMOpenVkarte</CacheDir>
+    <Service>Custom_UserDefined</Service>
+    <Source>tiles</Source>
+    <Projection>EPSG3857</Projection>
+  </MapStore>
+  <MapStore>
+    <Name>OSM: Hot Style</Name>
+    <Url>http://a.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png</Url>
+    <CacheDir>OSMHot</CacheDir>
+    <Service>Custom_UserDefined</Service>
+    <Source>tiles</Source>
+    <Projection>EPSG3857</Projection>
+  </MapStore>
+  <MapStore>
+    <Name>OSM: German Style</Name>
+    <Url>http://a.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png</Url>
+    <CacheDir>OSMGerman</CacheDir>
+    <Service>Custom_UserDefined</Service>
+    <Source>tiles</Source>
+    <Projection>EPSG3857</Projection>
+  </MapStore>
+  <MapStore>
+    <Name>Google: Map</Name>
+    <Url>http://mts0.google.com/vt/lyrs=m@177000000&amp;hl=ru&amp;src=app&amp;x={x}&amp;s=&amp;y={y}&amp;z={z}&amp;s=Ga</Url>
+    <CacheDir>GoogleMap</CacheDir>
+    <Service>Custom_UserDefined</Service>
+    <Source>tiles</Source>
+    <Projection>EPSG3857</Projection>
+  </MapStore>
+  <MapStore>
+    <Name>Google: Sat</Name>
+    <Url>http://mts0.google.com/vt/lyrs=h@177000000&amp;hl=ru&amp;src=app&amp;x={x}&amp;s=&amp;y={y}&amp;z={z}&amp;s=G</Url>
+    <CacheDir>GoogleSat</CacheDir>
+    <Service>Custom_UserDefined</Service>
+    <Source>tiles</Source>
+    <Projection>EPSG3857</Projection>
+  </MapStore>
+  <MapStore>
+    <Name>OpenTopoMaps</Name>
+    <Url>http://a.tile.opentopomap.org/{z}/{x}/{y}.png</Url>
+    <CacheDir>OpenTopoMaps</CacheDir>
+    <Service>Custom_UserDefined</Service>
+    <Source>tiles</Source>
+    <Projection>EPSG3857</Projection>
+  </MapStore>
+  <MapStore>
+    <Name>ArcGIS ESRI</Name>
+    <Url>http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}.png</Url>
+    <CacheDir>ArcGIS</CacheDir>
+    <Service>Custom_UserDefined</Service>
+    <Source>tiles</Source>
+    <Projection>EPSG3857</Projection>
+  </MapStore>
+</ArrayOfMapStore>

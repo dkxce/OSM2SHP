@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSM2SHP", "OSM2SHP.csproj", "{0F6CA692-1937-427F-9389-DC44AE5DF66F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoundsShapeBuilder", "_BoundsShapeBuilder\BoundsShapeBuilder.csproj", "{D73C0AE6-D885-4675-BFD0-70D4CD408A19}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{0F6CA692-1937-427F-9389-DC44AE5DF66F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F6CA692-1937-427F-9389-DC44AE5DF66F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F6CA692-1937-427F-9389-DC44AE5DF66F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D73C0AE6-D885-4675-BFD0-70D4CD408A19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D73C0AE6-D885-4675-BFD0-70D4CD408A19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D73C0AE6-D885-4675-BFD0-70D4CD408A19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D73C0AE6-D885-4675-BFD0-70D4CD408A19}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

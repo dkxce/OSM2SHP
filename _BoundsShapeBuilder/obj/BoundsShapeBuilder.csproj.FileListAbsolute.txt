@@ -1,0 +1,18 @@
+C:\Downloads\CD-REC\TEST\BoundsShapeBuilder\obj\Debug\ResolveAssemblyReference.cache
+C:\Downloads\CD-REC\TEST\BoundsShapeBuilder\obj\Debug\KMZRebuilder.PolyCreator.resources
+C:\Downloads\CD-REC\TEST\BoundsShapeBuilder\obj\Debug\BoundsShapeBuilder.Properties.Resources.resources
+C:\Downloads\CD-REC\TEST\BoundsShapeBuilder\obj\Debug\BoundsShapeBuilder.csproj.GenerateResource.Cache
+C:\Downloads\CD-REC\TEST\BoundsShapeBuilder\bin\Debug\BoundsShapeBuilder.exe
+C:\Downloads\CD-REC\TEST\BoundsShapeBuilder\bin\Debug\BoundsShapeBuilder.pdb
+C:\Downloads\CD-REC\TEST\BoundsShapeBuilder\bin\Debug\CuttingGeometries.dll
+C:\Downloads\CD-REC\TEST\BoundsShapeBuilder\bin\Debug\NaviMapNet.dll
+C:\Downloads\CD-REC\TEST\BoundsShapeBuilder\obj\Debug\BoundsShapeBuilder.exe
+C:\Downloads\CD-REC\TEST\BoundsShapeBuilder\obj\Debug\BoundsShapeBuilder.pdb
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20211129H\bin\Debug\BoundsShapeBuilder\BoundsShapeBuilder.exe
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20211129H\bin\Debug\BoundsShapeBuilder\BoundsShapeBuilder.pdb
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20211129H\_BoundsShapeBuilder\obj\Debug\ResolveAssemblyReference.cache
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20211129H\_BoundsShapeBuilder\obj\Debug\KMZRebuilder.PolyCreator.resources
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20211129H\_BoundsShapeBuilder\obj\Debug\BoundsShapeBuilder.Properties.Resources.resources
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20211129H\_BoundsShapeBuilder\obj\Debug\BoundsShapeBuilder.csproj.GenerateResource.Cache
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20211129H\_BoundsShapeBuilder\obj\Debug\BoundsShapeBuilder.exe
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20211129H\_BoundsShapeBuilder\obj\Debug\BoundsShapeBuilder.pdb

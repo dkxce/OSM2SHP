@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("OSM 2 SHP Fastex Converter")]
+[assembly: AssemblyTitle("BoundsShapeBuilder")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("milokz@gmail.com")]
-[assembly: AssemblyProduct("OSM 2 SHP Fastex Converter")]
-[assembly: AssemblyCopyright("Copyright ©  2021 milokz@gmail.com")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("BoundsShapeBuilder")]
+[assembly: AssemblyCopyright("Copyright © milokz@gmail.com 2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("ed022d68-31a8-4902-af3b-89362821e7d6")]
+[assembly: Guid("4a317b33-13ba-4bc1-8473-8015e20e1eb9")]
 
 // Version information for an assembly consists of the following four values:
 //
