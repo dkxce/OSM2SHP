@@ -5,6 +5,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSM2SHP", "OSM2SHP.csproj",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoundsShapeBuilder", "_BoundsShapeBuilder\BoundsShapeBuilder.csproj", "{D73C0AE6-D885-4675-BFD0-70D4CD408A19}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapesMerger", "_ShapesMerger\ShapesMerger.csproj", "{818BA52B-47A1-4CD6-9694-56AA388822A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapesPolygonsExtractor", "_ShapesPolygonsExtractor\ShapesPolygonsExtractor.csproj", "{93E84F02-9531-47CB-9FE6-9D88B6A263E1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +23,14 @@ Global
 		{D73C0AE6-D885-4675-BFD0-70D4CD408A19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D73C0AE6-D885-4675-BFD0-70D4CD408A19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D73C0AE6-D885-4675-BFD0-70D4CD408A19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{818BA52B-47A1-4CD6-9694-56AA388822A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{818BA52B-47A1-4CD6-9694-56AA388822A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{818BA52B-47A1-4CD6-9694-56AA388822A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{818BA52B-47A1-4CD6-9694-56AA388822A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93E84F02-9531-47CB-9FE6-9D88B6A263E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93E84F02-9531-47CB-9FE6-9D88B6A263E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93E84F02-9531-47CB-9FE6-9D88B6A263E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93E84F02-9531-47CB-9FE6-9D88B6A263E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

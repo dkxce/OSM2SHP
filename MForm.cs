@@ -3188,6 +3188,24 @@ namespace OSM2SHP
             }
             catch { }; 
         }
+
+        private void shapesMergerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"\BoundsShapeBuilder\ShapesMerger.exe");
+            }
+            catch { }; 
+        }
+
+        private void shapesPolygonsExtractorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"\BoundsShapeBuilder\ShapesPolygonsExtractor.exe");
+            }
+            catch { }; 
+        }
     }
 
     public class DictComparer : IComparer<KeyValuePair<string, uint>>

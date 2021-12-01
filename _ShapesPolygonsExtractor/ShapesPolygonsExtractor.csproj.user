@@ -1,0 +1,5 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <StartArguments>"/path=M:\NAVICOM_PROJECTS\_ROUTES_PSOURCE_\READY\_SHAPES_\PHUKET_OSM2SHP"</StartArguments>
+  </PropertyGroup>
+</Project>

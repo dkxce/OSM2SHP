@@ -1,0 +1,10 @@
+M:\NAVICOM_PROJECTS\_ROUTES_PSOURCE_\READY\TOOLS\ShapesPolygonsExtractor.exe
+M:\NAVICOM_PROJECTS\_ROUTES_PSOURCE_\READY\TOOLS\ShapesPolygonsExtractor.pdb
+M:\NAVICOM_PROJECTS\_ROUTES_PSOURCE_\SOLVER\ShapesPolygonsExtractor\obj\Debug\ResolveAssemblyReference.cache
+M:\NAVICOM_PROJECTS\_ROUTES_PSOURCE_\SOLVER\ShapesPolygonsExtractor\obj\Debug\ShapesPolygonsExtractor.exe
+M:\NAVICOM_PROJECTS\_ROUTES_PSOURCE_\SOLVER\ShapesPolygonsExtractor\obj\Debug\ShapesPolygonsExtractor.pdb
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20211130H\bin\Debug\BoundsShapeBuilder\ShapesPolygonsExtractor.exe
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20211130H\bin\Debug\BoundsShapeBuilder\ShapesPolygonsExtractor.pdb
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20211130H\_ShapesPolygonsExtractor\obj\Debug\ResolveAssemblyReference.cache
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20211130H\_ShapesPolygonsExtractor\obj\Debug\ShapesPolygonsExtractor.exe
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20211130H\_ShapesPolygonsExtractor\obj\Debug\ShapesPolygonsExtractor.pdb

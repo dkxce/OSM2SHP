@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("BoundsShapeBuilder")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("ShapesMerger")]
+[assembly: AssemblyDescription("dkxce Shapes Merger")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("BoundsShapeBuilder")]
-[assembly: AssemblyCopyright("Copyright © milokz@gmail.com 2021")]
+[assembly: AssemblyCompany("Milok Zbrozek <milokz@gmail.com>")]
+[assembly: AssemblyProduct("ShapesMerger")]
+[assembly: AssemblyCopyright("Copyright © Milok Zbrozek <milokz@gmail.com> 2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("4a317b33-13ba-4bc1-8473-8015e20e1eb9")]
+[assembly: Guid("0d00ba90-d8c6-4bd4-a1d9-4b892fa65598")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -30,4 +30,4 @@ using System.Runtime.InteropServices;
 //      Revision
 //
 [assembly: AssemblyVersion("21.12.01.49")]
-[assembly: AssemblyFileVersion("21.12.01.49")]
+[assembly: AssemblyFileVersion("21.21.01.49")]

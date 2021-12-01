@@ -231,7 +231,6 @@ namespace OSM2SHP
             this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripSeparator();
             this.xmlcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ïðîãðàììûToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.boundsShapeBuilderMapPolygonCreatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.akelPadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripSeparator();
             this.cDBFWToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -241,7 +240,10 @@ namespace OSM2SHP
             this.dBFNavigatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dBFShowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sDBFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.winDBFviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
+            this.boundsShapeBuilderMapPolygonCreatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mapPolygonCreatorResetConfigToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.shapeViewerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
             this.osmconvertexeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -263,8 +265,8 @@ namespace OSM2SHP
             this.columnHeader12 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader13 = new System.Windows.Forms.ColumnHeader();
             this.status = new System.Windows.Forms.TextBox();
-            this.winDBFviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mapPolygonCreatorResetConfigToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.shapesMergerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.shapesPolygonsExtractorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -566,6 +568,8 @@ namespace OSM2SHP
             this.toolStripMenuItem5,
             this.boundsShapeBuilderMapPolygonCreatorToolStripMenuItem,
             this.mapPolygonCreatorResetConfigToolStripMenuItem,
+            this.shapesMergerToolStripMenuItem,
+            this.shapesPolygonsExtractorToolStripMenuItem,
             this.shapeViewerToolStripMenuItem,
             this.toolStripMenuItem6,
             this.osmconvertexeToolStripMenuItem,
@@ -576,13 +580,6 @@ namespace OSM2SHP
             this.ïðîãðàììûToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
             this.ïðîãðàììûToolStripMenuItem.Text = "Ïðîãðàììû";
             this.ïðîãðàììûToolStripMenuItem.DropDownOpening += new System.EventHandler(this.MenuToolStripMenuItem_DropDownOpening);
-            // 
-            // boundsShapeBuilderMapPolygonCreatorToolStripMenuItem
-            // 
-            this.boundsShapeBuilderMapPolygonCreatorToolStripMenuItem.Name = "boundsShapeBuilderMapPolygonCreatorToolStripMenuItem";
-            this.boundsShapeBuilderMapPolygonCreatorToolStripMenuItem.Size = new System.Drawing.Size(315, 22);
-            this.boundsShapeBuilderMapPolygonCreatorToolStripMenuItem.Text = "Map Polygon Creator (Bounds Shape Builder) ...";
-            this.boundsShapeBuilderMapPolygonCreatorToolStripMenuItem.Click += new System.EventHandler(this.boundsShapeBuilderMapPolygonCreatorToolStripMenuItem_Click);
             // 
             // akelPadToolStripMenuItem
             // 
@@ -645,10 +642,31 @@ namespace OSM2SHP
             this.sDBFToolStripMenuItem.Text = "SDBF ...";
             this.sDBFToolStripMenuItem.Click += new System.EventHandler(this.sDBFToolStripMenuItem_Click);
             // 
+            // winDBFviewToolStripMenuItem
+            // 
+            this.winDBFviewToolStripMenuItem.Name = "winDBFviewToolStripMenuItem";
+            this.winDBFviewToolStripMenuItem.Size = new System.Drawing.Size(315, 22);
+            this.winDBFviewToolStripMenuItem.Text = "winDBFview ...";
+            this.winDBFviewToolStripMenuItem.Click += new System.EventHandler(this.winDBFviewToolStripMenuItem_Click);
+            // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
             this.toolStripMenuItem5.Size = new System.Drawing.Size(312, 6);
+            // 
+            // boundsShapeBuilderMapPolygonCreatorToolStripMenuItem
+            // 
+            this.boundsShapeBuilderMapPolygonCreatorToolStripMenuItem.Name = "boundsShapeBuilderMapPolygonCreatorToolStripMenuItem";
+            this.boundsShapeBuilderMapPolygonCreatorToolStripMenuItem.Size = new System.Drawing.Size(315, 22);
+            this.boundsShapeBuilderMapPolygonCreatorToolStripMenuItem.Text = "Map Polygon Creator (Bounds Shape Builder) ...";
+            this.boundsShapeBuilderMapPolygonCreatorToolStripMenuItem.Click += new System.EventHandler(this.boundsShapeBuilderMapPolygonCreatorToolStripMenuItem_Click);
+            // 
+            // mapPolygonCreatorResetConfigToolStripMenuItem
+            // 
+            this.mapPolygonCreatorResetConfigToolStripMenuItem.Name = "mapPolygonCreatorResetConfigToolStripMenuItem";
+            this.mapPolygonCreatorResetConfigToolStripMenuItem.Size = new System.Drawing.Size(315, 22);
+            this.mapPolygonCreatorResetConfigToolStripMenuItem.Text = "Map Polygon Creator (Reset Config) ...";
+            this.mapPolygonCreatorResetConfigToolStripMenuItem.Click += new System.EventHandler(this.mapPolygonCreatorResetConfigToolStripMenuItem_Click);
             // 
             // shapeViewerToolStripMenuItem
             // 
@@ -873,19 +891,19 @@ namespace OSM2SHP
             this.status.TabIndex = 8;
             this.status.Text = "Áåçäåéñòâèå";
             // 
-            // winDBFviewToolStripMenuItem
+            // shapesMergerToolStripMenuItem
             // 
-            this.winDBFviewToolStripMenuItem.Name = "winDBFviewToolStripMenuItem";
-            this.winDBFviewToolStripMenuItem.Size = new System.Drawing.Size(315, 22);
-            this.winDBFviewToolStripMenuItem.Text = "winDBFview ...";
-            this.winDBFviewToolStripMenuItem.Click += new System.EventHandler(this.winDBFviewToolStripMenuItem_Click);
+            this.shapesMergerToolStripMenuItem.Name = "shapesMergerToolStripMenuItem";
+            this.shapesMergerToolStripMenuItem.Size = new System.Drawing.Size(315, 22);
+            this.shapesMergerToolStripMenuItem.Text = "Shapes Merger ...";
+            this.shapesMergerToolStripMenuItem.Click += new System.EventHandler(this.shapesMergerToolStripMenuItem_Click);
             // 
-            // mapPolygonCreatorResetConfigToolStripMenuItem
+            // shapesPolygonsExtractorToolStripMenuItem
             // 
-            this.mapPolygonCreatorResetConfigToolStripMenuItem.Name = "mapPolygonCreatorResetConfigToolStripMenuItem";
-            this.mapPolygonCreatorResetConfigToolStripMenuItem.Size = new System.Drawing.Size(315, 22);
-            this.mapPolygonCreatorResetConfigToolStripMenuItem.Text = "Map Polygon Creator (Reset Config) ...";
-            this.mapPolygonCreatorResetConfigToolStripMenuItem.Click += new System.EventHandler(this.mapPolygonCreatorResetConfigToolStripMenuItem_Click);
+            this.shapesPolygonsExtractorToolStripMenuItem.Name = "shapesPolygonsExtractorToolStripMenuItem";
+            this.shapesPolygonsExtractorToolStripMenuItem.Size = new System.Drawing.Size(315, 22);
+            this.shapesPolygonsExtractorToolStripMenuItem.Text = "Shapes Polygons Extractor ...";
+            this.shapesPolygonsExtractorToolStripMenuItem.Click += new System.EventHandler(this.shapesPolygonsExtractorToolStripMenuItem_Click);
             // 
             // MForm
             // 
@@ -989,6 +1007,8 @@ namespace OSM2SHP
         private System.Windows.Forms.ToolStripMenuItem dBFShowToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem winDBFviewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mapPolygonCreatorResetConfigToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem shapesMergerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem shapesPolygonsExtractorToolStripMenuItem;
     }
 }
 

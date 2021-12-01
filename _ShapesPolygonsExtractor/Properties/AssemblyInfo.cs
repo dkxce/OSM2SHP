@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("BoundsShapeBuilder")]
+[assembly: AssemblyTitle("ShapesPolygonsExtractor")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("BoundsShapeBuilder")]
-[assembly: AssemblyCopyright("Copyright © milokz@gmail.com 2021")]
+[assembly: AssemblyCompany("Milok Zbrozek <milokz@gmail.com>")]
+[assembly: AssemblyProduct("ShapesPolygonsExtractor")]
+[assembly: AssemblyCopyright("Copyright © Milok Zbrozek <milokz@gmail.com> 2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("4a317b33-13ba-4bc1-8473-8015e20e1eb9")]
+[assembly: Guid("ea6ad33c-73c8-4e3e-be71-9c76c333427a")]
 
 // Version information for an assembly consists of the following four values:
 //

@@ -1,0 +1,16 @@
+M:\NAVICOM_PROJECTS\_ROUTES_PSOURCE_\READY\TOOLS\ShapesMerger.exe
+M:\NAVICOM_PROJECTS\_ROUTES_PSOURCE_\READY\TOOLS\ShapesMerger.pdb
+M:\NAVICOM_PROJECTS\_ROUTES_PSOURCE_\SOLVER\ShapesMerger\obj\Debug\ResolveAssemblyReference.cache
+M:\NAVICOM_PROJECTS\_ROUTES_PSOURCE_\SOLVER\ShapesMerger\obj\Debug\ShapesMerger.Properties.Resources.resources
+M:\NAVICOM_PROJECTS\_ROUTES_PSOURCE_\SOLVER\ShapesMerger\obj\Debug\ShapesMerger.csproj.GenerateResource.Cache
+M:\NAVICOM_PROJECTS\_ROUTES_PSOURCE_\SOLVER\ShapesMerger\obj\Debug\ShapesMerger.exe
+M:\NAVICOM_PROJECTS\_ROUTES_PSOURCE_\SOLVER\ShapesMerger\obj\Debug\ShapesMerger.pdb
+M:\NAVICOM_PROJECTS\_ROUTES_PSOURCE_\SOLVER\ShapesMerger\obj\Debug\ShapesMerger.MergeForm.resources
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20211130H\bin\Debug\BoundsShapeBuilder\ShapesMerger.exe
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20211130H\bin\Debug\BoundsShapeBuilder\ShapesMerger.pdb
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20211130H\_ShapesMerger\obj\Debug\ResolveAssemblyReference.cache
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20211130H\_ShapesMerger\obj\Debug\ShapesMerger.MergeForm.resources
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20211130H\_ShapesMerger\obj\Debug\ShapesMerger.Properties.Resources.resources
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20211130H\_ShapesMerger\obj\Debug\ShapesMerger.csproj.GenerateResource.Cache
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20211130H\_ShapesMerger\obj\Debug\ShapesMerger.exe
+D:\PROJECTS\Планирование\20XX Template\Soft (Win+Android)\MY KMZ KML TOOLS\OSM2SHP\OSM2SHP_[Sources]_20211130H\_ShapesMerger\obj\Debug\ShapesMerger.pdb
