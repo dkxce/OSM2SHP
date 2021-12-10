@@ -43,5 +43,7 @@
   <OSM.ADDIT_DBF.NODES desc="nodes of lines shape">[NODES]</OSM.ADDIT_DBF.NODES>
   <OSM.ADDIT_DBF.NOTURN desc="turn restrictions dbf">[J0001]</OSM.ADDIT_DBF.NOTURN>
   
+  <OSM.ADDIT.PROCESS_AGG desc="process aggreagated tags, TAGS_1">true</OSM.ADDIT.PROCESS_AGG>
+  
   <!-- END -->
 </ShapeFields>

@@ -148,7 +148,7 @@ namespace OSM2SHP
             System.Windows.Forms.ListViewItem listViewItem30 = new System.Windows.Forms.ListViewItem(new string[] {
             "Обработка: Индекс точек",
             "",
-            "Использовать внешний индексный файл для точек (медленно)"}, -1, System.Drawing.Color.Empty, System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128))))), null);
+            "Использовать внешний индексный файл для точек (медленно)  (при OutOfMemory)"}, -1, System.Drawing.Color.Empty, System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128))))), null);
             System.Windows.Forms.ListViewItem listViewItem31 = new System.Windows.Forms.ListViewItem(new string[] {
             "Relations: Сохранять в таблицу",
             "",
@@ -244,6 +244,8 @@ namespace OSM2SHP
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
             this.boundsShapeBuilderMapPolygonCreatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mapPolygonCreatorResetConfigToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.shapesMergerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.shapesPolygonsExtractorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.shapeViewerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
             this.osmconvertexeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -265,8 +267,6 @@ namespace OSM2SHP
             this.columnHeader12 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader13 = new System.Windows.Forms.ColumnHeader();
             this.status = new System.Windows.Forms.TextBox();
-            this.shapesMergerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.shapesPolygonsExtractorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -668,6 +668,20 @@ namespace OSM2SHP
             this.mapPolygonCreatorResetConfigToolStripMenuItem.Text = "Map Polygon Creator (Reset Config) ...";
             this.mapPolygonCreatorResetConfigToolStripMenuItem.Click += new System.EventHandler(this.mapPolygonCreatorResetConfigToolStripMenuItem_Click);
             // 
+            // shapesMergerToolStripMenuItem
+            // 
+            this.shapesMergerToolStripMenuItem.Name = "shapesMergerToolStripMenuItem";
+            this.shapesMergerToolStripMenuItem.Size = new System.Drawing.Size(315, 22);
+            this.shapesMergerToolStripMenuItem.Text = "Shapes Merger ...";
+            this.shapesMergerToolStripMenuItem.Click += new System.EventHandler(this.shapesMergerToolStripMenuItem_Click);
+            // 
+            // shapesPolygonsExtractorToolStripMenuItem
+            // 
+            this.shapesPolygonsExtractorToolStripMenuItem.Name = "shapesPolygonsExtractorToolStripMenuItem";
+            this.shapesPolygonsExtractorToolStripMenuItem.Size = new System.Drawing.Size(315, 22);
+            this.shapesPolygonsExtractorToolStripMenuItem.Text = "Shapes Polygons Extractor ...";
+            this.shapesPolygonsExtractorToolStripMenuItem.Click += new System.EventHandler(this.shapesPolygonsExtractorToolStripMenuItem_Click);
+            // 
             // shapeViewerToolStripMenuItem
             // 
             this.shapeViewerToolStripMenuItem.Name = "shapeViewerToolStripMenuItem";
@@ -890,20 +904,6 @@ namespace OSM2SHP
             this.status.Size = new System.Drawing.Size(150, 46);
             this.status.TabIndex = 8;
             this.status.Text = "Бездействие";
-            // 
-            // shapesMergerToolStripMenuItem
-            // 
-            this.shapesMergerToolStripMenuItem.Name = "shapesMergerToolStripMenuItem";
-            this.shapesMergerToolStripMenuItem.Size = new System.Drawing.Size(315, 22);
-            this.shapesMergerToolStripMenuItem.Text = "Shapes Merger ...";
-            this.shapesMergerToolStripMenuItem.Click += new System.EventHandler(this.shapesMergerToolStripMenuItem_Click);
-            // 
-            // shapesPolygonsExtractorToolStripMenuItem
-            // 
-            this.shapesPolygonsExtractorToolStripMenuItem.Name = "shapesPolygonsExtractorToolStripMenuItem";
-            this.shapesPolygonsExtractorToolStripMenuItem.Size = new System.Drawing.Size(315, 22);
-            this.shapesPolygonsExtractorToolStripMenuItem.Text = "Shapes Polygons Extractor ...";
-            this.shapesPolygonsExtractorToolStripMenuItem.Click += new System.EventHandler(this.shapesPolygonsExtractorToolStripMenuItem_Click);
             // 
             // MForm
             // 

@@ -20,9 +20,6 @@ namespace OSM2SHP
 {
     public class OSMConverter
     {
-        public const string _MainEngine = "dkxce.OSM2SHP.Converter/21.12.10.51-win32";
-        public const string _MainMode = "NodesXYIndex Arrays Dicts";
-
         public const int MAX_FIELD_LENGTH = 250;
 
         public string _osmFile = null;
@@ -37,7 +34,6 @@ namespace OSM2SHP
         public Dictionary<long, FLID> linesFLID = new Dictionary<long, FLID>();
         private NodesXYIndex nodes_ndi = null;
         public long NDILength { get { return nodes_ndi == null ? 0 : nodes_ndi.Length; } }
-        public string NDIArraysInfo { get { return nodes_ndi == null ? "0" : nodes_ndi.ArraysInfo; } }
         public long LFLLength { get { return 48 * linesFLID.Count + 100; } }
         public long JNSLength { get { return 16 * relaJJ.Count + 100; } }
 
@@ -475,10 +471,10 @@ namespace OSM2SHP
 
             if (!String.IsNullOrEmpty(_config.sortAggTagsPriority))
             {
-                if (_config.sortAggTagsPriority == "нет")
+                if (_config.sortAggTagsPriority == "РЅРµС‚")
                 {
                 }
-                else if (_config.sortAggTagsPriority == "да")
+                else if (_config.sortAggTagsPriority == "РґР°")
                     tagsComparer = new TagsComparer("");
                 else
                     tagsComparer = new TagsComparer(_config.sortAggTagsPriority);
@@ -697,14 +693,19 @@ namespace OSM2SHP
             {
                 if (_config.saveLineNodesShape)
                 {
-                    try { WriteNodesShape(_ndss); } catch { };
-                    try { WriteLinesToSplitDbf(_ndsp); } catch { };
-                };                
+                    try
+                    {
+                        WriteNodesShape(_ndss);
+                    }
+                    catch { };
+                    try
+                    {
+                        WriteLinesToSplitDbf(_ndsp);
+                    }
+                    catch { };
+                };
+                nodes_ndi.Close();
             };
-
-            try { Progress(1, false); } catch { }; // 100% DONE STATUS
-
-            if (this.ProcWaysSure) nodes_ndi.Close();
             linesFLID.Clear();
 
             points_dbf.Close();
@@ -733,7 +734,13 @@ namespace OSM2SHP
             if (this.ProcJoins)
             {
                 relaj_dbf.Close();
-            };            
+            };
+
+            try
+            {
+                Progress(1, false);
+            }
+            catch { };
 
             if (err == null)
                 Done();
@@ -774,42 +781,39 @@ namespace OSM2SHP
 
             if(nodes_ndi.InMemory)
             {
-                foreach (Dictionary<long, NodesXYIndex.LatLonLCo> dict in nodes_ndi.Dicts)
+                foreach(KeyValuePair<long,NodesXYIndex.LatLonLCo> el in nodes_ndi.Dict)
                 {
-                    foreach (KeyValuePair<long, NodesXYIndex.LatLonLCo> el in dict)
+                    nodes_listed++;
+                    nodes_percent = ((float)nodes_listed) / nodes_ttl;
+
+                    // РІ lco С…СЂР°РЅРёРј С‡РёСЃР»Рѕ Р»РёРЅРёР№, РїРµСЂРµСЃРµРєР°СЋС‰РёС… С‚РѕС‡РєСѓ
+                    // 00001111 - РµСЃР»Рё С‚РѕС‡РєР° СЏРІР»СЏРµС‚СЃСЏ РЅР°С‡Р°Р»РѕРј РёР»Рё РєРѕРЅС†РѕРј Р»РёРЅРёРё (РґРѕ 15 Р»РёРЅРёР№)
+                    // 11110000 - РµСЃР»Рё С‚РѕС‡РєР° РЅРµ СЏРІР»СЏРµС‚СЃСЏ РЅР°С‡Р°Р»РѕРј РёР»Рё РєРѕРЅС†РѕРј Р»РёРЅРёРё (РґРѕ 15 Р»РёРЅРёР№)
+                    byte se = (byte)(el.Value.lco & 0x0F);
+                    byte md = (byte)(el.Value.lco & 0xF0);
+                    // РµСЃР»Рё С‡РёСЃР»Рѕ РїСЂРѕС…РѕРґСЏС‰РёС… С‚РѕС‡РµРє С‡РµСЂРµР· Р»РёРЅРёСЋ РІ СЃРµСЂРµРґРёРЅРµ > 1
+                    // РёР»Рё РµСЃР»Рё РѕРґРЅР° Р»РёРЅРёСЏ РїСЂРѕС…РѕРґРёС‚ С‡РµСЂРµР· СЃРµСЂРµРґРёРЅСѓ, Р° РґСЂСѓРіРёРµ РЅРµС‚
+                    //if ((md > 0x10) || ((md == 0x10) && (se > 0x00)))
+                    if (md > 0x00) // РµСЃР»Рё С‚РѕР»СЊРєРѕ РѕРґРЅР° Р»РёРЅРёСЏ С‡РµСЂРµР· СЃРµСЂРµРґРёРЅСѓ - РІРѕР·РјРѕР¶РµРЅ Р·Р°РїСЂРµС‚ СЂР°Р·РІРѕСЂРѕС‚Р°
                     {
-                        nodes_listed++;
-                        nodes_percent = ((float)nodes_listed) / nodes_ttl;
+                        byte lco = (byte)(se + (md >> 4));
+                        byte mlco = (byte)(md >> 4);
 
-                        // в lco храним число линий, пересекающих точку
-                        // 00001111 - если точка является началом или концом линии (до 15 линий)
-                        // 11110000 - если точка не является началом или концом линии (до 15 линий)
-                        byte se = (byte)(el.Value.lco & 0x0F);
-                        byte md = (byte)(el.Value.lco & 0xF0);
-                        // если число проходящих точек через линию в середине > 1
-                        // или если одна линия проходит через середину, а другие нет
-                        //if ((md > 0x10) || ((md == 0x10) && (se > 0x00)))
-                        if (md > 0x00) // если только одна линия через середину - возможен запрет разворота
-                        {
-                            byte lco = (byte)(se + (md >> 4));
-                            byte mlco = (byte)(md >> 4);
+                        Dictionary<string, object> rec = new Dictionary<string, object>();
+                        rec.Add("INDEX", nodes_writed);
+                        rec.Add("NODE_ID", el.Key);
+                        rec.Add("L_COUNT", lco);
+                        rec.Add("ML_COUNT", mlco);
+                        rec.Add("MLINES", el.Value.GetLines());
 
-                            Dictionary<string, object> rec = new Dictionary<string, object>();
-                            rec.Add("INDEX", nodes_writed);
-                            rec.Add("NODE_ID", el.Key);
-                            rec.Add("L_COUNT", lco);
-                            rec.Add("ML_COUNT", mlco);
-                            rec.Add("MLINES", el.Value.GetLines());
+                        nodes_dbf.WriteRecord(rec);
+                        nodes_shx.WritePointIndex((int)nodes_shp.Position);
+                        nodes_shp.WritePoint(el.Value.lon, el.Value.lat);
 
-                            nodes_dbf.WriteRecord(rec);
-                            nodes_shx.WritePointIndex((int)nodes_shp.Position);
-                            nodes_shp.WritePoint(el.Value.lon, el.Value.lat);
+                        nodes_writed++;
+                        nodes_fsize = nodes_dbf.Length + nodes_shx.Length + nodes_shp.Length + 204;
 
-                            nodes_writed++;
-                            nodes_fsize = nodes_dbf.Length + nodes_shx.Length + nodes_shp.Length + 204;
-
-                            Progress(0.99f, true);
-                        };
+                        Progress(0.99f, true);
                     };
                 };
             }
@@ -823,13 +827,13 @@ namespace OSM2SHP
                     nodes_ndi.STR.Read(buff, 0, buff.Length);
                     nodes_percent = (float)nodes_listed / nodes_ttl;
 
-                    // в lco храним число линий, пересекающих точку
-                    // 00001111 - если точка является началом или концом линии (до 15 линий)
-                    // 11110000 - если точка не является началом или концом линии (до 15 линий)
+                    // РІ lco С…СЂР°РЅРёРј С‡РёСЃР»Рѕ Р»РёРЅРёР№, РїРµСЂРµСЃРµРєР°СЋС‰РёС… С‚РѕС‡РєСѓ
+                    // 00001111 - РµСЃР»Рё С‚РѕС‡РєР° СЏРІР»СЏРµС‚СЃСЏ РЅР°С‡Р°Р»РѕРј РёР»Рё РєРѕРЅС†РѕРј Р»РёРЅРёРё (РґРѕ 15 Р»РёРЅРёР№)
+                    // 11110000 - РµСЃР»Рё С‚РѕС‡РєР° РЅРµ СЏРІР»СЏРµС‚СЃСЏ РЅР°С‡Р°Р»РѕРј РёР»Рё РєРѕРЅС†РѕРј Р»РёРЅРёРё (РґРѕ 15 Р»РёРЅРёР№)
                     byte se = (byte)(buff[24] & 0x0F);
                     byte md = (byte)(buff[24] & 0xF0);
                     //if ((md > 0x10) || ((md == 0x10) && (se > 0x00)))
-                    if (md > 0x00) // если только одна линия через середину - возможен запрет разворота
+                    if (md > 0x00) // РµСЃР»Рё С‚РѕР»СЊРєРѕ РѕРґРЅР° Р»РёРЅРёСЏ С‡РµСЂРµР· СЃРµСЂРµРґРёРЅСѓ - РІРѕР·РјРѕР¶РµРЅ Р·Р°РїСЂРµС‚ СЂР°Р·РІРѕСЂРѕС‚Р°
                     {
                         byte lco = (byte)(se + (md >> 4));
                         byte mlco = (byte)(md >> 4);
@@ -1885,7 +1889,7 @@ namespace OSM2SHP
             public TagsComparer(string priority)
             {
                 if (String.IsNullOrEmpty(priority)) return;
-                if (priority == "да") return;
+                if (priority == "РґР°") return;
                 string[] ss = priority.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
                 if ((ss != null) && (ss.Length > 0))
                     for (int i = 0; i < ss.Length; i++) 
@@ -2239,7 +2243,7 @@ namespace OSM2SHP
 
             //////////////////////////////////////////////////////
             //////////////////////////////////////////////////////
-            //////////// ОБРАБОТКА ЗАПРЕТОВ ПОВОРОТОВ ////////////
+            //////////// РћР‘Р РђР‘РћРўРљРђ Р—РђРџР Р•РўРћР’ РџРћР’РћР РћРўРћР’ ////////////
             //////////////////////////////////////////////////////
             //////////////////////////////////////////////////////
             if (this.ProcJoins)
@@ -2298,22 +2302,19 @@ namespace OSM2SHP
                 if (toFLAdd == 0) // check middle //
                 {
                     NodesXYIndex.LatLonLCo llco;
-                    foreach (Dictionary<long, NodesXYIndex.LatLonLCo> dict in nodes_ndi.Dicts)
+                    if ((nodes_ndi.Dict.Count > 0) && nodes_ndi.Dict.ContainsKey(via) && ((llco = nodes_ndi.Dict[via]).inline != null))
                     {
-                        if ((dict.Count > 0) && dict.ContainsKey(via) && ((llco = dict[via]).inline != null))
+                        foreach (NodesXYIndex.LatLonLCo.InLine inl in llco.inline)
                         {
-                            foreach (NodesXYIndex.LatLonLCo.InLine inl in llco.inline)
+                            if (inl.line == fline)
                             {
-                                if (inl.line == fline)
-                                {
-                                    // M....[..] == Middle WAY_ID [PointNum]; where PointNumber is zero-indexed
-                                    fl += (fl.Length > 0 ? ";" : "") + "M" + tline.ToString() + "[" + inl.number.ToString() + "]";
-                                    toFLAdd++;
-                                    valid = true;
-                                };
+                                // M....[..] == Middle WAY_ID [PointNum]; where PointNumber is zero-indexed
+                                fl += (fl.Length > 0 ? ";" : "") + "M" + tline.ToString() + "[" + inl.number.ToString() + "]";
+                                toFLAdd++;
+                                valid = true;
                             };
                         };
-                    };
+                    };                    
                 };
                 if (toFLAdd == 0)
                     valid = false;
@@ -3130,27 +3131,22 @@ namespace OSM2SHP
         }
     }
 
-    //
     // https://programmingwithmosh.com/net/csharp-collections/
     // List<T> - Represents a list of objects that can be accessed by an index
     // Dictionary<TKey, TValue> - Dictionary is a collection type that is useful when you need fast lookups by keys
     // HashSet<T> - Unical list
     // Stack<T> - LIFO buffer
     // Queue<T> - FIFO buffer
-    //
-    // use <gcAllowVeryLargeObjects enabled="true" />  
-    //
     public class NodesXYIndex
     {
-        private ulong count = 0; // for not in memory
+        private ulong count = 0;
         private FileStream str = null;
-        public FileStream STR { get { return STR; } }        
-
+        private Dictionary<long, LatLonLCo> dict = new Dictionary<long, LatLonLCo>();
         private bool inMemory = true;
-        public bool InMemory { get { return inMemory; } }        
 
-        private List<Dictionary<long, LatLonLCo>> dicts = new List<Dictionary<long, LatLonLCo>>();
-        public List<Dictionary<long, LatLonLCo>> Dicts { get { return dicts; } }                       
+        public FileStream STR { get { return STR; } }
+        public Dictionary<long, LatLonLCo> Dict { get { return dict; } }
+        public bool InMemory { get { return inMemory; } }        
 
         public NodesXYIndex()
         {
@@ -3163,33 +3159,13 @@ namespace OSM2SHP
             str = new FileStream(fileName, FileMode.Create, FileAccess.ReadWrite);
         }
 
-        public string ArraysInfo
-        {
-            get
-            {
-                if (inMemory)
-                {
-                    string res = dicts.Count.ToString() + " (";
-                    foreach (Dictionary<long, LatLonLCo> dict in dicts) 
-                        res += dict.Count.ToString() + ", ";
-                    res = res.Substring(0,res.Length-2) + ")";
-                    return res;
-                }
-                else
-                    return "0";
-            }
-        }
-
         public long Length
         {
             get
             {
                 if (inMemory)
                 {
-                    long res = 100;
-                    foreach (Dictionary<long, LatLonLCo> dict in this.dicts) 
-                        res += 49 * dict.Count; // 20 oversize + 8 ID + 8 Lat + 8 Lon + 1 Lines + 4 addit
-                    return res;
+                    return 49 * dict.Count + 100; // 20 oversize + 8 ID + 8 Lat + 8 Lon + 1 Lines + 4 addit
                 }
                 else
                 {
@@ -3203,18 +3179,7 @@ namespace OSM2SHP
         {
             if (inMemory)
             {
-                if (dicts.Count == 0) dicts.Add(new Dictionary<long, LatLonLCo>());
-                Dictionary<long, LatLonLCo> dict = (Dictionary<long, LatLonLCo>)dicts[dicts.Count - 1];
-                try
-                {
-                    dict.Add(id, new LatLonLCo(lat, lon, 0));
-                }
-                catch (OutOfMemoryException ex)
-                {
-                    // try one more dict
-                    dicts.Add(dict = new Dictionary<long, LatLonLCo>());
-                    dict.Add(id, new LatLonLCo(lat, lon, 0));
-                };
+                dict.Add(id, new LatLonLCo(lat, lon, 0));
             }
             else
             {                
@@ -3230,15 +3195,7 @@ namespace OSM2SHP
         {
             get
             {
-                if (inMemory)
-                {
-                    ulong res = 0;
-                    foreach (Dictionary<long, LatLonLCo> dict in dicts) 
-                        res += (ulong)dict.Count;
-                    return res;
-                }
-                else
-                    return count;
+                return inMemory ? (ulong)dict.Count : count;
             }
         }
 
@@ -3349,29 +3306,23 @@ namespace OSM2SHP
                 {
                     for (int i = 0; i < nodes.Length; i++)
                     {
-                        foreach (Dictionary<long, LatLonLCo> dict in dicts)
+                        LatLonLCo lll = dict[nodes[i]];
+                        if (update_lco)
                         {
-                            if (dict.ContainsKey(nodes[i]))
+                            byte se = (byte)(lll.lco & 0x0F);
+                            byte md = (byte)(lll.lco & 0xF0);
+                            if ((i == 0) || (i == nodes.Length - 1)) // start or end
                             {
-                                LatLonLCo lll = dict[nodes[i]];
-                                if (update_lco)
-                                {
-                                    byte se = (byte)(lll.lco & 0x0F);
-                                    byte md = (byte)(lll.lco & 0xF0);
-                                    if ((i == 0) || (i == nodes.Length - 1)) // start or end
-                                    {
-                                        if (se < 0x0F) lll.lco += 0x01;
-                                    }
-                                    else // middle
-                                    {
-                                        if (md < 0xF0) lll.lco += 0x10;
-                                        if (update_id >= 0) lll.AddInline(update_id, i);
-                                    };
-                                    dict[nodes[i]] = lll;
-                                };
-                                res[i] = new IdLatLon(nodes[i], lll);
-                            };
+                                if (se < 0x0F) lll.lco += 0x01;
+                            }
+                            else // middle
+                            {
+                                if (md < 0xF0) lll.lco += 0x10;
+                                if (update_id >= 0) lll.AddInline(update_id, i);
+                            };                            
+                            dict[nodes[i]] = lll;
                         };
+                        res[i] = new IdLatLon(nodes[i], lll);
                     };
                 }
                 catch (Exception ex)
@@ -3426,8 +3377,9 @@ namespace OSM2SHP
         {
             if (inMemory)
             {
-                foreach (Dictionary<long, LatLonLCo> dict in dicts)
-                    dict.Clear();
+                dict.Clear();
+                dict = null;
+                dict = new Dictionary<long, LatLonLCo>();
             }
             else
             {
@@ -3439,33 +3391,30 @@ namespace OSM2SHP
         public Dictionary<long, int[]> DictAsLinesToSplit()
         {
             Dictionary<long, int[]> res = new Dictionary<long, int[]>();
-            if (dicts == null) return res;
-            if (dicts.Count == 0) return res;
-            foreach (Dictionary<long, LatLonLCo> dict in dicts)
+            if (dict == null) return res;
+            if (dict.Count == 0) return res;
+            foreach (KeyValuePair<long, LatLonLCo> d in dict)
             {
-                foreach (KeyValuePair<long, LatLonLCo> d in dict)
-                {
-                    if (d.Value.inline == null) continue;
-                    if (d.Value.inline.Length == 0) continue;
+                if (d.Value.inline == null) continue;
+                if (d.Value.inline.Length == 0) continue;
 
-                    byte se = (byte)(d.Value.lco & 0x0F);
-                    byte md = (byte)(d.Value.lco & 0xF0);
-                    // если число проходящих точек через линию в середине > 1
-                    // или если одна линия проходит через середину, а другие нет
-                    //if ((md > 0x10) || ((md == 0x10) && (se > 0x00)))
-                    if (md > 0x00) // если только одна линия через середину - возможен запрет разворота
+                byte se = (byte)(d.Value.lco & 0x0F);
+                byte md = (byte)(d.Value.lco & 0xF0);
+                // РµСЃР»Рё С‡РёСЃР»Рѕ РїСЂРѕС…РѕРґСЏС‰РёС… С‚РѕС‡РµРє С‡РµСЂРµР· Р»РёРЅРёСЋ РІ СЃРµСЂРµРґРёРЅРµ > 1
+                // РёР»Рё РµСЃР»Рё РѕРґРЅР° Р»РёРЅРёСЏ РїСЂРѕС…РѕРґРёС‚ С‡РµСЂРµР· СЃРµСЂРµРґРёРЅСѓ, Р° РґСЂСѓРіРёРµ РЅРµС‚
+                //if ((md > 0x10) || ((md == 0x10) && (se > 0x00)))
+                if (md > 0x00) // РµСЃР»Рё С‚РѕР»СЊРєРѕ РѕРґРЅР° Р»РёРЅРёСЏ С‡РµСЂРµР· СЃРµСЂРµРґРёРЅСѓ - РІРѕР·РјРѕР¶РµРЅ Р·Р°РїСЂРµС‚ СЂР°Р·РІРѕСЂРѕС‚Р°
+                {
+                    foreach (LatLonLCo.InLine inl in d.Value.inline)
                     {
-                        foreach (LatLonLCo.InLine inl in d.Value.inline)
+                        if (!res.ContainsKey(inl.line))
+                            res.Add(inl.line, new int[1] { inl.number });
+                        else
                         {
-                            if (!res.ContainsKey(inl.line))
-                                res.Add(inl.line, new int[1] { inl.number });
-                            else
-                            {
-                                List<int> inta = new List<int>(res[inl.line]);
-                                inta.Add(inl.number);
-                                inta.Sort();
-                                res[inl.line] = inta.ToArray();
-                            };
+                            List<int> inta = new List<int>(res[inl.line]);
+                            inta.Add(inl.number);
+                            inta.Sort();
+                            res[inl.line] = inta.ToArray();
                         };
                     };
                 };
@@ -3531,7 +3480,7 @@ namespace OSM2SHP
             return new PointF((float)((maxX + minX) / 2), (float)((maxY + minY) / 2));
         }        
 
-        #region Проверка на вхождение в полигон
+        #region РџСЂРѕРІРµСЂРєР° РЅР° РІС…РѕР¶РґРµРЅРёРµ РІ РїРѕР»РёРіРѕРЅ
         private static double MaxError = 1E-09;
 
         private static int CRS(PointF P, PointF A1, PointF A2, double EPS)
@@ -3591,7 +3540,7 @@ namespace OSM2SHP
             if ((dx == 0) && (dy == 0))
             {
                 // line is a point
-                // линия может быть с нулевой длиной после анализа TRA
+                // Р»РёРЅРёСЏ РјРѕР¶РµС‚ Р±С‹С‚СЊ СЃ РЅСѓР»РµРІРѕР№ РґР»РёРЅРѕР№ РїРѕСЃР»Рµ Р°РЅР°Р»РёР·Р° TRA
                 pointOnLine = lineStart;
                 side = 0;
                 //dx = pt.X - lineStart.X;
@@ -3630,7 +3579,7 @@ namespace OSM2SHP
             return GetLengthMeters(pt.Y, pt.X, pointOnLine.Y, pointOnLine.X, false);
         }
 
-        // Рассчет расстояния       
+        // Р Р°СЃСЃС‡РµС‚ СЂР°СЃСЃС‚РѕСЏРЅРёСЏ       
         #region LENGTH
         public static float GetLengthMeters(double StartLat, double StartLong, double EndLat, double EndLong, bool radians)
         {
@@ -3654,26 +3603,26 @@ namespace OSM2SHP
         // Slower
         public static uint GetLengthMetersA(double StartLat, double StartLong, double EndLat, double EndLong, bool radians)
         {
-            double D2R = Math.PI / 180;     // Преобразование градусов в радианы
+            double D2R = Math.PI / 180;     // РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ РіСЂР°РґСѓСЃРѕРІ РІ СЂР°РґРёР°РЅС‹
 
             double a = 6378137.0000;     // WGS-84 Equatorial Radius (a)
             double f = 1 / 298.257223563;  // WGS-84 Flattening (f)
             double b = (1 - f) * a;      // WGS-84 Polar Radius
-            double e2 = (2 - f) * f;      // WGS-84 Квадрат эксцентричности эллипсоида  // 1-(b/a)^2
+            double e2 = (2 - f) * f;      // WGS-84 РљРІР°РґСЂР°С‚ СЌРєСЃС†РµРЅС‚СЂРёС‡РЅРѕСЃС‚Рё СЌР»Р»РёРїСЃРѕРёРґР°  // 1-(b/a)^2
 
-            // Переменные, используемые для вычисления смещения и расстояния
-            double fPhimean;                           // Средняя широта
-            double fdLambda;                           // Разница между двумя значениями долготы
-            double fdPhi;                           // Разница между двумя значениями широты
-            double fAlpha;                           // Смещение
-            double fRho;                           // Меридианский радиус кривизны
-            double fNu;                           // Поперечный радиус кривизны
-            double fR;                           // Радиус сферы Земли
-            double fz;                           // Угловое расстояние от центра сфероида
-            double fTemp;                           // Временная переменная, использующаяся в вычислениях
+            // РџРµСЂРµРјРµРЅРЅС‹Рµ, РёСЃРїРѕР»СЊР·СѓРµРјС‹Рµ РґР»СЏ РІС‹С‡РёСЃР»РµРЅРёСЏ СЃРјРµС‰РµРЅРёСЏ Рё СЂР°СЃСЃС‚РѕСЏРЅРёСЏ
+            double fPhimean;                           // РЎСЂРµРґРЅСЏСЏ С€РёСЂРѕС‚Р°
+            double fdLambda;                           // Р Р°Р·РЅРёС†Р° РјРµР¶РґСѓ РґРІСѓРјСЏ Р·РЅР°С‡РµРЅРёСЏРјРё РґРѕР»РіРѕС‚С‹
+            double fdPhi;                           // Р Р°Р·РЅРёС†Р° РјРµР¶РґСѓ РґРІСѓРјСЏ Р·РЅР°С‡РµРЅРёСЏРјРё С€РёСЂРѕС‚С‹
+            double fAlpha;                           // РЎРјРµС‰РµРЅРёРµ
+            double fRho;                           // РњРµСЂРёРґРёР°РЅСЃРєРёР№ СЂР°РґРёСѓСЃ РєСЂРёРІРёР·РЅС‹
+            double fNu;                           // РџРѕРїРµСЂРµС‡РЅС‹Р№ СЂР°РґРёСѓСЃ РєСЂРёРІРёР·РЅС‹
+            double fR;                           // Р Р°РґРёСѓСЃ СЃС„РµСЂС‹ Р—РµРјР»Рё
+            double fz;                           // РЈРіР»РѕРІРѕРµ СЂР°СЃСЃС‚РѕСЏРЅРёРµ РѕС‚ С†РµРЅС‚СЂР° СЃС„РµСЂРѕРёРґР°
+            double fTemp;                           // Р’СЂРµРјРµРЅРЅР°СЏ РїРµСЂРµРјРµРЅРЅР°СЏ, РёСЃРїРѕР»СЊР·СѓСЋС‰Р°СЏСЃСЏ РІ РІС‹С‡РёСЃР»РµРЅРёСЏС…
 
-            // Вычисляем разницу между двумя долготами и широтами и получаем среднюю широту
-            // предположительно что расстояние между точками << радиуса земли
+            // Р’С‹С‡РёСЃР»СЏРµРј СЂР°Р·РЅРёС†Сѓ РјРµР¶РґСѓ РґРІСѓРјСЏ РґРѕР»РіРѕС‚Р°РјРё Рё С€РёСЂРѕС‚Р°РјРё Рё РїРѕР»СѓС‡Р°РµРј СЃСЂРµРґРЅСЋСЋ С€РёСЂРѕС‚Сѓ
+            // РїСЂРµРґРїРѕР»РѕР¶РёС‚РµР»СЊРЅРѕ С‡С‚Рѕ СЂР°СЃСЃС‚РѕСЏРЅРёРµ РјРµР¶РґСѓ С‚РѕС‡РєР°РјРё << СЂР°РґРёСѓСЃР° Р·РµРјР»Рё
             if (!radians)
             {
                 fdLambda = (StartLong - EndLong) * D2R;
@@ -3687,12 +3636,12 @@ namespace OSM2SHP
                 fPhimean = (StartLat + EndLat) / 2;
             };
 
-            // Вычисляем меридианные и поперечные радиусы кривизны средней широты
+            // Р’С‹С‡РёСЃР»СЏРµРј РјРµСЂРёРґРёР°РЅРЅС‹Рµ Рё РїРѕРїРµСЂРµС‡РЅС‹Рµ СЂР°РґРёСѓСЃС‹ РєСЂРёРІРёР·РЅС‹ СЃСЂРµРґРЅРµР№ С€РёСЂРѕС‚С‹
             fTemp = 1 - e2 * (sqr(Math.Sin(fPhimean)));
             fRho = (a * (1 - e2)) / Math.Pow(fTemp, 1.5);
             fNu = a / (Math.Sqrt(1 - e2 * (Math.Sin(fPhimean) * Math.Sin(fPhimean))));
 
-            // Вычисляем угловое расстояние
+            // Р’С‹С‡РёСЃР»СЏРµРј СѓРіР»РѕРІРѕРµ СЂР°СЃСЃС‚РѕСЏРЅРёРµ
             if (!radians)
             {
                 fz = Math.Sqrt(sqr(Math.Sin(fdPhi / 2.0)) + Math.Cos(EndLat * D2R) * Math.Cos(StartLat * D2R) * sqr(Math.Sin(fdLambda / 2.0)));
@@ -3703,7 +3652,7 @@ namespace OSM2SHP
             };
             fz = 2 * Math.Asin(fz);
 
-            // Вычисляем смещение
+            // Р’С‹С‡РёСЃР»СЏРµРј СЃРјРµС‰РµРЅРёРµ
             if (!radians)
             {
                 fAlpha = Math.Cos(EndLat * D2R) * Math.Sin(fdLambda) * 1 / Math.Sin(fz);
@@ -3714,9 +3663,9 @@ namespace OSM2SHP
             };
             fAlpha = Math.Asin(fAlpha);
 
-            // Вычисляем радиус Земли
+            // Р’С‹С‡РёСЃР»СЏРµРј СЂР°РґРёСѓСЃ Р—РµРјР»Рё
             fR = (fRho * fNu) / (fRho * sqr(Math.Sin(fAlpha)) + fNu * sqr(Math.Cos(fAlpha)));
-            // Получаем расстояние
+            // РџРѕР»СѓС‡Р°РµРј СЂР°СЃСЃС‚РѕСЏРЅРёРµ
             return (uint)Math.Round(Math.Abs(fz * fR));
         }
         // Slowest

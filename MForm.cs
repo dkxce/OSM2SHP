@@ -669,7 +669,7 @@ namespace OSM2SHP
                     if (osmc._config.useNotInMemoryIndexFile)
                         status_text += String.Format(System.Globalization.CultureInfo.InvariantCulture, "Размер индексного файла точек на диске (.idx): {0}\r\n", GetFileSize(osmc.NDILength));
                     else
-                        status_text += String.Format(System.Globalization.CultureInfo.InvariantCulture, "Размер индексов точек в памяти: {0}\r\n", GetFileSize(osmc.NDILength));
+                        status_text += String.Format(System.Globalization.CultureInfo.InvariantCulture, "Размер индексов точек в памяти: {0} в {1} массиве(ах)\r\n", GetFileSize(osmc.NDILength), osmc.NDIArraysInfo);
                 };
                 
                 status_text += "\r\n";                
@@ -2790,7 +2790,10 @@ namespace OSM2SHP
             outText += "Программа-конвертер файлов данных OSM (*.osm) и (*.pbf) в ESRI Shapes (*.shp)\r\n\r\n";
             outText += "Автор: milokz@gmail.com\r\n";
             outText += "https://github.com/dkxce/OSM2SHP\r\n\r\n";
+            outText += this.MandatoryText + "\r\n";
             outText += String.Format("Текущая версия {3} от {2:00}.{1:00}.{0:00} \r\n", fvi.ProductMajorPart, fvi.ProductMinorPart, fvi.ProductBuildPart, fvi.ProductPrivatePart);
+            outText += String.Format("Движок: {0}\r\n", OSM2SHP.OSMConverter._MainEngine);
+            outText += String.Format("Модификация: {0}\r\n", OSM2SHP.OSMConverter._MainMode);
             outText += "\r\n";
             outText += "При индексации точек в памяти рекомендуется запускать программу на 64-битных системах с оперативной памятью более 10 ГБ. Работа и индексным файлом на диске значителько увеличивает время обработки данных и создание shape-файлов.\r\n";
             outText += "\r\n";
@@ -3204,8 +3207,8 @@ namespace OSM2SHP
             {
                 System.Diagnostics.Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"\BoundsShapeBuilder\ShapesPolygonsExtractor.exe");
             }
-            catch { }; 
-        }
+            catch { };
+        }        
     }
 
     public class DictComparer : IComparer<KeyValuePair<string, uint>>
