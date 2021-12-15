@@ -8,7 +8,7 @@ Unicode True
 !include "nsDialogs.nsh"
 
 ; PROJECT CONSTANTS 
-!define PRODUCT_BUILD "21.12.10.51"
+!define PRODUCT_BUILD "21.12.15.53"
 !define PRODUCT_NAME "OSM2SHP Converter"
 !define COPYRIGHTS "Milok Zbrozek <milokz@gmail.com>"
 !define INSTALLER "OSM2SHP Converter Setup"

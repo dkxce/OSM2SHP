@@ -2800,6 +2800,7 @@ namespace OSM2SHP
             outText += "Для управления через http-сервер используйте логин `web`, пароль `osm2shp`\r\n";
             outText += "\r\n";
             outText += "MachineID: "+machine+"\r\n";
+            outText += (viewonly ? "Locked: View Only Mode" : "Unlocked: Full Mode") + "\r\n";
             InputBox.QueryInfoBox("О Программе", this.MandatoryText, null, outText);   
         }
 
